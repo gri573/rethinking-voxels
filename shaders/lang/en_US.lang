@@ -77,7 +77,7 @@ screen.TORCHCOLS=Torches
 screen.TORCHCOLS.comment=Settings that are related to torches.
 
 screen.ALLAY_COL=Allay
-screen.AMETHYST_COL=Block of Amethyst
+screen.AMETHYST_COL=Amethyst Cluster
 screen.BEACON_COL=Beacon
 screen.BERRY_COL=Glow Berries
 screen.BLAZE_COL=Blaze
