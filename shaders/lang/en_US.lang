@@ -59,22 +59,22 @@ screen.LIGHTCOLS=Light Colors
 screen.LIGHTCOLS.comment=Settings that are about changing light colors.
 
 screen.BLOCKCOLS=Block Lights
-screen.LIGHTCOLS.comment=Settings that are related to block lights.
+screen.BLOCKCOLS.comment=Settings that are related to block lights.
 
 screen.ENTITYCOLS=Entity Lights
-screen.LIGHTCOLS.comment=Settings that are related to entity lights.
+screen.ENTITYCOLS.comment=Settings that are related to entity lights.
 
 screen.ORECOLS=Ore Emissives
-screen.LIGHTCOLS.comment=Settings that are related to ore emissives.
+screen.ORECOLS.comment=Settings that are related to ore emissives.
 
 screen.FIRECOLS=Fires & Camp Fires
-screen.LIGHTCOLS.comment=Settings that are related to fires, and camp fires.
+screen.FIRECOLS.comment=Settings that are related to fires, and camp fires.
 
 screen.FROGCOLS=Froglights
-screen.LIGHTCOLS.comment=Settings that are related to froglights.
+screen.FROGCOLS.comment=Settings that are related to froglights.
 
 screen.TORCHCOLS=Torches
-screen.LIGHTCOLS.comment=Settings that are related to torches.
+screen.TORCHCOLS.comment=Settings that are related to torches.
 
 screen.ALLAY_COL=Allay
 screen.AMETHYST_COL=Block of Amethyst
@@ -93,7 +93,7 @@ screen.EMERALD_COL=Emerald Ore
 screen.END_COL=End Related Blocks
 screen.ENDCRYSTAL_COL=End Crystal
 screen.ENDROD_COL=End Rod
-screen.FIRE_COL=Fires
+screen.FIRE_COL=Fires & Camp Fires
 screen.FURNACE_COL=Furnace
 screen.GLOWSTONE_COL=Glowstone
 screen.GOLD_COL=Gold Ore
@@ -116,7 +116,7 @@ screen.REDSTONELAMP_COL=Redstone Lamp
 screen.SCULK_COL=Sculk Sensor
 screen.SEALANTERN_COL=Sea Lantern
 screen.SHROOMLIGHT_COL=Shroomlight
-screen.SOULFIRE_COL=Soul Fires
+screen.SOULFIRE_COL=Soul Fires & Camp Fires
 screen.SOULTORCH_COL=Soul Torch
 screen.SPAWNER_COL=Spawner
 screen.SQUID_COL=Glow Squid
