@@ -67,6 +67,9 @@ screen.ENTITYCOLS.comment=Settings that are related to entity lights.
 screen.ORECOLS=Ore Emissives
 screen.ORECOLS.comment=Settings that are related to ore emissives.
 
+screen.OTHER_COL=Other (Brightness Only)
+screen.OTHER_COL.comment=Settings that don't fit into any other category.
+
 screen.FIRECOLS=Fires & Camp Fires
 screen.FIRECOLS.comment=Settings that are related to fires, and camp fires.
 
@@ -106,7 +109,6 @@ screen.LAVA_COL=Lava
 screen.LICHEN_COL=Glow Lichen
 screen.LIGHTNING_COL=Lightning Bolt
 screen.MAGMA_COL=Magma Block
-screen.OTHER_COL=Brightness Only
 screen.PICKLE_COL=Sea Pickle
 screen.PINKFROG_COL=Pearlescent Froglight
 screen.PORTAL_COL=Nether Portal
