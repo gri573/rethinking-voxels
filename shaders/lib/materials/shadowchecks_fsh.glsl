@@ -145,7 +145,7 @@ emissive = (
     mat == 10688 || // pearlescent froglight
     mat == 10705 || // active sculk sensor
     mat == 10708 || // spawner
-    mat == 10739 || // brewing stand
+    mat == 10747 || // brewing stand
     mat == 12740 || // lit candle cake
     mat == 30020 || // nether portal
     mat == 31016 || // beacon
@@ -428,7 +428,7 @@ if (emissive) {
             lightcol = vec3(SPAWNER_COL_R, SPAWNER_COL_G, SPAWNER_COL_B);
             #endif
             break;
-        case 10739: // brewing stand
+        case 10747: // brewing stand
             #ifdef HARDCODED_BREWINGSTAND_COL
             lightcol = vec3(BREWINGSTAND_COL_R, BREWINGSTAND_COL_G, BREWINGSTAND_COL_B);
             #endif
@@ -680,7 +680,7 @@ if (emissive) {
         case 10708: // spawner
             lightlevel = BRIGHTNESS_SPAWNER;
             break;
-        case 10739: // brewing stand
+        case 10747: // brewing stand
             lightlevel = BRIGHTNESS_BREWINGSTAND;
             break;
         case 12740: // lit candle cake

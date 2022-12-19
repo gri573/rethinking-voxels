@@ -181,7 +181,7 @@ vec3 getBlockLight(vec3 vxPos, vec3 normal, int mat) {
 }
 #else
 vec3 getBlockLight(vec3 vxPos, vec3 normal, int mat) {
-    vxPos += normal;
+    vxPos += normal * 0.5;
     vec3 lightCol = vec3(0);
     float totalInt = 0.0001;
     vec3 vxPosOld = vxPos + floor(cameraPosition) - floor(previousCameraPosition);
@@ -197,7 +197,7 @@ vec3 getBlockLight(vec3 vxPos, vec3 normal, int mat) {
         lightCol += intMult * cornerLightData0.xyz;
         totalInt += intMult;
     }
-    return 2 * lightCol;// / totalInt;
+    return 3 * lightCol;// / totalInt;
 }
 #endif
 
