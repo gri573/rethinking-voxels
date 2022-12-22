@@ -64,7 +64,7 @@ uniform sampler2D tex;
 	uniform sampler2D gaux3;
 #endif
 
-#if SHOW_LIGHT_LEVEL == 1
+#if SHOW_LIGHT_LEVEL == 1 || HELD_LIGHTING_MODE >= 1
 	uniform int heldItemId;
 	uniform int heldItemId2;
 #endif

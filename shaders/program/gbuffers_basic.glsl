@@ -48,6 +48,11 @@ uniform mat4 shadowProjection;
 	uniform float frameTimeCounter;
 #endif
 
+#if HELD_LIGHTING_MODE >= 1
+	uniform int heldItemId;
+	uniform int heldItemId2;
+#endif
+
 //Pipeline Constants//
 
 //Common Variables//

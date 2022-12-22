@@ -54,6 +54,11 @@ uniform sampler2D gaux1;
 	#define ATLASTEX tex
 #endif
 
+#if HELD_LIGHTING_MODE >= 1
+	uniform int heldItemId;
+	uniform int heldItemId2;
+#endif
+
 //Pipeline Constants//
 
 //Common Variables//

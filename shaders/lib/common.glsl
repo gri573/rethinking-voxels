@@ -14,7 +14,7 @@
 
 //voxel settings//
 
-    #define SHADOWRES 512 //[512 1024 2048 4096]
+    #define SHADOWRES 1024 //[512 1024 2048 4096]
 
     #if SHADOWRES == 512
         const int shadowMapResolution = 512;
@@ -49,7 +49,7 @@
 
     #define ADVANCED_LIGHT_TRACING
     #define FF_PROP_MUL 0.9999
-    #define FF_PROP_SUB 0.0001
+    #define FF_PROP_SUB 0.003 //[0.0001 0.0003 0.0005 0.001 0.002 0.003 0.005 0.007 0.01]
     #define BFF_ABSORBTION_AMOUNT 0.05
 
     #if SHADOWRES == 512

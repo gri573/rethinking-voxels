@@ -129,8 +129,8 @@ screen.YELLOWFROG_COL=Ochre Froglight
 #Settings
 option.SHADOWRES=Voxel Volume Size
 option.SHADOWRES.comment=Size of the cuboid in which advanced light calculation is performed. 
-value.SHADOWRES.4096=§9Very High
-value.SHADOWRES.2048=§bHigh
+value.SHADOWRES.4096=§5Extreme
+value.SHADOWRES.2048=§9High
 value.SHADOWRES.1024=§aMedium
 value.SHADOWRES.512=§eLow
 
@@ -185,6 +185,11 @@ option.VBL_NETHER_MULT.comment=Volumetric Blocklight Strength in the nether rela
 option.VBL_END_MULT=Vol. Blocklight End Multiplier
 option.VBL_END_MULT.comment=Volumetric Blocklight Strength in the end relative to its overworld value.
 
+option.FF_PROP_SUB=Blocklight Falloff Steepness
+option.FF_PROP_SUB.comment=Controls how fast blocklight becomes dark around a light source. Doesn't work with Advanced Light Propagation.
+
+option.GLOWING_MINERAL_BLOCKS=Glowing Mineral Blocks
+option.GLOWING_MINERAL_BLOCKS.comment=Toggles Light emission of Emerald, Redstone and Lapis blocks.
 
 option.RP_MODE=RP Support
 option.RP_MODE.comment=Changes many internal calculations to determine how different blocks and materials will be rendered. §bIntegrated PBR+§r: Assumption-based PBR materials and extra effects; recommended if you aren't using resource packs. §aBasic§r: No PBR or extra effects; recommended if you are using resource packs that change things quite a bit.

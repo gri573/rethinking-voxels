@@ -212,13 +212,19 @@ void DoLighting(inout vec3 color, inout vec3 shadowMult, vec3 playerPos, vec3 vi
 
     // Blocklight
     #if HELD_LIGHTING_MODE >= 1
-        float heldLight = max(heldBlockLightValue, heldBlockLightValue2);
+        vec3 heldLightR =  heldItemId <= 0 || heldItemId > 9999 ? vec3(0) : vec3(heldItemId % 16, (heldItemId >> 4) % 16, (heldItemId >> 8) % 16);
+        vec3 heldLightL =  heldItemId2 <= 0 || heldItemId2 > 9999 ? vec3(0) : vec3(heldItemId2 % 16, (heldItemId2 >> 4) % 16, (heldItemId2 >> 8) % 16);
+        vec3 heldLight = (heldLightR + heldLightL) / 15.0 + 0.001;
+        float heldLight0 = max(heldBlockLightValue, heldBlockLightValue2);
+        if (length(heldLight) > 0.5) heldLight0 = max(heldLight0, 8);
+        heldLight /= max(heldLight.r, max(heldLight.g, heldLight.b));
         float lViewPosL = lViewPos;
         #if HELD_LIGHTING_MODE == 1
-            heldLight *= 0.75;
+            heldLight0 *= 0.75;
             lViewPosL *= 1.5;
         #endif
-        lightmap.x = max(lightmap.x, (heldLight - lViewPosL) * 0.066666);
+        heldLight0 = max(0.0, (heldLight0 - lViewPosL) * 0.066666);
+        heldLight *= heldLight0;
     #endif
     float lightmapXM;
     if (!noSmoothLighting) {
@@ -296,6 +302,9 @@ void DoLighting(inout vec3 color, inout vec3 shadowMult, vec3 playerPos, vec3 vi
     // Combine Lighting
     float shadowLength = min(vxRange / 2.0 - abs(vxPos.x), min(VXHEIGHT * VXHEIGHT - 2.0 * abs(vxPos.y), vxRange / 2.0 - abs(vxPos.z)));
     vec3 blockLighting = isInRange(vxPos) ? mix(getBlockLight(vxPos, worldNormal, mat), lightmapXM * blocklightCol, 1 - clamp(shadowLength / 8.0, 0, 1)) : lightmapXM * blocklightCol;
+    #if HELD_LIGHTING_MODE >= 1
+    blockLighting = sqrt(blockLighting * blockLighting + heldLight * heldLight);
+    #endif
     vec3 sceneLighting = shadowLighting * shadowMult + ambientColor * ambientMult;
     float dotSceneLighting = dot(sceneLighting, sceneLighting);
     

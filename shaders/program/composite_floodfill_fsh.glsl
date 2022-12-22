@@ -189,7 +189,7 @@ void main() {
             col *= FF_PROP_MUL * max(0.0, (length(col) - FF_PROP_SUB) / (length(col) + 0.0001));
             //if (length(col) > 5) col = vec3(0);
             dataToWrite0.xyz = ivec3(col * 65535.0);
-        } else dataToWrite0.xyz = ivec3(65535.0 * blockData.lightcol * blockData.lightlevel / 32.0);
+        } else dataToWrite0.xyz = ivec3(65535.0 * blockData.lightcol * blockData.lightlevel * blockData.lightlevel / 700.0);
 #endif
     //}
     /*RENDERTARGETS:8,9*/
