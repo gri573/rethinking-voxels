@@ -7,12 +7,9 @@ void CoatTextures(inout vec3 color, float noiseFactor, vec3 playerPos) {
         vec2 offsetR = max(absMidCoordPos.x, absMidCoordPos.y) * vec2(float(atlasSize.y) / float(atlasSize.x), 1.0);
         vec2 noiseCoord = floor(midCoordPos / 2.0 * packSizeNT / offsetR) / packSizeNT / 3.0;
     #endif
-    if (noiseFactor < 1000.0) {
-        vec3 floorWorldPos = floor(playerPos + cameraPosition + 0.001);
-        noiseCoord += 0.84 * (floorWorldPos.xz + floorWorldPos.y);
-    } else {
-        noiseFactor -= 1000.0;
-    }
+    vec3 floorWorldPos = floor(playerPos + cameraPosition + 0.001);
+    noiseCoord += 0.84 * (floorWorldPos.xz + floorWorldPos.y);
+    
     float noiseTexture = texture2D(noisetex, noiseCoord).r;
     noiseTexture = noiseTexture + 0.6;
     float colorBrightness = dot(color, color) * 0.3;

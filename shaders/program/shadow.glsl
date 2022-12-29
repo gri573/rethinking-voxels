@@ -125,7 +125,7 @@ uniform mat4 shadowModelView, shadowModelViewInverse;
 uniform mat4 gbufferProjectionInverse;
 uniform mat4 gbufferModelViewInverse;
 
-#ifdef WAVING_ANYTHING
+#if defined WAVING_ANYTHING_TERRAIN || defined WAVING_WATER_VERTEX
 	uniform float frameTimeCounter;
 
 	uniform vec3 cameraPosition;
@@ -134,12 +134,12 @@ uniform mat4 gbufferModelViewInverse;
 //Attributes//
 attribute vec4 mc_Entity;
 
-#if defined PERPENDICULAR_TWEAKS || defined WAVING_ANYTHING
+#if defined PERPENDICULAR_TWEAKS || defined WAVING_ANYTHING_TERRAIN || defined WAVING_WATER_VERTEX
 	attribute vec4 mc_midTexCoord;
 #endif
 
 //Common Variables//
-#if defined WAVING_ANYTHING && defined NO_WAVING_INDOORS
+#if (defined WAVING_ANYTHING_TERRAIN || defined WAVING_WATER_VERTEX) && defined NO_WAVING_INDOORS
 	vec2 lmCoord = vec2(0.0);
 #endif
 
@@ -148,7 +148,7 @@ attribute vec4 mc_Entity;
 //Includes//
 #include "/lib/util/spaceConversion.glsl"
 
-#ifdef WAVING_ANYTHING
+#if defined WAVING_ANYTHING_TERRAIN || defined WAVING_WATER_VERTEX
 	#include "/lib/materials/wavingBlocks.glsl"
 #endif
 
@@ -164,7 +164,7 @@ void main() {
 
 	position = gl_Vertex;
 
-	#ifdef WAVING_ANYTHING
+	#if defined WAVING_ANYTHING_TERRAIN || defined WAVING_WATER_VERTEX
 		#ifdef NO_WAVING_INDOORS
 			lmCoord = GetLightMapCoordinates();
 		#endif
@@ -178,7 +178,7 @@ void main() {
 			vec2 texMinMidCoord = texCoord - midCoord;
 			if (texMinMidCoord.y < 0.0) {
 				vec3 normal = gl_NormalMatrix * gl_Normal;
-				position.xyz += normal * 0.25;
+				position.xyz += normal * 0.35;
 			}
 		}
 	#endif

@@ -204,6 +204,11 @@ vec3 getBlockLight(vec3 vxPos, vec3 normal, int mat) {
 vec3 getBlockLight(vec3 vxPos) {
     return getBlockLight(vxPos, vec3(0), 0);
 }
+
+#ifdef BIG_LIGHTS
+#include "/lib/vx/bigLighting.glsl"
+#endif
+
 #ifdef SUN_SHADOWS
 
 vec2[9] shadowoffsets = vec2[9](

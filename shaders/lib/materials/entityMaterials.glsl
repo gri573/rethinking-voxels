@@ -108,8 +108,8 @@ if (entityId < 50064) {
                         emission = 3.5;
                 } else /*if (entityId == 50060)*/ { // Vex
                     lmCoordM = vec2(0.0);
-                    emission = pow2(color.r) * 5.0;
-                    color.rgb *= color.rgb;
+                    emission = pow2(pow2(color.r)) * 3.5 + 0.5;
+                    color.a *= color.a;
                 }
             }
         }

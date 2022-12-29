@@ -51,7 +51,7 @@ uniform sampler2D tex;
 	#define ATLASTEX tex
 #endif
 
-#if defined NETHER || RAIN_PUDDLES >= 1 || defined COATED_TEXTURES
+#if defined NETHER || RAIN_PUDDLES >= 1 || defined COATED_TEXTURES || defined SNOWY_WORLD
 	uniform sampler2D noisetex;
 #endif
 
@@ -93,17 +93,29 @@ float shadowTime = shadowTimeVar2 * shadowTimeVar2;
 #endif
 
 //Common Functions//
-void DoFoliageColorTweaks(inout vec3 color, inout vec3 shadowMult, float lViewPos) {
+void DoFoliageColorTweaks(inout vec3 color, inout vec3 shadowMult, inout float snowMinNdotU, float lViewPos) {
 	float factor = max(80.0 - lViewPos, 0.0);
-	shadowMult *= 1.0 + 0.005 * noonFactor * factor;
+	shadowMult *= 1.0 + 0.004 * noonFactor * factor;
 
-	if (signMidCoordPos.x < 0.0) shadowMult *= 1.15;
-	else shadowMult *= 0.87;
+	if (signMidCoordPos.x < 0.0) color.rgb *= 1.08;
+	else color.rgb *= 0.93;
+
+	#ifdef SNOWY_WORLD
+		if (glColor.g - glColor.b > 0.01)
+			snowMinNdotU = min(pow2(pow2(max0(color.g * 2.0 - color.r - color.b))) * 5.0, 0.1);
+		else
+			snowMinNdotU = min(pow2(pow2(max0(color.g * 2.0 - color.r - color.b))) * 3.0, 0.1) * 0.25;
+	#endif
 }
 
 void DoBrightBlockTweaks(inout vec3 shadowMult, inout float highlightMult) {
 	shadowMult = vec3(0.7);
 	highlightMult *= 1.428;
+}
+
+float GetMaxColorDif(vec3 color) {
+	vec3 dif = abs(vec3(color.r - color.g, color.g - color.b, color.r - color.b));
+	return max(dif.r, max(dif.g, dif.b));
 }
 
 //Includes//
@@ -149,16 +161,20 @@ void main() {
 
 		int subsurfaceMode = 0;
 		bool noSmoothLighting = false, noDirectionalShading = false, noVanillaAO = false;
+		#ifdef SNOWY_WORLD
+			float snowFactor = 1.0;
+		#endif
 		#if RAIN_PUDDLES >= 1
 			float noPuddles = 0.0;
 		#endif
 		#ifdef GENERATED_NORMALS
 			bool noGeneratedNormals = false;
 		#endif
-		float smoothnessG = 0.0, highlightMult = 1.0, emission = 0.0, noiseFactor = 1.0;
+		float smoothnessG = 0.0, highlightMult = 1.0, emission = 0.0, noiseFactor = 1.0, snowMinNdotU = 0.0;
 		vec2 lmCoordM = lmCoord;
 		vec3 shadowMult = vec3(1.0);
 		#ifdef IPBR
+			vec3 maRecolor = vec3(0.0);
 			#include "/lib/materials/terrainMaterials.glsl"
 
 			#ifdef GENERATED_NORMALS
@@ -173,8 +189,14 @@ void main() {
 				noDirectionalShading = true;
 			} else if (mat == 10004) { // Grounded Waving Foliage
 				subsurfaceMode = 1, noSmoothLighting = true, noDirectionalShading = true;
+
+				DoFoliageColorTweaks(color.rgb, shadowMult, snowMinNdotU, lViewPos);
 			} else if (mat == 10008) { // Leaves
 				#include "/lib/materials/specificMaterials/leaves.glsl"
+
+				#if SHADOW_QUALITY < 3
+					shadowMult = vec3(sqrt1(max0(max(lmCoordM.y, min1(lmCoordM.x * 2.0)) - 0.95) * 20.0)); //dup5823
+				#endif
 			} else if (mat == 10012) { // Vine
 				#include "/lib/materials/specificMaterials/leaves.glsl"
 				shadowMult = vec3(1.2);
@@ -182,9 +204,38 @@ void main() {
 				subsurfaceMode = 1, noSmoothLighting = true, noDirectionalShading = true;
 			} else if (mat == 10020) { // Upper Waving Foliage
 				subsurfaceMode = 1, noSmoothLighting = true, noDirectionalShading = true;
+
+				DoFoliageColorTweaks(color.rgb, shadowMult, snowMinNdotU, lViewPos);
 			}
 
+			#ifdef SNOWY_WORLD
+			else if (mat == 10132) { // Grass Block:Normal
+				if (glColor.b < 0.999) { // Grass Block:Normal:Grass Part
+					snowMinNdotU = min(pow2(pow2(color.g)) * 1.9, 0.1);
+					color.rgb = color.rgb * 0.5 + 0.5 * (color.rgb / glColor.rgb);
+				}
+			}
+			#endif
+
 			else if (lmCoord.x > 0.99999) lmCoordM.x = 0.95;
+		#endif
+
+		#ifdef SNOWY_WORLD
+			snowFactor *= 1000.0 * max(NdotU - 0.9, snowMinNdotU) * max0(lmCoord.y - 0.9) * (0.9 - clamp(lmCoord.x, 0.8, 0.9));
+			if (snowFactor > 0.0001) {
+				const float packSizeSW = 16.0;
+				vec3 worldPos = playerPos + cameraPosition;
+        		vec2 noiseCoord = floor(packSizeSW * worldPos.xz + 0.001) / packSizeSW;
+				     noiseCoord += floor(packSizeSW * worldPos.y + 0.001) / packSizeSW;
+    			float noiseTexture = dot(vec2(0.25, 0.75), texture2D(noisetex, noiseCoord * 0.45).rg);
+				vec3 snowColor = mix(vec3(0.65, 0.8, 0.85), vec3(1.0, 1.0, 1.0), noiseTexture * 0.75 + 0.125);
+
+				color.rgb = mix(color.rgb, snowColor + color.rgb * emission * 0.2, snowFactor);
+				smoothnessG = mix(smoothnessG, 0.25 + 0.25 * noiseTexture, snowFactor);
+				highlightMult = mix(highlightMult, 2.0 - subsurfaceMode * 0.666, snowFactor);
+				smoothnessD = mix(smoothnessD, 0.0, snowFactor);
+				emission *= 1.0 - snowFactor * 0.85;
+			}
 		#endif
 
 		#if RAIN_PUDDLES >= 1
@@ -245,6 +296,10 @@ void main() {
 		           noSmoothLighting, noDirectionalShading, noVanillaAO, subsurfaceMode,
 				   smoothnessG, highlightMult, emission, mat);
 
+		#ifdef IPBR
+			color.rgb += maRecolor;
+		#endif
+
 		#ifdef PBR_REFLECTIONS
 			#ifdef OVERWORLD
 				skyLightFactor = pow2(max(lmCoord.y - 0.7, 0.0) * 3.33333);
@@ -292,7 +347,7 @@ out vec4 glColor;
 	uniform float viewWidth, viewHeight;
 #endif
 
-#ifdef WAVING_ANYTHING
+#ifdef WAVING_ANYTHING_TERRAIN
 	uniform float frameTimeCounter;
 
 	uniform vec3 cameraPosition;
@@ -317,7 +372,7 @@ attribute vec4 mc_midTexCoord;
 	#include "/lib/util/jitter.glsl"
 #endif
 
-#ifdef WAVING_ANYTHING
+#ifdef WAVING_ANYTHING_TERRAIN
 	#include "/lib/materials/wavingBlocks.glsl"
 #endif
 
@@ -343,7 +398,7 @@ void main() {
 	mat = int(mc_Entity.x + 0.5);
 	mat = 10000 * (mat / 10000) + 4 * ((mat % 2000) / 4);
 
-	#ifdef WAVING_ANYTHING
+	#ifdef WAVING_ANYTHING_TERRAIN
 		vec4 position = gbufferModelViewInverse * gl_ModelViewMatrix * gl_Vertex;
 
 		DoWave(position.xyz, mat);

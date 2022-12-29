@@ -130,9 +130,14 @@ void main() {
 			float dotColor = dot(color.rgb, color.rgb);
 			if (dotColor > 0.25 && color.g < 0.5 && (color.b > color.r * 1.1 && color.r > 0.3 || color.r > (color.g + color.b) * 3.0)) {
 				// Ender Particle, Crying Obsidian Particle, Redstone Particle
-				emission = max(color.r, 0.2) * 4.0;
-				color.rgb *= color.rgb;
+				emission = clamp(color.r * 8.0, 1.6, 5.0);
+				color.rgb = pow1_5(color.rgb);
 				lmCoordM = vec2(0.0);
+			} else if (color.r > 0.83 && color.g > 0.23 && color.b < 0.4) {
+				// Lava Particles
+				emission = 2.0;
+				color.b *= 0.5;
+				color.r *= 1.2;
 			}
 		}
 		//color.rgb = vec3(fract(float(frameCounter) * 0.01), fract(float(frameCounter) * 0.015), fract(float(frameCounter) * 0.02));
@@ -147,17 +152,14 @@ void main() {
 	           noSmoothLighting, false, false, 0,
 			   0.0, 1.0, emission, 0);
 
-	#ifdef IPBR
-		color.rgb *= 1.5;
-	#endif
-
 	#if MC_VERSION >= 11500
 		vec3 nViewPos = normalize(viewPos);
 
 		float VdotU = dot(nViewPos, upVec);
 		float VdotS = dot(nViewPos, sunVec);
+		float sky = 0.0;
 
-		DoFog(color.rgb, lViewPos, playerPos, VdotU, VdotS, dither);
+		DoFog(color.rgb, sky, lViewPos, playerPos, VdotU, VdotS, dither);
 	#endif
 
 	// Blending

@@ -69,11 +69,11 @@ if (mat < 31008) {
 
                         float lColor = length(color.rgb);
                         vec3 baseColor = vec3(0.1, 1.0, 0.92);
-                        if (lColor > 1.5)       color.rgb = baseColor + 0.2;
-                        else if (lColor > 1.3)  color.rgb = baseColor + 0.1;
-                        else if (lColor > 1.15) color.rgb = baseColor + 0.05;
-                        else                    color.rgb = baseColor + 0.02;
-                        emission = 5.0;
+                        if (lColor > 1.5)       color.rgb = baseColor + 0.22;
+                        else if (lColor > 1.3)  color.rgb = baseColor + 0.15;
+                        else if (lColor > 1.15) color.rgb = baseColor + 0.09;
+                        else                    color.rgb = baseColor + 0.05;
+                        emission = 4.0;
 
                         fresnel = 0.0;
                     }

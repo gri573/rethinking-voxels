@@ -57,7 +57,8 @@ void main() {
 			emission = pow2(pow2(emission)) * 0.1;
 		}
 
-		color.rgb *= color.rgb * emission * 2.0;
+		color.rgb *= color.rgb * emission * 1.75;
+		color.rgb += emission * 0.05;
 	#else
 		color.rgb *= color.rgb * 4.0;
 	#endif

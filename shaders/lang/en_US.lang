@@ -10,12 +10,12 @@ profile.comment=Shader profiles change performance settings with the most optimi
 
 #CMPR
 option.CMPR=Complementary
-value.CMPR.0=§cReimagined
-value.CMPR.1=§eReimagined
-value.CMPR.2=§aReimagined
+value.CMPR.0=§bReimagined
+value.CMPR.1=§bReimagined
+value.CMPR.2=§bReimagined
 value.CMPR.3=§bReimagined
-value.CMPR.4=§9Reimagined
-value.CMPR.5=§dReimagined
+value.CMPR.4=§bReimagined
+value.CMPR.5=§bReimagined
 option.CMPR.comment=Complementary Reimagined is a creation of love and care, meant to complement the unique Minecraft experience in the best way possible. I hope you enjoy your time with Reimagined as much as I enjoyed developing it. Please feel free to join the Complementary community here: www.complementary.dev/discord
 
 #Screens
@@ -259,28 +259,18 @@ value.SSAO.false=§aOFF
 
 option.GENERATED_NORMALS=Generated Normals
 option.GENERATED_NORMALS.comment=Adds auto-generated bumps to textures. §e[*]§r RP Support option must be set to Integrated PBR+.
-value.GENERATED_NORMALS.true=§dON
-value.GENERATED_NORMALS.false=§aOFF
 
 option.COATED_TEXTURES=Coated Textures
 option.COATED_TEXTURES.comment=Adds auto-generated noise to textures. §e[*]§r RP Support option must be set to Integrated PBR+.
-value.COATED_TEXTURES.true=§dON
-value.COATED_TEXTURES.false=§aOFF
 
 option.BORDER_FOG=Border Fog
 option.BORDER_FOG.comment=Intense fog on the edges of the loaded world to hide chunk borders.
-value.BORDER_FOG.true=§aON
-value.BORDER_FOG.false=§aOFF
 
 option.CLOUD_SHADOWS=Cloud Shadows
 option.CLOUD_SHADOWS.comment=Enables shadows that are cast from the clouds.
-value.CLOUD_SHADOWS.true=§bON
-value.CLOUD_SHADOWS.false=§aOFF
 
 option.SECOND_CLOUD_LAYER=Second Cloud Layer
 option.SECOND_CLOUD_LAYER.comment=Enables a second layer of clouds. §c[-]§r Enabling this can impact performance.
-value.SECOND_CLOUD_LAYER.true=§dON
-value.SECOND_CLOUD_LAYER.false=§aOFF
 
 option.CLOUD_ALT1=Cloud Layer Altitude
 option.CLOUD_ALT1.comment=Determines the world height which the clouds will appear at.
@@ -291,8 +281,8 @@ option.CLOUD_ALT2.comment=Determines the world height which the second layer clo
 option.T_EXPOSURE=Tonemap Exposure
 option.T_EXPOSURE.comment=Adjusts the overall brightness of the image.
 
-option.T_WHITE_CURVE=Tonemap White Curve
-option.T_WHITE_CURVE.comment=Adjusts how easily the colors reach to full white.
+option.TM_WHITE_CURVE=Tonemap White Curve
+option.TM_WHITE_CURVE.comment=Adjusts how easily the colors reach to full white.
 
 option.T_LOWER_CURVE=Tonemap Lower Curve
 option.T_LOWER_CURVE.comment=Adjusts contrast of darker colors.
@@ -308,40 +298,36 @@ option.T_VIBRANCE.comment=Adjusts the colorfulness of the image, but already col
 
 option.WATER_STYLE=Water Style
 option.WATER_STYLE.comment=Determines the style of water. §c[-]§r Water waves can severely impact performance.
-value.WATER_STYLE.1=§aReimagined
-value.WATER_STYLE.2=§dReimagined + Waves
-value.WATER_STYLE.3=§dRealistic-ish
+value.WATER_STYLE.1=Reimagined
+value.WATER_STYLE.2=Reimagined + Waves
+value.WATER_STYLE.3=Realistic-ish
 
 option.SUN_MOON_HORIZON=Sun/Moon Horizon
 option.SUN_MOON_HORIZON.comment=Prevents the sun/moon from appearing below the horizon line.
-value.SUN_MOON_HORIZON.true=§aON
-value.SUN_MOON_HORIZON.false=§aOFF
 
 option.NIGHT_STAR_AMOUNT=Night Star Amount
 option.NIGHT_STAR_AMOUNT.comment=Determines the amount of stars in the night sky.
-value.NIGHT_STAR_AMOUNT.2=§aMedium
-value.NIGHT_STAR_AMOUNT.3=§aHigh
+value.NIGHT_STAR_AMOUNT.2=Medium
+value.NIGHT_STAR_AMOUNT.3=High
 
 option.AURORA_BOREALIS=Aurora Borealis
 option.AURORA_BOREALIS.comment=Enables northern lights to appear in the night sky.
-value.AURORA_BOREALIS.true=§dON
-value.AURORA_BOREALIS.false=§aOFF
 
 option.AURORA_CONDITION=Aurora
 option.AURORA_CONDITION.comment=Determines the condition(s) for the Aurora Borealis to appear.
-value.AURORA_CONDITION.0=§aNo Condition
-value.AURORA_CONDITION.1=§aFull Moon
-value.AURORA_CONDITION.2=§aSnowy Biome
-value.AURORA_CONDITION.3=§aFull Moon in Snowy Biome
+value.AURORA_CONDITION.0=No Condition
+value.AURORA_CONDITION.1=Full Moon
+value.AURORA_CONDITION.2=Snowy Biome
+value.AURORA_CONDITION.3=Full Moon in Snowy Biome
 
 option.PIXEL_SHADOW=Pixelated Shadows
 option.PIXEL_SHADOW.comment=Modifies the world coordinates on a grid to make shadows pixelated. §e[*]§r This does not affect performance.
-value.PIXEL_SHADOW.0=§aOFF
-value.PIXEL_SHADOW.8=§a8x8
-value.PIXEL_SHADOW.16=§a16x16
-value.PIXEL_SHADOW.32=§a32x32
-value.PIXEL_SHADOW.64=§a64x64
-value.PIXEL_SHADOW.128=§a128x128
+value.PIXEL_SHADOW.0=OFF
+value.PIXEL_SHADOW.8=8x8
+value.PIXEL_SHADOW.16=16x16
+value.PIXEL_SHADOW.32=32x32
+value.PIXEL_SHADOW.64=64x64
+value.PIXEL_SHADOW.128=128x128
 
 option.BLOOM_STRENGTH=Bloom Strength
 option.BLOOM_STRENGTH.comment=Determines the intensity of glow on bright things, and the bloom from rain/cave humidity.
@@ -358,99 +344,90 @@ value.BLOOM_STRENGTH.0.11=60%
 value.BLOOM_STRENGTH.0.12=65%
 value.BLOOM_STRENGTH.0.13=70%
 value.BLOOM_STRENGTH.0.14=75%
+value.BLOOM_STRENGTH.0.15=80%
+value.BLOOM_STRENGTH.0.16=85%
+value.BLOOM_STRENGTH.0.17=90%
+value.BLOOM_STRENGTH.0.18=95%
+value.BLOOM_STRENGTH.0.19=100%
 
 option.FXAA=Anti-Aliasing
-option.FXAA.comment=Enables Fast Approximate Anti-Aliasing (FXAA), which is basically an effect that produces smoother image. §e[*]§r Disabling this option won't disable lite Temporal Anti Aliasing (TAA), because lite TAA is required for a lot of effects to perform good.
-value.FXAA.true=§aON
-value.FXAA.false=§aOFF
+option.FXAA.comment=Enables Fast Approximate Anti-Aliasing (FXAA), which is basically an effect that produces smoother image. §e[*]§r Disabling this option won't disable lite Temporal Anti Aliasing (TAA), because lite TAA is required for a lot of effects to perform well.
 
 option.MOTION_BLURRING=Motion Blur
 option.MOTION_BLURRING.comment=Applies blur to the image when moving the camera.
-value.MOTION_BLURRING.true=§bON
-value.MOTION_BLURRING.false=§aOFF
 
 option.MOTION_BLURRING_STRENGTH=Motion Blur Strength
 option.MOTION_BLURRING_STRENGTH.comment=Adjusts the intensity of motion blur.
 
 option.FANCY_GLASS=Improved Glass
-option.FANCY_GLASS.comment=Improves the regular glass by adding a translucent layer to it. §c[-]§r Currently causes blending problems on Iris because of a Sodium bug. §e[*]§r RP Support option must be set to Integrated PBR+.
-value.FANCY_GLASS.true=§aON
-value.FANCY_GLASS.false=§aOFF
+option.FANCY_GLASS.comment=Improves the regular glass by adding a translucent layer to it. §c[-]§r May cause problems on Iris because of a Sodium bug. §e[*]§r RP Support option must be set to Integrated PBR+.
 
 option.HAND_SWAYING=Hand Sway
 option.HAND_SWAYING.comment=Adds slow movement to the player hand to simulate a breathing animation.
-value.HAND_SWAYING.0=§aOFF
-value.HAND_SWAYING.1=§aSubtle
-value.HAND_SWAYING.2=§aNormal
-value.HAND_SWAYING.3=§aIntense
+value.HAND_SWAYING.0=OFF
+value.HAND_SWAYING.1=Subtle
+value.HAND_SWAYING.2=Normal
+value.HAND_SWAYING.3=Intense
 
 option.LESS_LAVA_FOG=Better Visibility Inside Lava
 option.LESS_LAVA_FOG.comment=Reduces the lava fog to improve visibility inside lava.
-value.LESS_LAVA_FOG.true=§aON
-value.LESS_LAVA_FOG.false=§aOFF
+
+option.SNOWY_WORLD=Snowy World
+option.SNOWY_WORLD.comment=Makes the entire world covered with snow.
 
 option.SHOW_LIGHT_LEVEL=Show Light Levels
 option.SHOW_LIGHT_LEVEL.comment=In Overworld: Yellow means mobs can spawn during night time, red means mobs can spawn anytime. In The Nether and The End: Yellow means some mobs can spawn, red means all mobs can spawn. §e[*]§r Disable Smooth Lighting for precise results.
-value.SHOW_LIGHT_LEVEL.0=§aOFF
-value.SHOW_LIGHT_LEVEL.1=§aHold Spider Eye
-value.SHOW_LIGHT_LEVEL.2=§aHold Light Source
-value.SHOW_LIGHT_LEVEL.3=§aAlways ON
+value.SHOW_LIGHT_LEVEL.0=OFF
+value.SHOW_LIGHT_LEVEL.1=Hold Spider Eye
+value.SHOW_LIGHT_LEVEL.2=Hold Light Source
+value.SHOW_LIGHT_LEVEL.3=Always ON
 
 option.MINIMUM_LIGHT_MODE=Cave Lighting
 option.MINIMUM_LIGHT_MODE.comment=Improves visibility in closed areas by adding some lighting. §e[*]§r "Vanilla Brightness" option mean the cave lighting will be determined by the "Brightness" slider in Video Settings. §e[*]§r Also affects most places that don't have skylight.
-value.MINIMUM_LIGHT_MODE.0=§aVery Dark
-value.MINIMUM_LIGHT_MODE.1=§aDark
-value.MINIMUM_LIGHT_MODE.2=§aVanilla Brightness
-value.MINIMUM_LIGHT_MODE.3=§aBright
-value.MINIMUM_LIGHT_MODE.4=§aVery Bright
+value.MINIMUM_LIGHT_MODE.0=Very Dark
+value.MINIMUM_LIGHT_MODE.1=Dark
+value.MINIMUM_LIGHT_MODE.2=Vanilla Brightness
+value.MINIMUM_LIGHT_MODE.3=Bright
+value.MINIMUM_LIGHT_MODE.4=Very Bright
 
 option.GLOWING_ORES=Glowing Ores
 option.GLOWING_ORES.comment=Adds emission to ores. §e[*]§r RP Support option must be set to Integrated PBR+.
-value.GLOWING_ORES.0=§aOFF
-value.GLOWING_ORES.1=§aOverworld
-value.GLOWING_ORES.2=§aOverworld + Nether
+value.GLOWING_ORES.0=OFF
+value.GLOWING_ORES.1=Overworld
+value.GLOWING_ORES.2=Overworld + Nether
 
 option.EMISSIVE_REDSTONE_BLOCK=Glowing Redstone Block
 option.EMISSIVE_REDSTONE_BLOCK.comment=Adds emission to the Redstone Block. §e[*]§r RP Support option must be set to Integrated PBR+.
-value.EMISSIVE_REDSTONE_BLOCK.true=§aON
-value.EMISSIVE_REDSTONE_BLOCK.false=§aOFF
 
 option.GENERATED_WATER_NORMALS=Generated Normals on Water
 option.GENERATED_WATER_NORMALS.comment=Allows Generated Normals to appear on water. §e[*]§r RP Support option must be set to Integrated PBR+. §e[*]§r Generated Normals option must be enabled.
-value.GENERATED_WATER_NORMALS.true=§aON
-value.GENERATED_WATER_NORMALS.false=§aOFF
 
 option.HELD_LIGHTING_MODE=Dynamic Handheld Lighting
 option.HELD_LIGHTING_MODE.comment=Allows handheld light sources to cast light onto the scene.
-value.HELD_LIGHTING_MODE.0=§aOFF
-value.HELD_LIGHTING_MODE.1=§aSubtle
-value.HELD_LIGHTING_MODE.2=§aNormal
+value.HELD_LIGHTING_MODE.0=OFF
+value.HELD_LIGHTING_MODE.1=Subtle
+value.HELD_LIGHTING_MODE.2=Normal
 
 option.BLOCKLIGHT_COLOR_MODE=Blocklight Color
 option.BLOCKLIGHT_COLOR_MODE.comment=Determines the color of the light cast from light sources.
-value.BLOCKLIGHT_COLOR_MODE.9=§aCold
-value.BLOCKLIGHT_COLOR_MODE.10=§aNatural
-value.BLOCKLIGHT_COLOR_MODE.11=§aWarm
+value.BLOCKLIGHT_COLOR_MODE.9=Cold
+value.BLOCKLIGHT_COLOR_MODE.10=Natural
+value.BLOCKLIGHT_COLOR_MODE.11=Warm
 
 option.NO_WAVING_INDOORS=No Waving in Closed Areas
 option.NO_WAVING_INDOORS.comment=Prevents blocks from waving in closed areas using skylight. §c[-]§r Can cause slight problems with some resource pack models.
-value.NO_WAVING_INDOORS.true=§aON
-value.NO_WAVING_INDOORS.false=§aOFF
 
 option.WAVING_FOLIAGE=Waving Foliage
 option.WAVING_FOLIAGE.comment=Adds movement to foliage to simulate wind.
-value.WAVING_FOLIAGE.true=§aON
-value.WAVING_FOLIAGE.false=§aOFF
 
 option.WAVING_LEAVES=Waving Leaves
 option.WAVING_LEAVES.comment=Adds movement to leaves to simulate wind.
-value.WAVING_LEAVES.true=§aON
-value.WAVING_LEAVES.false=§aOFF
+
+option.WAVING_WATER_VERTEX=Waving Water Boundaries
+option.WAVING_WATER_VERTEX.comment=Adds movement to water position to simulate wind.
 
 option.WORLD_OUTLINE=Outlined World
 option.WORLD_OUTLINE.comment=Adds outlines around blocks.
-value.WORLD_OUTLINE.true=§bON
-value.WORLD_OUTLINE.false=§aOFF
 
 option.CAULDRON_BRIGHTNESS_LAVA=Lava Cauldron Brightness
 option.BRIGHTNESS_LAVA=Lava Brightness
@@ -721,15 +698,13 @@ option.ALLAY_COL_R=Red
 option.ALLAY_COL_G=Green
 option.ALLAY_COL_B=Blue
 option.RAIN_PUDDLES=Rain Puddles
-option.RAIN_PUDDLES.comment=Adds water puddles to the terrain during rain. §e[*]§r RP Support option must be set to anything but Basic.
-value.RAIN_PUDDLES.0=§aOFF
-value.RAIN_PUDDLES.1=§bON - Puddles
-value.RAIN_PUDDLES.2=§bON - Full Coverage
+option.RAIN_PUDDLES.comment=Adds water puddles to the terrain during rain. §e[*]§r RP Support option must be set to anything but Basic. §c[-]§r Rain puddles can severely impact performance.
+value.RAIN_PUDDLES.0=OFF
+value.RAIN_PUDDLES.1=ON - Puddles
+value.RAIN_PUDDLES.2=ON - Full Coverage
 
 option.UNDERWATER_DISTORTION=Underwater Distortion
 option.UNDERWATER_DISTORTION.comment=Adds subtle refraction to the screen when the camera is inside water.
-value.UNDERWATER_DISTORTION.true=§aON
-value.UNDERWATER_DISTORTION.false=§aOFF
 
 option.SELECTION_OUTLINE=Selection Outline
 option.SELECTION_OUTLINE.comment=Changes the color of the block selection outline.

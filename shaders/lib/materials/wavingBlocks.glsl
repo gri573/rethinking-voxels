@@ -11,7 +11,7 @@ vec3 GetWave(in vec3 pos, float waveSpeed) {
     wave.y = sin(wind*0.0015 + d2 + d0 + pos.z + pos.y - pos.y) * magnitude;
 
     #ifdef NO_WAVING_INDOORS
-        wave *= max0(lmCoord.y - 0.9);
+        wave *= clamp(lmCoord.y - 0.87, 0.0, 0.1);
     #else
         wave *= 0.1;
     #endif
@@ -45,24 +45,56 @@ void DoWave_Leaves(inout vec3 playerPos, vec3 worldPos) {
     playerPos.xyz += wave;
 }
 
+void DoWave_Water(inout vec3 playerPos, vec3 worldPos) {
+	if (fract(worldPos.y + 0.005) > 0.01) {
+        float waterWaveTime = frameTimeCounter * 5.0;
+        worldPos.xz *= 18.0;
+        
+        float wave  = sin(waterWaveTime * 0.7 + worldPos.x * 0.14 + worldPos.z * 0.07);
+              wave += sin(waterWaveTime * 0.5 + worldPos.x * 0.10 + worldPos.z * 0.05);
+
+        #ifdef NO_WAVING_INDOORS
+            wave *= clamp(lmCoord.y - 0.87, 0.0, 0.1);
+        #else
+            wave *= 0.1;
+        #endif
+
+        playerPos.y += wave * 0.125;
+    }
+}
+
 void DoWave(inout vec3 playerPos, int mat) {
     vec3 worldPos = playerPos.xyz + cameraPosition.xyz;
 
-    #ifdef WAVING_FOLIAGE
-        if (mat == 10004) { // Grounded Waving Foliage
-            DoWave_GroundedFoliage(playerPos.xyz, worldPos);
-        } else if (mat == 10020) { // Upper Layer Waving Foliage
-            DoWave_Foliage(playerPos.xyz, worldPos);
-        }
-        
+    #if defined GBUFFERS_TERRAIN || defined SHADOW
+        #ifdef WAVING_FOLIAGE
+            if (mat == 10004) { // Grounded Waving Foliage
+                DoWave_GroundedFoliage(playerPos.xyz, worldPos);
+            } else if (mat == 10020) { // Upper Layer Waving Foliage
+                DoWave_Foliage(playerPos.xyz, worldPos);
+            }
+            
+            #ifdef WAVING_LEAVES
+                else
+            #endif
+        #endif
+
         #ifdef WAVING_LEAVES
-            else
+            if (mat == 10008 || mat == 10012) { // Leaves, Vine
+                DoWave_Leaves(playerPos.xyz, worldPos);
+            }
         #endif
     #endif
 
-    #ifdef WAVING_LEAVES
-        if (mat == 10008 || mat == 10012) { // Leaves, Vine
-            DoWave_Leaves(playerPos.xyz, worldPos);
-        }
+    #if defined GBUFFERS_WATER || defined SHADOW
+        #ifdef WAVING_WATER_VERTEX
+            #if defined WAVING_ANYTHING_TERRAIN && defined SHADOW
+                else
+            #endif
+
+            if (mat == 31000) { // Water
+                DoWave_Water(playerPos.xyz, worldPos);
+            }
+        #endif
     #endif
 }

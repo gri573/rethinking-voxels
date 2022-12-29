@@ -11,6 +11,8 @@
 noperspective in vec2 texCoord;
 
 //Uniforms//
+uniform float viewWidth, viewHeight;
+
 uniform sampler2D colortex3;
 
 #ifdef UNDERWATER_DISTORTION

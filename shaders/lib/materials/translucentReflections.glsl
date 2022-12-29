@@ -50,7 +50,7 @@ if (reflection.a < 1.0) {
     #ifdef OVERWORLD
         float skyLightFactor = pow2(max(lmCoordM.y - 0.7, 0.0) * 3.33333);
 
-        vec3 skyReflection = GetSky(RVdotU, RVdotS, dither, false, true);
+        vec3 skyReflection = GetSky(RVdotU, RVdotS, dither, true, true);
              skyReflection = mix(color.rgb * 0.5, skyReflection, skyLightFactor);
 
         float specularHighlight = GGX(normalM, nViewPos, lightVec, max(dot(normalM, lightVec), 0.0), smoothnessG);

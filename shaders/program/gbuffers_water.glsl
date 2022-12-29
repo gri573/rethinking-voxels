@@ -236,7 +236,9 @@ void main() {
 		}
     #endif
 
-	DoFog(color.rgb, lViewPos, playerPos, VdotU, VdotS, dither);
+	float sky = 0.0;
+	DoFog(color.rgb, sky, lViewPos, playerPos, VdotU, VdotS, dither);
+	color.a *= 1.0 - sky;
 
 	/* DRAWBUFFERS:03 */
 	gl_FragData[0] = color;
@@ -271,6 +273,14 @@ out vec4 glColor;
 	out vec3 viewVector;
 #endif
 
+#ifdef WAVING_WATER_VERTEX
+	uniform float frameTimeCounter;
+
+	uniform vec3 cameraPosition;
+
+	uniform mat4 gbufferModelViewInverse;
+#endif
+
 //Uniforms//
 #ifdef TAA
 	uniform float viewWidth, viewHeight;
@@ -278,12 +288,8 @@ out vec4 glColor;
 
 //Attributes//
 attribute vec4 mc_Entity;
-
-#if WATER_STYLE >= 2 || defined FANCY_NETHERPORTAL || RAIN_PUDDLES >= 1 && WATER_STYLE == 1 || defined GENERATED_NORMALS
-	attribute vec4 mc_midTexCoord;
-
-	attribute vec4 at_tangent;
-#endif
+attribute vec4 mc_midTexCoord;
+attribute vec4 at_tangent;
 
 //Common Variables//
 
@@ -294,25 +300,38 @@ attribute vec4 mc_Entity;
 	#include "/lib/util/jitter.glsl"
 #endif
 
+#ifdef WAVING_WATER_VERTEX
+	#include "/lib/materials/wavingBlocks.glsl"
+#endif
+
 //Program//
 void main() {
-	gl_Position = ftransform();
-	#ifdef TAA
-		gl_Position.xy = TAAJitter(gl_Position.xy, gl_Position.w);
-	#endif
-
 	texCoord = (gl_TextureMatrix[0] * gl_MultiTexCoord0).xy;
 	lmCoord  = GetLightMapCoordinates();
 
 	glColor = gl_Color;
+
+	mat = int(mc_Entity.x + 0.5);
+
+	#ifdef WAVING_WATER_VERTEX
+		vec4 position = gbufferModelViewInverse * gl_ModelViewMatrix * gl_Vertex;
+
+		DoWave(position.xyz, mat);
+		
+		gl_Position = gl_ProjectionMatrix * gbufferModelView * position;
+	#else
+		gl_Position = ftransform();
+	#endif
+
+	#ifdef TAA
+		gl_Position.xy = TAAJitter(gl_Position.xy, gl_Position.w);
+	#endif
 
 	normal = normalize(gl_NormalMatrix * gl_Normal);
 	upVec = normalize(gbufferModelView[1].xyz);
 	eastVec = normalize(gbufferModelView[0].xyz);
 	northVec = normalize(gbufferModelView[2].xyz);
 	sunVec = GetSunVector();
-
-	mat = int(mc_Entity.x + 0.5);
 
 	#if WATER_STYLE >= 2 || RAIN_PUDDLES >= 1 && WATER_STYLE == 1 || defined GENERATED_NORMALS
 		binormal = normalize(gl_NormalMatrix * cross(at_tangent.xyz, gl_Normal.xyz) * at_tangent.w);

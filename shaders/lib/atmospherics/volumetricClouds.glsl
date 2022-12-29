@@ -1,6 +1,7 @@
 #include "/lib/colors/lightAndAmbientColors.glsl"
 #include "/lib/atmospherics/sky.glsl"
 #include "/lib/atmospherics/cloudCoord.glsl"
+#include "/lib/vx/bigLighting.glsl"
 
 const float cloudStretch = CLOUD_STRETCH;
 const float cloudHeight  = cloudStretch * 2.0;
@@ -10,8 +11,8 @@ vec3 cloudDayLightColor = mix(vec3(1.0), pow(lightColor, vec3(cloudColorFactor *
 vec3 cloudLightColor   =  mix(lightColor * 0.7, cloudDayLightColor, sunVisibility);
 vec3 cloudAmbientColor = mix(nightClearLightColor * 0.3, ambientColor * 0.5, cloudColorFactor);*/
 vec3 cloudRainColor = mix(nightMiddleSkyColor, dayMiddleSkyColor, sunFactor) * 0.6;
-vec3 cloudAmbientColor = mix(ambientColor * (sunVisibility2 * 0.6 + 0.35), cloudRainColor * 0.5, rainFactor);
-vec3 cloudLightColor   = mix(lightColor * 0.9, cloudRainColor, rainFactor);
+vec3 cloudAmbientColor = mix(ambientColor * (sunVisibility2 * 0.65 + 0.35), cloudRainColor * 0.5, rainFactor);
+vec3 cloudLightColor   = mix(lightColor * (0.9 + 0.2 * noonFactor), cloudRainColor, rainFactor);
 
 #if CLOUD_QUALITY >= 3
     float InterleavedGradientNoise() {
@@ -56,7 +57,7 @@ bool GetCloudNoise(vec3 tracePos, float cloudAltitude) {
     return noise > (threshold * 0.5 + 0.25);
 }
 
-vec4 GetVolumetricClouds(float cloudAltitude, float distanceThreshold, inout float cloudLinearDepth, bool sun, vec3 playerPos, float lViewPos, vec3 nViewPos, float VdotS, float VdotU, float dither) {
+vec4 GetVolumetricClouds(float cloudAltitude, float distanceThreshold, inout float cloudLinearDepth, bool sun, float sky, vec3 playerPos, float lViewPos, float VdotS, float VdotU, float dither) {
 	vec4 volumetricClouds = vec4(0.0);
     vec3 nPlayerPos = normalize(playerPos);
     if (lViewPos >= far * 1.5) lViewPos = 1000000000.0;
@@ -85,13 +86,24 @@ vec4 GetVolumetricClouds(float cloudAltitude, float distanceThreshold, inout flo
     tracePos += traceAdd * dither;
     tracePos.y -= traceAdd.y;
 
+    float VdotSM = sunVisibility > 0.5 ? VdotS : - VdotS;
+          VdotSM = max0(VdotSM) * shadowTime * 0.25;
+
+    float skyMult1 = 1.0 - 0.2 * (1.0 - sky) * max(sunVisibility2, nightFactor);
+    float skyMult2 = 1.0 - 0.33333 * sky;
+    float skyMult3 = pow2(sky * 3.333333 - 2.333333);
+
     for (int i = 0; i < sampleCount; i++) {
         tracePos += traceAdd;
 
         vec3 cloudPlayerPos = tracePos - cameraPosition;
         float lTracePos = length(cloudPlayerPos);
+        float cloudMult = 1.0;
         if (lTracePos > distanceThreshold) break;
-        if (lTracePos > lViewPos - 1.0) continue;
+        if (lTracePos > lViewPos - 1.0) {
+            if (sky < 0.7) continue;
+            else cloudMult = skyMult3;
+        }
 
         if (GetCloudNoise(tracePos.xyz, cloudAltitude)) {
             float lightMult = 1.0;
@@ -121,19 +133,22 @@ vec4 GetVolumetricClouds(float cloudAltitude, float distanceThreshold, inout flo
                 cLightPos += gradientNoise * cLightPosAdd;
                 light -= texture2D(colortex3, GetRoundedCloudCoord(cLightPos.xz)).r * cloudShadingM;
                 
-                float VdotSM = VdotS;
-                      if (sunVisibility < 0.5) VdotSM = -VdotSM;
-                      VdotSM = max0(VdotSM) * shadowTime * 0.25 + 0.5 * cloudShading + 0.08;
-                cloudShading = VdotSM * light * lightMult;
+                if (sunVisibility < 0.5) VdotSM = -VdotSM;
+                float VdotSM2 = VdotSM + 0.5 * cloudShading + 0.08;
+                cloudShading = VdotSM2 * light * lightMult;
+                vec3 cloudBlColor = 2.0 * getBigLight(tracePos - floor(cameraPosition));
+            #else
+                vec3 cloudBlColor = vec3(0.0);
             #endif
-            
-            vec3 colorSample = cloudAmbientColor + cloudLightColor * (0.07 + cloudShading);
+
+            vec3 colorSample = cloudBlColor + cloudAmbientColor + cloudLightColor * (0.07 + cloudShading);
+			vec3 cloudSkyColor = GetSky(VdotU, VdotS, dither, true, false);
             float cloudFogFactor = clamp((distanceThreshold - lTracePos) / distanceThreshold, 0.0, 0.75);
-            colorSample = mix(GetSky(VdotU, VdotS, dither, true, false), colorSample, cloudFogFactor * 0.66666);
+            colorSample = mix(cloudSkyColor, colorSample * skyMult1, cloudFogFactor * skyMult2);
             colorSample *= pow2(1.0 - max(blindness, darknessFactor));
             
             cloudLinearDepth = sqrt(lTracePos / far);
-            volumetricClouds.a = sqrt1(cloudFogFactor * 1.33333);
+            volumetricClouds.a = pow(cloudFogFactor * 1.33333, 0.5 + float(sun)) * cloudMult;
             volumetricClouds.rgb = colorSample;
             break;
         }

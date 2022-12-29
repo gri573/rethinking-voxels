@@ -38,6 +38,7 @@
   //#define PP_BL_SHADOWS
   //#define PP_SUN_SHADOWS
     #define SUN_SHADOWS
+    #define BIG_LIGHTS
     #ifdef NETHER
         #undef SUN_SHADOWS
     #endif
@@ -142,6 +143,7 @@
     //#define WORLD_OUTLINE
     #define RAIN_PUDDLES 0 //[0 1 2]
     #define SELECTION_OUTLINE 0 //[0 1 2 3 4 5 6 7 8]
+    //#define SNOWY_WORLD
 
     #define AURORA_BOREALIS
     #define AURORA_CONDITION 3 //[0 1 2 3]
@@ -152,16 +154,16 @@
     #define CLOUD_ALT1 192.0 //[64.0 68.0 72.0 76.0 80.0 84.0 88.0 92.0 96.0 100.0 104.0 108.0 112.0 116.0 120.0 124.0 128.0 132.0 136.0 140.0 144.0 148.0 152.0 156.0 160.0 164.0 168.0 172.0 176.0 180.0 184.0 188.0 192.0 196.0 200.0 204.0 208.0 212.0 216.0 220.0 224.0 228.0 232.0 236.0 240.0 244.0 248.0 252.0 254.0 256.0]
     #define CLOUD_ALT2 288.0 //[272.0 274.0 276.0 278.0 280.0 282.0 284.0 286.0 288.0 290.0 292.0 294.0 296.0 298.0 300.0 302.0 306.0 308.0 310.0 312.0 314.0 316.0 318.0 320.0 322.0 324.0 326.0 328.0 330.0 332.0 334.0 336.0 338.0 340.0 342.0 344.0 346.0 348.0 350.0 352.0 354.0 356.0 358.0 360.0 362.0 364.0 366.0 368.0 370.0 372.0 374.0 376.0 378.0 380.0 382.0 384.0]
 
-    #define BLOOM_STRENGTH 0.09 //[0.027 0.036 0.045 0.054 0.063 0.072 0.081 0.09 0.10 0.11 0.12 0.13 0.14]
+    #define BLOOM_STRENGTH 0.12 //[0.027 0.036 0.045 0.054 0.063 0.072 0.081 0.09 0.10 0.11 0.12 0.13 0.14 0.15 0.16 0.17 0.18 0.19]
     #define FXAA
     //#define MOTION_BLURRING
     #define MOTION_BLURRING_STRENGTH 1.00 //[0.01 0.02 0.03 0.05 0.07 0.10 0.15 0.20 0.25 0.30 0.35 0.40 0.45 0.50 0.55 0.60 0.65 0.70 0.75 0.80 0.85 0.90 0.95 1.00 1.05 1.10 1.15 1.20 1.25 1.30 1.35 1.40 1.45 1.50 1.55 1.60 1.65 1.70 1.75 1.80 1.85 1.90 1.95 2.00 2.10 2.20 2.30 2.40 2.50 2.60 2.70 2.80 2.90 3.00 3.25 3.50 3.75 4.00 4.50 5.00 6.00 7.50 10.00]
     #define T_EXPOSURE 1.40 //[0.90 0.95 1.00 1.05 1.10 1.15 1.20 1.25 1.30 1.35 1.40 1.45 1.50 1.55 1.60 1.65 1.70 1.75 1.80 1.85 1.90]
-    #define T_WHITE_CURVE 2.8 //[1.8 1.9 2.0 2.1 2.2 2.3 2.4 2.5 2.6 2.7 2.8 2.9 3.0 3.1 3.2 3.3 3.4 3.5 3.6 3.7 3.8]
+    #define TM_WHITE_CURVE 2.0 //[1.0 1.1 1.2 1.3 1.4 1.5 1.6 1.7 1.8 1.9 2.0 2.1 2.2 2.3 2.4 2.5 2.6 2.7 2.8 2.9 3.0]
     #define T_LOWER_CURVE 1.20 //[0.40 0.45 0.50 0.55 0.60 0.65 0.70 0.75 0.80 0.85 0.90 0.95 1.00 1.05 1.10 1.15 1.20 1.25 1.30 1.35 1.40 1.45 1.50 1.55 1.60 1.65 1.70 1.75 1.80 1.85 1.90 1.95 2.00]
-    #define T_UPPER_CURVE 1.20 //[0.40 0.45 0.50 0.55 0.60 0.65 0.70 0.75 0.80 0.85 0.90 0.95 1.00 1.05 1.10 1.15 1.20 1.25 1.30 1.35 1.40 1.45 1.50 1.55 1.60 1.65 1.70 1.75 1.80 1.85 1.90 1.95 2.00]
+    #define T_UPPER_CURVE 1.30 //[0.40 0.45 0.50 0.55 0.60 0.65 0.70 0.75 0.80 0.85 0.90 0.95 1.00 1.05 1.10 1.15 1.20 1.25 1.30 1.35 1.40 1.45 1.50 1.55 1.60 1.65 1.70 1.75 1.80 1.85 1.90 1.95 2.00]
     #define T_SATURATION 1.00 //[0.00 0.05 0.10 0.15 0.20 0.25 0.30 0.35 0.40 0.45 0.50 0.55 0.60 0.65 0.70 0.75 0.80 0.85 0.90 0.95 1.00 1.05 1.10 1.15 1.20 1.25 1.30 1.35 1.40 1.45 1.50 1.55 1.60 1.65 1.70 1.75 1.80 1.85 1.90 1.95 2.00]
-    #define T_VIBRANCE 1.10 //[0.00 0.05 0.10 0.15 0.20 0.25 0.30 0.35 0.40 0.45 0.50 0.55 0.60 0.65 0.70 0.75 0.80 0.85 0.90 0.95 1.00 1.05 1.10 1.15 1.20 1.25 1.30 1.35 1.40 1.45 1.50 1.55 1.60 1.65 1.70 1.75 1.80 1.85 1.90 1.95 2.00]
+    #define T_VIBRANCE 1.00 //[0.00 0.05 0.10 0.15 0.20 0.25 0.30 0.35 0.40 0.45 0.50 0.55 0.60 0.65 0.70 0.75 0.80 0.85 0.90 0.95 1.00 1.05 1.10 1.15 1.20 1.25 1.30 1.35 1.40 1.45 1.50 1.55 1.60 1.65 1.70 1.75 1.80 1.85 1.90 1.95 2.00]
 
     #define GLOWING_ORES 0 //[0 1 2]
     //#define GLOWING_MINERAL_BLOCKS
@@ -176,6 +178,7 @@
     #define NO_WAVING_INDOORS
     #define WAVING_FOLIAGE
     //#define WAVING_LEAVES
+    #define WAVING_WATER_VERTEX
 
 //Internal Settings//
 
@@ -184,7 +187,7 @@
     #endif
 
     #if defined WAVING_FOLIAGE || defined WAVING_LEAVES
-        #define WAVING_ANYTHING
+        #define WAVING_ANYTHING_TERRAIN
     #endif
 
     #define GLASS_OPACITY 0.25
@@ -224,6 +227,7 @@
         #undef CAVE_FOG
         #undef CLOUD_SHADOWS
         #undef AURORA_BOREALIS
+        #undef SNOWY_WORLD
     #endif
     #ifdef NETHER
         #undef ATMOSPHERIC_FOG
@@ -255,15 +259,13 @@
         #undef GBUFFERS_ENTITIES_GLOWING
     #endif
     #if SHADOW_QUALITY == 1
-        #undef SHADOW_FILTERING
+        //#undef SHADOW_FILTERING
     #endif
     #if CLOUD_QUALITY == 0
         #undef CLOUD_SHADOWS
     #endif
 
 //Activate Settings//
-    #ifdef CMPR
-    #endif
     #ifdef ENTITY_SHADOWS
     #endif
     #ifdef GENERATED_WATER_NORMALS
@@ -303,16 +305,24 @@
     const float pi = 3.14159265359;
     const float OSIEBCA = 1.0 / 255.0; // One Step In Eight Bit Color Attachment
 
-    const float blocklightColMult = 0.85;
+    const float blocklightColMult = 0.875;
     #if BLOCKLIGHT_COLOR_MODE == 9
         const vec3 blocklightCol = vec3(0.40, 0.32, 0.29) * blocklightColMult;
     #elif BLOCKLIGHT_COLOR_MODE == 10
-        const vec3 blocklightCol = vec3(0.43, 0.32, 0.26) * blocklightColMult;
+        const vec3 blocklightCol = vec3(0.43, 0.32, 0.26) * blocklightColMult; // Default
     #elif BLOCKLIGHT_COLOR_MODE == 11
         const vec3 blocklightCol = vec3(0.44, 0.31, 0.22) * blocklightColMult;
     #endif
 
-    vec3 caveFogColor = vec3(0.13, 0.13, 0.15) * (0.7 + 0.3 * vsBrightness);
+    const vec3 caveFogColorRaw = vec3(0.13, 0.13, 0.15);
+    #if MINIMUM_LIGHT_MODE <= 1
+        vec3 caveFogColor = caveFogColorRaw * 0.7;
+    #elif MINIMUM_LIGHT_MODE == 2
+        vec3 caveFogColor = caveFogColorRaw * (0.7 + 0.3 * vsBrightness); // Default
+    #elif MINIMUM_LIGHT_MODE >= 3
+        vec3 caveFogColor = caveFogColorRaw;
+    #endif
+
     vec3 waterFogColor = vec3(0.07, 0.08, 0.13) * vec3(1.0 + vsBrightness);
     vec3 endSkyColor = vec3(0.095, 0.07, 0.15) * 1.5;
 
@@ -371,6 +381,10 @@
 
     float GetLuminance(vec3 color) {
         return dot(color, vec3(0.299, 0.587, 0.114));
+    }
+
+    vec3 DoLuminanceCorrection(vec3 color) {
+        return color / GetLuminance(color);
     }
 
     float GetBiasFactor(float NdotLM) {

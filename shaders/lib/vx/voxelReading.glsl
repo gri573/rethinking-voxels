@@ -48,12 +48,12 @@ vxData readVxMap(ivec2 coords) {
         data.lower = vec3(data1.x % 16, (data1.x >> 4) % 16, (data1.x >> 8) % 16) / 16.0;
         data.upper = (vec3((data1.x >> 12) % 16, data1.y % 16, (data1.y >> 4) % 16) + 1) / 16.0;
         int type = data1.y >> 8;
-        data.full = ((type >> 2) % 2 == 1);
-        data.cuboid = ((type >> 4) % 2 == 1) && !data.full;
         data.alphatest = (type % 2 == 1);
-        data.trace = ((type >> 5) % 2 == 0 && data0.w != 65535);
-        data.emissive = ((type >> 3) % 2 == 1);
         data.crossmodel = ((type >> 1) % 2 == 1);
+        data.full = ((type >> 2) % 2 == 1);
+        data.emissive = ((type >> 3) % 2 == 1);
+        data.cuboid = ((type >> 4) % 2 == 1) && !data.full;
+        data.trace = ((type >> 5) % 2 == 0 && data0.w != 65535);
 		data.connectsides = ((type >> 6) % 2 == 1);
         data.spritesize = pow(2, data1.z % 16);
         data.lightlevel = (data1.z >> 4) % 128;

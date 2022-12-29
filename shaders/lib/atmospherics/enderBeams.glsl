@@ -44,7 +44,7 @@ vec3 DrawEnderBeams(float VdotU, vec3 playerPos) {
         gradientMix += 1.0;
     }
 
-    beams.rgb *= beams.a * beams.a * beams.a * 3.0;
+    beams.rgb *= beams.a * beams.a * beams.a * 3.5;
     beams.rgb = sqrt(beams.rgb);
 
     return beams.rgb;

@@ -75,6 +75,7 @@ alphatest = (
 //light sources
 emissive = (
     mat == 1234  || // generic light source
+    mat == 10024 || // brewing stand
     mat == 10056 || // lava cauldron
     mat == 10068 || // lava
     mat == 10072 || // fire
@@ -145,7 +146,6 @@ emissive = (
     mat == 10688 || // pearlescent froglight
     mat == 10705 || // active sculk sensor
     mat == 10708 || // spawner
-    mat == 10747 || // brewing stand
     mat == 12740 || // lit candle cake
     mat == 30020 || // nether portal
     mat == 31016 || // beacon
@@ -161,6 +161,11 @@ emissive = (
 );
 if (emissive) {
     switch (mat) {
+        case 10024: // brewing stand
+            #ifdef HARDCODED_BREWINGSTAND_COL
+            lightcol = vec3(BREWINGSTAND_COL_R, BREWINGSTAND_COL_G, BREWINGSTAND_COL_B);
+            #endif
+            break;
         case 10056: // lava cauldron
             #ifdef CAULDRON_HARDCODED_LAVA_COL
             lightcol = vec3(LAVA_COL_R, LAVA_COL_G, LAVA_COL_B);
@@ -428,11 +433,6 @@ if (emissive) {
             lightcol = vec3(SPAWNER_COL_R, SPAWNER_COL_G, SPAWNER_COL_B);
             #endif
             break;
-        case 10747: // brewing stand
-            #ifdef HARDCODED_BREWINGSTAND_COL
-            lightcol = vec3(BREWINGSTAND_COL_R, BREWINGSTAND_COL_G, BREWINGSTAND_COL_B);
-            #endif
-            break;
         case 12740: // lit candle cake
             #ifdef CAKE_HARDCODED_CANDLE_COL
             lightcol = vec3(CANDLE_COL_R, CANDLE_COL_G, CANDLE_COL_B);
@@ -497,6 +497,9 @@ if (emissive) {
     switch (mat) {
         case 1234:
             lightlevel = int(24 * lmCoord.x);
+            break;
+        case 10024: // brewing stand
+            lightlevel = BRIGHTNESS_BREWINGSTAND;
             break;
         case 10056: // lava cauldron
             lightlevel = CAULDRON_BRIGHTNESS_LAVA;
@@ -679,9 +682,6 @@ if (emissive) {
             break;
         case 10708: // spawner
             lightlevel = BRIGHTNESS_SPAWNER;
-            break;
-        case 10747: // brewing stand
-            lightlevel = BRIGHTNESS_BREWINGSTAND;
             break;
         case 12740: // lit candle cake
             lightlevel = CAKE_BRIGHTNESS_CANDLE;

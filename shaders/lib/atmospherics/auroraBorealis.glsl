@@ -10,6 +10,8 @@ vec3 GetAuroraBorealis(vec3 viewPos, float VdotU, float dither) {
     #endif
 
     if (visibility > 0.0) {
+	    if (max(blindness, darknessFactor) > 0.1) return vec3(0.0);
+
         vec3 aurora = vec3(0.0);
 
         vec3 wpos = (gbufferModelViewInverse * vec4(viewPos, 1.0)).xyz;

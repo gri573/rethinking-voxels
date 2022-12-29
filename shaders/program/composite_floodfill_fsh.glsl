@@ -79,8 +79,8 @@ void main() {
 #endif
         for (int k = 1; k < 7; k++) {
             vec3 aroundPos = oldPos + offsets[k];
-            if (isInRange(aroundPos)) {
-                ivec2 aroundCoords = getVxPixelCoords(aroundPos);
+            ivec2 aroundCoords = getVxPixelCoords(aroundPos);
+            if (isInRange(aroundPos) && aroundCoords.x > 0) {
                 aroundData0[k] = ivec4(texelFetch(colortex8, aroundCoords, 0) * 65535 + 0.5);
                 aroundData1[k] = ivec4(texelFetch(colortex9, aroundCoords, 0) * 65535 + 0.5);
 #ifdef ADVANCED_LIGHT_TRACING
@@ -152,34 +152,34 @@ void main() {
         }
 #else
         vec3 colMult = vec3(1);
-        if (blockData.emissive) dataToWrite0.w = 127;
-        else if (blockData.full && !blockData.alphatest) dataToWrite0.w = 0;
-        else if (blockData.alphatest) {
-            vec4 texCol = texture2DLod(colortex15, blockData.texcoord, 2);
-            if (texCol.a < 0.2) {
-                dataToWrite0.w = 127;
-            } else if (texCol.a < 0.8) {
-                dataToWrite0.w = 127;
-                colMult = 1 - texCol.a + texCol.a * texCol.rgb;
+        if (blockData.emissive || !blockData.trace || blockData.crossmodel) dataToWrite0.w = 127;
+        else if (blockData.full) {
+            if (blockData.alphatest) {
+            vec4 texCol = texture2DLod(colortex15, blockData.texcoord, 0);
+               if (texCol.a < 0.2) {
+                    dataToWrite0.w = 127;
+                } else if (texCol.a < 0.8) {
+                    dataToWrite0.w = 127;
+                    colMult = 1 - texCol.a + texCol.a * texCol.rgb;
+                } else dataToWrite0.w = 0;
             } else dataToWrite0.w = 0;
-        }
-        else if (blockData.cuboid) {
+        } else if (blockData.cuboid) {
             dataToWrite0.w = 0;
             for (int k = 1; k < 7; k++) {
-                if ((blockData.lower[(k-1)%3] < 0.05 && k < 4) || (blockData.upper[(k-1)%3] > 0.95 && k >= 4)) {
+                if ((blockData.lower[(k-1)%3] < 0.02 && k < 4) || (blockData.upper[(k-1)%3] > 0.98 && k >= 4)) {
                     bool seals = true;
-                    for (int i = k%3; i != (k-1)%3; i = (i+1)%3) {
-                        if (blockData.lower[i] > 0.05 || blockData.upper[i] < 0.95) seals = false;
+                    for (int i = (k+3)%3; i != (k+2)%3; i = (i+1)%3) {
+                        if (blockData.lower[i] > 0.02 || blockData.upper[i] < 0.98) seals = false;
                     }
                     if (!seals) dataToWrite0.w += 1<<(k-1);
-                } else dataToWrite0.w += 1<<k-1;
+                } else dataToWrite0.w += 1<<(k-1);
             }
         } else dataToWrite0.w = 127;
         if (!blockData.emissive) {
             vec3 col = vec3(0);
             float propSum = 0.0001;
             for (int k = 1; k < 7; k++) {
-                int propData = ((aroundData0[k].w >> (k-1))%2) * ((dataToWrite0.w >> ((k+2)%6))%2);
+                int propData = ((aroundData0[k].w >> ((k+2)%6))%2) * ((dataToWrite0.w >> ((k-1)%6))%2);
                 vec3 col0 = vec3(aroundData0[k].xyz * propData) / 65535;
                 col += col0 * col0;
                 propSum += propData;
@@ -189,7 +189,7 @@ void main() {
             col *= FF_PROP_MUL * max(0.0, (length(col) - FF_PROP_SUB) / (length(col) + 0.0001));
             //if (length(col) > 5) col = vec3(0);
             dataToWrite0.xyz = ivec3(col * 65535.0);
-        } else dataToWrite0.xyz = ivec3(65535.0 * blockData.lightcol * blockData.lightlevel * blockData.lightlevel / 700.0);
+        } else dataToWrite0.xyz = ivec3(65535.0 / 700.0 * blockData.lightcol * blockData.lightlevel * blockData.lightlevel);
 #endif
     //}
     /*RENDERTARGETS:8,9*/

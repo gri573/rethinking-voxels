@@ -131,7 +131,8 @@ float shadowTime = shadowTimeVar2 * shadowTimeVar2;
         return pow2(vec2(cos(n), sin(n)) * x / s);
     }
 
-    float DoAmbientOcclusion(float linearZ0, float dither) {
+    float DoAmbientOcclusion(float z0, float linearZ0, float dither) {
+		if (z0 < 0.56) return 1.0;
         float ao = 0.0;
         int samples = 12;
         
@@ -161,7 +162,7 @@ float shadowTime = shadowTimeVar2 * shadowTimeVar2;
         }
         ao /= samples;
         
-        return ao;
+        return pow(ao, 0.8);
     }
 #endif
 
@@ -240,6 +241,7 @@ void main() {
 
 	float VdotU = dot(nViewPos, upVec);
 	float VdotS = dot(nViewPos, sunVec);
+	float sky = 0.0;
 
 	#ifdef AURORA_BOREALIS
 		vec3 auroraBorealis = vec3(0.0);
@@ -261,7 +263,7 @@ void main() {
 		#endif
 
 		#ifdef SSAO
-			float ssao = z0 < 0.56 ? 1.0 : DoAmbientOcclusion(linearZ0, dither);
+			float ssao = DoAmbientOcclusion(z0, linearZ0, dither);
 		#else
 			float ssao = 1.0;
 		#endif
@@ -290,6 +292,9 @@ void main() {
 				vec3 roughPos = playerPos + cameraPosition;
 				roughPos *= 256.0;
 				vec2 roughCoord = roughPos.xz + roughPos.y;
+				#ifdef TEMPORAL_FILTER
+					roughCoord += fract(frameTimeCounter);
+				#endif
 				vec3 roughNoise = vec3(texture2D(noisetex, roughCoord).r, texture2D(noisetex, roughCoord + 0.1).r, texture2D(noisetex, roughCoord + 0.2).r);
 				roughNoise = vec3(0.3, 0.3, 0.3) * (roughNoise - vec3(0.5));
 				
@@ -307,8 +312,10 @@ void main() {
 			DoWorldOutline(color, linearZ0);
 		#endif
 
-		DoFog(color, lViewPos, playerPos, VdotU, VdotS, dither);
+		DoFog(color, sky, lViewPos, playerPos, VdotU, VdotS, dither);
 	} else { // Sky
+		sky = 1.0;
+		
 		#ifdef OVERWORLD
 			#if CLOUD_QUALITY > 0
 				sun = color.r > 2.0;
@@ -335,20 +342,20 @@ void main() {
 			const float threshold1 = 1000.0;
 			#ifndef SECOND_CLOUD_LAYER
 				volumetricClouds =
-					GetVolumetricClouds(CLOUD_ALT1, threshold1, cloudLinearDepth, sun, playerPos, lViewPos, nViewPos, VdotS, VdotU, dither);
+					GetVolumetricClouds(CLOUD_ALT1, threshold1, cloudLinearDepth, sun, sky, playerPos, lViewPos, VdotS, VdotU, dither);
 			#else
 				const float threshold2 = 1000.0;
 
 				if (abs(cameraPosition.y - CLOUD_ALT1) < abs(cameraPosition.y - CLOUD_ALT2)) {
 					volumetricClouds =
-					GetVolumetricClouds(CLOUD_ALT1, threshold1, cloudLinearDepth, sun, playerPos, lViewPos, nViewPos, VdotS, VdotU, dither);
+					GetVolumetricClouds(CLOUD_ALT1, threshold1, cloudLinearDepth, sun, sky, playerPos, lViewPos, VdotS, VdotU, dither);
 					if (volumetricClouds.a == 0.0) volumetricClouds =
-					GetVolumetricClouds(CLOUD_ALT2, threshold2, cloudLinearDepth, sun, playerPos, lViewPos, nViewPos, VdotS, VdotU, dither);
+					GetVolumetricClouds(CLOUD_ALT2, threshold2, cloudLinearDepth, sun, sky, playerPos, lViewPos, VdotS, VdotU, dither);
 				} else {
 					volumetricClouds =
-					GetVolumetricClouds(CLOUD_ALT2, threshold2, cloudLinearDepth, sun, playerPos, lViewPos, nViewPos, VdotS, VdotU, dither);
+					GetVolumetricClouds(CLOUD_ALT2, threshold2, cloudLinearDepth, sun, sky, playerPos, lViewPos, VdotS, VdotU, dither);
 					if (volumetricClouds.a == 0.0) volumetricClouds =
-					GetVolumetricClouds(CLOUD_ALT1, threshold1, cloudLinearDepth, sun, playerPos, lViewPos, nViewPos, VdotS, VdotU, dither);
+					GetVolumetricClouds(CLOUD_ALT1, threshold1, cloudLinearDepth, sun, sky, playerPos, lViewPos, VdotS, VdotU, dither);
 				}
 			#endif
 		}
@@ -382,7 +389,7 @@ void main() {
 
 			for (int i = 0; i < 8; i++) {
 				float depthCheck = texelFetch(depthtex0, texelCoord + neighbourhoodOffsets[i] * 4, 0).r;
-				if (abs(GetLinearDepth(depthCheck) - GetLinearDepth(z)) > 0.09) blendFactor = 0.0;
+				if (abs(GetLinearDepth(depthCheck) - GetLinearDepth(z0)) > 0.09) blendFactor = 0.0;
 			}
 			blendFactor *= min1(refAndCloudOld.a * 10000000.0);
 

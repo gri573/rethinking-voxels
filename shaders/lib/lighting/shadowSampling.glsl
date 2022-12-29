@@ -74,7 +74,9 @@ vec3 SampleFilteredShadow(vec3 shadowPos, float offset, bool leaves) {
             offset *= 0.69375;
         #endif
         
-        #if SHADOW_QUALITY == 3
+        #if SHADOW_QUALITY == 1
+            shadowSamples /= 2;
+        #elif SHADOW_QUALITY == 3
             shadowSamples *= 2;
         #elif SHADOW_QUALITY == 4
             shadowSamples *= 6;
@@ -95,7 +97,12 @@ vec3 SampleFilteredShadow(vec3 shadowPos, float offset, bool leaves) {
 #endif
 
 vec3 GetShadow(vec3 shadowPos, float offset, float gradientNoise, bool leaves) {
-    offset *= 1.0 + rainFactor2 * 3.0;
+    #if !defined ENTITY_SHADOWS && defined GBUFFERS_BLOCK
+        offset *= 4.0;
+    #else
+        offset *= 1.0 + rainFactor2 * 3.0;
+    #endif
+
     #ifdef SHADOW_FILTERING
         #ifdef TAA
             vec3 shadow = SampleTAAFilteredShadow(shadowPos, offset, gradientNoise, leaves);
