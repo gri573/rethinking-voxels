@@ -55,8 +55,14 @@ screen.OTHER_SETTINGS.comment=Settings that don't fit into any other category.
 screen.VX_STUFF=Voxelisation Settings
 screen.VX_STUFF.comment=Settings that relate to everything that uses the voxel volume. This includes its size, but also shadow settings and more.
 
-screen.LIGHTCOLS=Light Colors
-screen.LIGHTCOLS.comment=Settings that are about changing light colors.
+screen.VXVOL_SETTINGS=Voxel Volume Settings
+screen.VXVOL_SETTINGS.comment=Settings that are about changing voxel volumes.
+
+screen.VXRES_SETTINGS=Voxel Resolution Settings
+screen.VXRES_SETTINGS.comment=Settings that are about changing voxel resolutions.
+
+screen.LIGHTCOLS=Voxel Color Settings
+screen.LIGHTCOLS.comment=Settings that are about changing voxel light colors.
 
 screen.BLOCKCOLS=Block Lights
 screen.BLOCKCOLS.comment=Settings that are related to block lights.
