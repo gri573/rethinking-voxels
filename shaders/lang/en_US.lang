@@ -10,12 +10,12 @@ profile.comment=Shader profiles change performance settings with the most optimi
 
 #CMPR
 option.CMPR=Complementary
-value.CMPR.0=§bReimagined
-value.CMPR.1=§bReimagined
-value.CMPR.2=§bReimagined
-value.CMPR.3=§bReimagined
-value.CMPR.4=§bReimagined
-value.CMPR.5=§bReimagined
+value.CMPR.0=§bRethinking Voxels
+value.CMPR.1=§bRethinking Voxels
+value.CMPR.2=§bRethinking Voxels
+value.CMPR.3=§bRethinking Voxels
+value.CMPR.4=§bRethinking Voxels
+value.CMPR.5=§bRethinking Voxels
 option.CMPR.comment=Complementary Reimagined is a creation of love and care, meant to complement the unique Minecraft experience in the best way possible. I hope you enjoy your time with Reimagined as much as I enjoyed developing it. Please feel free to join the Complementary community here: www.complementary.dev/discord
 
 #Screens
