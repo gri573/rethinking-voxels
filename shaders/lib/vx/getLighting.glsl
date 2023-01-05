@@ -258,7 +258,7 @@ vec3 getSunLight(bool scatter, vec3 vxPos, vec3 worldNormal, bool causticMult) {
     float shadowLength = length(shadowPos.xy);//max(abs(shadowPos.x), abs(shadowPos.y));
     if (length(worldNormal) > 0.0001) {
         float dShadowdLength = distortShadowDeriv(shadowLength);
-        vxPos += worldNormal / (dShadowdLength * VXHEIGHT * 2.0);
+        vxPos += worldNormal / (dShadowdLength * VXHEIGHT * 1.0);
         shadowPos = getShadowPos(vxPos, sunRotMat);
         shadowLength = length(shadowPos.xy);//max(abs(shadowPos.x), abs(shadowPos.y));
     }
