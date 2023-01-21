@@ -11,7 +11,7 @@ ivec2 getVxPixelCoords(vec3 voxelPos) {
     ivec2 coords = ivec2(voxelPos.xz + vxRange / 2);
     coords.x += int(voxelPos.y) % VXHEIGHT * vxRange;
     coords.y += int(voxelPos.y) / VXHEIGHT * vxRange;
-    return coords;
+    return clamp(coords, ivec2(1, 0), ivec2(shadowMapResolution - 1));
 }
 
 vec2 getVxCoords(vec3 voxelPos, vec2 size) {
@@ -50,7 +50,7 @@ vec3 getVxPos(vec3 worldPos) {
 
 // get previous voxel space position from world position
 vec3 getPreviousVxPos(vec3 worldPos) {
-    return worldPos + (cameraPosition - floor(previousCameraPosition));
+    return getVxPos(worldPos) + (floor(cameraPosition) - floor(previousCameraPosition));
 }
 
 // determine if a position is within the voxelisation range

@@ -12,6 +12,10 @@ uniform sampler2D colortex8;
 #define COLORTEX9
 uniform sampler2D colortex9;
 #endif
+#if (defined DISTANCE_FIELD || defined WAVESIM) && !defined COLORTEX11
+#define COLORTEX11
+uniform sampler2D colortex11;
+#endif
 #ifndef SHADOWCOL0
 #define SHADOWCOL0
 uniform sampler2D shadowcolor0;
@@ -42,6 +46,16 @@ flood fill data:
     g: position of light source 2 z, intensity
     b: position of light source 3 x, y
     a: position of light source 3 z, intensity
+ - colortex10:
+    r: compressed colour data of sun shadow map
+    g: opaque shadow depth
+    b: transparent shadow depth
+    a: height map (last 8 bits free)
+ - colortex11:
+    r: distance field (last 8 bits free)
+    g: wave simulation position
+    b: wave simulation velocity
+    a: free
 */
 
 void main() {
@@ -50,6 +64,7 @@ void main() {
     ivec2 pixelCoord = ivec2(texCoord * tex8size);
     ivec4 dataToWrite0;
     ivec4 dataToWrite1;
+    ivec4 dataToWrite3 = ivec4(255, 0, 0, 0);
     //if (max(pixelCoord.x, pixelCoord.y) < shadowMapResolution) {
         vxData blockData = readVxMap(pixelCoord);
         vec3 pos = getVxPos(pixelCoord);
@@ -57,7 +72,7 @@ void main() {
         bool previouslyInRange = length(oldPos - pos) > 0.5 ? isInRange(oldPos, 1) : true;
         ivec4[7] aroundData0;
         ivec4[7] aroundData1;
-#ifdef ADVANCED_LIGHT_TRACING
+#if defined ADVANCED_LIGHT_TRACING || defined DISTANCE_FIELD
         int changed;
         if (previouslyInRange) {
             ivec2 oldCoords = getVxPixelCoords(oldPos);
@@ -75,15 +90,22 @@ void main() {
             changed = blockData.emissive ? blockData.lightlevel : aroundData0[0].w >> 8;
             mathash = newhash;
         }
+        if (mathash != 0) dataToWrite3.x = 0;
         //check for changes in surrounding voxels and propagate them
 #endif
         for (int k = 1; k < 7; k++) {
             vec3 aroundPos = oldPos + offsets[k];
             ivec2 aroundCoords = getVxPixelCoords(aroundPos);
-            if (isInRange(aroundPos) && aroundCoords.x > 0) {
+            if (isInRange(aroundPos)) {
                 aroundData0[k] = ivec4(texelFetch(colortex8, aroundCoords, 0) * 65535 + 0.5);
                 aroundData1[k] = ivec4(texelFetch(colortex9, aroundCoords, 0) * 65535 + 0.5);
-#ifdef ADVANCED_LIGHT_TRACING
+                #ifdef DISTANCE_FIELD
+                    if (mathash == 0) {
+                        ivec4 aroundData3 = ivec4(texelFetch(colortex11, aroundCoords, 0) * 65535 + 0.5);
+                        dataToWrite3.x = min(dataToWrite3.x, aroundData3.x % 256 + 1);
+                    }
+                #endif
+#if ADVANCED_LIGHT_TRACING > 0
                 int aroundChanged = aroundData0[k].x % 256;
                 changed = max(aroundChanged - 1, changed);
             } else {
@@ -96,7 +118,7 @@ void main() {
 #endif
             }
         }
-#ifdef ADVANCED_LIGHT_TRACING
+#if ADVANCED_LIGHT_TRACING > 0
         // copy data so it is written back to the buffer if unchanged
         dataToWrite0.xzw = aroundData0[0].xzw;
         dataToWrite0.y = int(texelFetch(colortex8, getVxPixelCoords(pos), 0).y * 65535 + 0.5);
@@ -104,10 +126,14 @@ void main() {
         dataToWrite0.x = changed + 256 * mathash;
         if (changed > 0) {
             // sources will contain nearby light sources, sorted by intensity
-            ivec4 sources[3] = ivec4[3](ivec4(0), ivec4(0), ivec4(0));
+            ivec4 sources[3] = ivec4[3](
+                ivec4(0),
+                ivec4(0),
+                ivec4(0)
+            );
             if (blockData.emissive) {
                 sources[0] = ivec4(128, 128, 128, blockData.lightlevel);
-                dataToWrite0.y = 60000;
+//                dataToWrite0.y = 60000;
             }
             for (int k = 1; k < 7; k++) {
                 // current surrounding (sorted but still compressed) light data
@@ -116,8 +142,9 @@ void main() {
                     //unpack and adjust light data
                     ivec4 thisLight = ivec4(theselights[i].x % 256, theselights[i].x >> 8, theselights[i].y % 256, theselights[i].y >> 8);
                     thisLight.xyz += offsets[k];
+                    vxData thisLightData = readVxMap(getVxPixelCoords(pos + thisLight.xyz - vec3(128.0)));
                     thisLight.w = (aroundData0[k].y >> i) % 2 == 1 ? thisLight.w - 1 : min(thisLight.w - 1, 1);
-                    if (thisLight.w <= 0) break; // ignore light sources with zero intensity
+                    if (!thisLightData.emissive || thisLight.w <= 0) break; // ignore light sources with zero intensity
                     bool newLight = true;
                     for (int j = 0; j < 3; j++) {
                     // check if light source is already registered
@@ -160,7 +187,10 @@ void main() {
                     dataToWrite0.w = 127;
                 } else if (texCol.a < 0.8) {
                     dataToWrite0.w = 127;
-                    colMult = 1 - texCol.a + texCol.a * texCol.rgb;
+                    texCol.a = pow(texCol.a, TRANSLUCENT_LIGHT_TINT);
+                    texCol.rgb /= max(max(0.0001, texCol.r), max(texCol.g, texCol.b));
+                    texCol.rgb *= 0.5 + TRANSLUCENT_LIGHT_CONDUCTION / (texCol.r + texCol.g + texCol.b);
+                    colMult = clamp(1 - texCol.a + texCol.a * texCol.rgb, vec3(0), vec3(max(1.0, TRANSLUCENT_LIGHT_CONDUCTION + 0.02)));
                 } else dataToWrite0.w = 0;
             } else dataToWrite0.w = 0;
         } else if (blockData.cuboid) {
@@ -191,8 +221,36 @@ void main() {
             dataToWrite0.xyz = ivec3(col * 65535.0);
         } else dataToWrite0.xyz = ivec3(65535.0 / 700.0 * blockData.lightcol * blockData.lightlevel * blockData.lightlevel);
 #endif
+    #ifdef WAVESIM
+        if (max(pixelCoord.x, pixelCoord.y) < SHADOWRES) {
+            int height;
+            for (height = VXHEIGHT * VXHEIGHT / 2 - 1; height > - VXHEIGHT * VXHEIGHT / 2; height--) {
+                vxData blockData = readVxMap(getVxPixelCoords(ivec3(pixelCoord - vxRange / 2, height).xzy));
+                if (blockData.mat == 31000) {
+                    dataToWrite3.x += 256;
+                    break;
+                }
+            }
+        }
+        ivec2 oldCoord = pixelCoord - VXHEIGHT * ivec2(1.001 * (floor(cameraPosition) - floor(previousCameraPosition)));
+        vec2 state = texelFetch(colortex11, oldCoord, 0).yz * 2.0 - 1.0;
+        float a = 0;
+        for (int x = -1; x < 2; x += 2) {
+            for (int z = -1; z < 2; z += 2) {
+                vec4 aroundData = texelFetch(colortex11, clamp(oldCoord + ivec2(x, z), ivec2(1, 0), ivec2(SHADOWRES - 1)), 0);
+                vec2 aroundState = aroundData.yz * 2.0 - 1.0;
+                a += (aroundState.x - state.x) * ((int(aroundData.x * 65535 + 0.5) / 256) % 2);
+            }
+        }
+        state.y += a;
+        state.x += state.y * 0.7;
+        state *= 0.999;
+        dataToWrite3.yz = ivec2(65535 * (state * 0.5 + 0.5) + 0.5);
+    #endif
     //}
-    /*RENDERTARGETS:8,9*/
+    /*RENDERTARGETS:8,9,11*/
     gl_FragData[0] = vec4(dataToWrite0) / 65535.0;
     gl_FragData[1] = vec4(dataToWrite1) / 65535.0;
+    gl_FragData[2] = vec4(dataToWrite3) / 65535.0;
+
 }

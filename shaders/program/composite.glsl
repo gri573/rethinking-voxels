@@ -31,12 +31,17 @@ uniform sampler2D depthtex1;
 #endif
 
 #if LIGHTSHAFT_QUALITY > 0
+	#ifndef VBL_INTPOL
 	#undef OCCLUSION_FILTER
+	#endif
 	#undef PP_BL_SHADOWS
 	#undef PP_SUN_SHADOWS
 	uniform int frameCounter;
 
 	uniform float viewWidth, viewHeight;
+
+	vec2 view = vec2(viewWidth, viewHeight);
+
 	uniform float far, near;
 	uniform float blindness;
 	uniform float darknessFactor;
@@ -68,8 +73,6 @@ uniform sampler2D depthtex1;
 	float SdotU = dot(sunVec, upVec);
 	float sunFactor = SdotU < 0.0 ? clamp(SdotU + 0.375, 0.0, 0.75) / 0.75 : clamp(SdotU + 0.03125, 0.0, 0.0625) / 0.0625;
 #endif
-
-vec2 view = vec2(viewWidth, viewHeight);
 
 #if LIGHTSHAFT_QUALITY > 0 && (defined OVERWORLD || defined END)
 	float sunVisibility = clamp(SdotU + 0.0625, 0.0, 0.125) / 0.125;

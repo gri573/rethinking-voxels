@@ -2,6 +2,12 @@
 #define RAYTRACE
 #include "/lib/vx/voxelMapping.glsl"
 #include "/lib/vx/voxelReading.glsl"
+#ifdef DISTANCE_FIELD
+#ifndef COLORTEX11
+#define COLORTEX11
+uniform sampler2D colortex11;
+#endif
+#endif
 
 const mat3 eye = mat3(
     1, 0, 0,
@@ -107,20 +113,22 @@ vec4 handledata(vxData data, sampler2D atlas, inout vec3 pos, vec3 dir, int n) {
         ivec2 texcoord = ivec2(data.texcoord * atlasSize + (data.spritesize - 0.5) * spritecoord);
         vec4 color = texelFetch(atlas, texcoord, 0);
         if (!data.alphatest) color.a = 1;
+        else if (color.a > 0.1 && color.a < 0.9) color.a = pow(color.a, TRANSLUCENT_LIGHT_TINT);
         // multiply by vertex color for foliage, water etc
         color.rgb *= data.emissive ? vec3(1) : data.lightcol;
         return color;
     }
     // get around floating point errors using an offset
     vec3 offset = 0.001 * eye[n] * sign(dir[n]);
-    vec3 blockInnerPos = fract(pos + offset) - offset;
+    vec3 blockInnerPos0 = fract(pos + offset) - offset;
+    vec3 blockInnerPos = blockInnerPos0 - vec3(data.midcoord.x, 0, data.midcoord.z);;
     // ray-plane intersections
-    float w0 = (1 - blockInnerPos.x - blockInnerPos.z) / (dir.x + dir.z);
+    float w0 = (-blockInnerPos.x - blockInnerPos.z) / (dir.x + dir.z);
     float w1 = (blockInnerPos.x - blockInnerPos.z) / (dir.z - dir.x);
-    vec3 p0 = blockInnerPos + w0 * dir;
-    vec3 p1 = blockInnerPos + w1 * dir;
-    bool valid0 = (max(max(abs(p0.x - 0.5), 0.8 * abs(p0.y - 0.5)), abs(p0.z - 0.5)) < 0.4);
-    bool valid1 = (max(max(abs(p1.x - 0.5), 0.8 * abs(p1.y - 0.5)), abs(p1.z - 0.5)) < 0.4);
+    vec3 p0 = blockInnerPos + w0 * dir + vec3(0.5, 0, 0.5);
+    vec3 p1 = blockInnerPos + w1 * dir + vec3(0.5, 0, 0.5);
+    bool valid0 = (max(max(abs(p0.x - 0.5), 0.8 * abs(p0.y - 0.5)), abs(p0.z - 0.5)) < 0.4) && w0 > -0.0001;
+    bool valid1 = (max(max(abs(p1.x - 0.5), 0.8 * abs(p1.y - 0.5)), abs(p1.z - 0.5)) < 0.4) && w1 > -0.0001;
     vec4 color0 = valid0 ? texelFetch(atlas, ivec2(data.texcoord * atlasSize + (data.spritesize - 0.5) * (1 - p0.xy * 2)), 0) : vec4(0);
     vec4 color1 = valid1 ? texelFetch(atlas, ivec2(data.texcoord * atlasSize + (data.spritesize - 0.5) * (1 - p1.xy * 2)), 0) : vec4(0);
     color0.xyz *= data.emissive ? vec3(1) : data.lightcol;
@@ -131,6 +139,7 @@ vec4 handledata(vxData data, sampler2D atlas, inout vec3 pos, vec3 dir, int n) {
 }
 // voxel ray tracer
 vec4 raytrace(bool lowDetail, inout vec3 pos0, bool doScattering, vec3 dir, inout vec3 translucentHit, sampler2D atlas, bool translucentData) {
+    ivec3 dcamPos = ivec3(1.001 * (floor(cameraPosition) - floor(previousCameraPosition)));
     vec3 progress;
     for (int i = 0; i < 3; i++) {
         //set starting position in each direction
@@ -177,13 +186,23 @@ vec4 raytrace(bool lowDetail, inout vec3 pos0, bool doScattering, vec3 dir, inou
     int mat = raycolor.a > 0.1 ? voxeldata.mat : 0; // for inner face culling
     vec3 oldPos = pos;
     bool oldFull = voxeldata.full;
+    bool wasInRange = false;
     // main loop
     while (w < 1 && k < 2000 && raycolor.a < 0.99) {
         oldRayColor = raycolor;
         pos = pos0 + (min(w, 1.0)) * dir + eyeOffsets[i];
+        #ifdef DISTANCE_FIELD
+        ivec4 dfdata;
+        #endif
         // read voxel data at new position and update ray colour accordingly
         if (isInRange(pos)) {
-            voxeldata = readVxMap(getVxPixelCoords(pos));
+            wasInRange = true;
+            ivec2 vxCoords = getVxPixelCoords(pos);
+            voxeldata = readVxMap(vxCoords);
+            #ifdef DISTANCE_FIELD
+            ivec2 oldCoords = getVxPixelCoords(pos + dcamPos);
+            dfdata = ivec4(texelFetch(colortex11, oldCoords, 0) * 65525 + 0.5);
+            #endif
             pos -= eyeOffsets[i];
             if (lowDetail) {
                 if (voxeldata.trace && voxeldata.full && !voxeldata.alphatest) {
@@ -213,7 +232,7 @@ vec4 raytrace(bool lowDetail, inout vec3 pos0, bool doScattering, vec3 dir, inou
                     isScattering = newScattering;
                 }
             }
-            #ifdef CAVE_SUNLIGHT_FIX
+            #if CAVE_SUNLIGHT_FIX > 0
             if (!isInRange(pos, 2)) {
                 int height = int(texelFetch(colortex10, ivec2(pos.xz + floor(cameraPosition.xz) - floor(previousCameraPosition.xz) + vxRange / 2), 0).w * 65535 + 0.5) % 256 - VXHEIGHT * VXHEIGHT / 2;
                 if (pos.y + floor(cameraPosition.y) - floor(previousCameraPosition.y) < height) {
@@ -223,25 +242,47 @@ vec4 raytrace(bool lowDetail, inout vec3 pos0, bool doScattering, vec3 dir, inou
             #endif
             pos += eyeOffsets[i];
         }
-        // update position
-        k += 1;
-        progress[i] += stp[i];
-        w = progress[0];
-        i = 0;
-        for (int i0 = 1; i0 < 3; i0++) {
-            if (progress[i0] < w) {
-                i = i0;
-                w = progress[i];
-            }
+        else {
+            #ifdef DISTANCE_FIELD
+            dfdata.x = int(max(max(abs(pos.x), abs(pos.z)) - vxRange / 2, abs(pos.y) - VXHEIGHT * VXHEIGHT / 2) + 0.5);
+            #endif
+            if (wasInRange) break;
         }
+        // update position
+        #ifdef DISTANCE_FIELD
+        if (dfdata.x % 256 == 0) dfdata.x++;
+        for (int j = 0; j < dfdata.x % 256; j++) {
+        #endif
+            progress[i] += stp[i];
+            w = progress[0];
+            i = 0;
+            for (int i0 = 1; i0 < 3; i0++) {
+                if (progress[i0] < w) {
+                    i = i0;
+                    w = progress[i];
+                }
+            }
+        #ifdef DISTANCE_FIELD
+        }
+        #endif
+        k++;
     }
     float oldAlpha = raycolor.a;
     raycolor.a = 1 - exp(-4*length(scatterPos - pos0)) * (1 - raycolor.a);
     raycolor.rgb += raycolor.a - oldAlpha; 
     pos0 = pos;
-    raycolor = (k == 2000 ? vec4(1, 0, 0, 1) : raycolor);
+    if (k == 2000) {
+        oldRayColor = vec4(1, 0, 0, 1);
+        raycolor = vec4(1, 0, 0, 1);
+    }
     return translucentData ? oldRayColor : raycolor;
 }
+
+vec4 raytrace(inout vec3 pos0, bool doScattering, vec3 dir, sampler2D atlas, bool translucentData) {
+    vec3 translucentHit = vec3(0);
+    return raytrace(false, pos0, doScattering, dir, translucentHit, atlas, translucentData);
+}
+
 vec4 raytrace(bool lowDetail, inout vec3 pos0, vec3 dir, inout vec3 translucentHit, sampler2D atlas, bool translucentData) {
     return raytrace(lowDetail, pos0, false, dir, translucentHit, atlas, translucentData);
 }

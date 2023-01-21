@@ -7,7 +7,7 @@ connectSides = false;
 entity = (mat / 10000 == 5);
 //exclude from ray tracing
 notrace = (
-    entity ||
+    mat == 1234 ||
     mat == 10072 ||
     mat == 10076 ||
     mat == 10012 ||
@@ -25,13 +25,20 @@ notrace = (
     mat == 12264 ||
     mat == 12312 ||
     mat == 12480 ||
+    mat == 10497 ||
+    mat == 10529 ||
     (mat >= 10596 && mat <= 10600) ||
     mat == 10544 ||
+    mat == 10605 ||
+    mat == 12605 ||
     mat == 12696 ||
     mat == 10732
 );
+if (entity) notrace = true;
 //translucent / alpha cutout blocks:
 alphatest = (
+    mat == 1004 ||
+    mat == 1008 ||
     mat == 10000 ||
     mat == 10004 ||
     mat == 10008 ||
@@ -69,9 +76,9 @@ alphatest = (
     mat == 10596 ||
     mat == 10600 ||
     mat == 10708 ||
-    (mat >= 10720 && mat < 10724) ||
-    (mat / 10000 == 3 && mat != 31016)
+    (mat >= 10720 && mat < 10724)
 );
+if (mat / 10000 == 3 && mat != 31016) alphatest = true;
 //light sources
 emissive = (
     mat == 1234  || // generic light source
@@ -115,12 +122,14 @@ emissive = (
     mat == 10452 || // magma block
     mat == 10476 || // crying obsidian
     mat == 10496 || // torch
+    mat == 10497 ||
     mat == 10500 || // end rod
     mat == 10501 ||
     mat == 10502 ||
     mat == 10508 || // chorus flower
     mat == 10516 || // lit furnace
     mat == 10528 || // soul torch
+    mat == 10529 ||
     mat == 10544 || // glow lichen
     mat == 10548 || // enchanting table
     mat == 10556 || // end portal frame with eye
@@ -136,6 +145,7 @@ emissive = (
     mat == 10598 ||
     mat == 10599 ||
     mat == 12604 || // lit redstone torch
+    mat == 12605 ||
     mat == 10632 || // glow berries
     mat == 10640 || // lit redstone lamp
     mat == 10648 || // shroomlight
@@ -157,7 +167,9 @@ emissive = (
     mat == 50012 || // glow item frame
     mat == 50020 || // blaze
     mat == 50048 || // glow squid
-    mat == 50080    // allay
+    mat == 50052 || // magma cube
+    mat == 50080 || // allay
+    mat == 50116    // TNT and TNT minecart
 );
 if (emissive) {
     switch (mat) {
@@ -294,6 +306,7 @@ if (emissive) {
             #endif
             break;
         case 10452: // magma block
+        case 50052: // magma cube
             #ifdef HARDCODED_MAGMA_COL
             lightcol = vec3(MAGMA_COL_R, MAGMA_COL_G, MAGMA_COL_B);
             #endif
@@ -304,6 +317,7 @@ if (emissive) {
             #endif
             break;
         case 10496: // torch
+        case 10497:
             #ifdef HARDCODED_TORCH_COL
             lightcol = vec3(TORCH_COL_R, TORCH_COL_G, TORCH_COL_B);
             #endif
@@ -326,6 +340,7 @@ if (emissive) {
             #endif
             break;
         case 10528: // soul torch
+        case 10529:
             #ifdef HARDCODED_SOULTORCH_COL
             lightcol = vec3(SOULTORCH_COL_R, SOULTORCH_COL_G, SOULTORCH_COL_B);
             #endif
@@ -389,6 +404,7 @@ if (emissive) {
             #endif
             break;
         case 12604: // lit redstone torch
+        case 12605:
             #ifdef TORCH_HARDCODED_REDSTONE_COL
             lightcol = vec3(REDSTONE_COL_R, REDSTONE_COL_G, REDSTONE_COL_B);
             #endif
@@ -493,6 +509,11 @@ if (emissive) {
             lightcol = vec3(ALLAY_COL_R, ALLAY_COL_G, ALLAY_COL_B);
             #endif
             break;
+        case 50116: // TNT
+            #ifdef HARDCODED_TNT_COL
+            lightcol = vec3(TNT_COL_R, TNT_COL_G, TNT_COL_B);
+            #endif
+            break;
     }
     switch (mat) {
         case 1234:
@@ -586,12 +607,16 @@ if (emissive) {
             lightlevel = BRIGHTNESS_SEALANTERN;
             break;
         case 10452: // magma block
-            lightlevel = BRIGHTNESS_MAGMA;
+            lightlevel = BLOCK_BRIGHTNESS_MAGMA;
+            break;
+        case 50052: // magma cube
+            lightlevel = CUBE_BRIGHTNESS_MAGMA;
             break;
         case 10476: // crying obsidian
             lightlevel = BRIGHTNESS_CRYING;
             break;
         case 10496: // torch
+        case 10497:
             lightlevel = BRIGHTNESS_TORCH;
             break;
         case 10500: // end rod
@@ -606,6 +631,7 @@ if (emissive) {
             lightlevel = BRIGHTNESS_FURNACE;
             break;
         case 10528: // soul torch
+        case 10529:
             lightlevel = BRIGHTNESS_SOULTORCH;
             break;
         case 10544: // glow lichen
@@ -651,6 +677,7 @@ if (emissive) {
             lightlevel = WIRE3_BRIGHTNESS_REDSTONE;
             break;
         case 12604: // lit redstone torch
+        case 12605:
             lightlevel = TORCH_BRIGHTNESS_REDSTONE;
             break;
         case 10632: // glow berries
@@ -719,10 +746,13 @@ if (emissive) {
         case 50080: // allay
             lightlevel = BRIGHTNESS_ALLAY;
             break;
+        case 50116: // TNT
+            lightlevel = BRIGHTNESS_TNT;
     }
 }
 //full cubes
 full = (
+    mat == 1008 ||
     mat == 10008 ||
     mat == 10028 ||
     mat == 10032 ||
@@ -762,16 +792,30 @@ full = (
     mat == 10212 ||
     mat == 10216 ||
     mat == 10220 ||
-    (mat > 10223 && mat < 10240) ||
+    mat == 10224 ||
+    mat == 10228 ||
+    mat == 10232 ||
+    mat == 10236 ||
     mat == 10240 ||
     mat == 10244 ||
     mat == 10248 ||
     mat == 10252 ||
     mat == 10264 ||
-    (mat > 10267 && mat < 10292) ||
+    mat == 10268 ||
+    mat == 10272 ||
+    mat == 10276 ||
+    mat == 10280 ||
+    mat == 10284 ||
+    mat == 10288 ||
     mat == 10292 ||
-    (mat > 10295 && mat < 10312) ||
-    (mat > 10315 && mat < 10332) ||
+    mat == 10296 ||
+    mat == 10300 ||
+    mat == 10304 ||
+    mat == 10308 ||
+    mat == 10316 ||
+    mat == 10320 ||
+    mat == 10324 ||
+    mat == 10328 ||
     mat == 10336 ||
     mat == 10340 ||
     mat == 10344 ||
@@ -817,13 +861,23 @@ full = (
     mat == 10580 ||
     mat == 10588 ||
     mat == 10592 ||
-    (mat > 10607 && mat < 10628) ||
+    mat == 10608 ||
+    mat == 10612 ||
+    mat == 10616 ||
+    mat == 10620 ||
+    mat == 10624 ||
     mat == 10636 ||
     mat == 10640 ||
     mat == 10648 ||
     mat == 10664 ||
     mat == 10668 ||
-    (mat >= 10672 && mat < 10697) ||
+    mat == 10672 ||
+    mat == 10676 ||
+    mat == 10680 ||
+    mat == 10684 ||
+    mat == 10688 ||
+    mat == 10692 ||
+    mat == 10696 ||
     mat == 10700 ||
     mat == 10708 ||
     mat == 10712 ||
@@ -839,6 +893,7 @@ full = (
     mat == 60016
 );
 crossmodel = (
+    mat == 1004 ||
     mat == 10000 ||
     mat == 10004 ||
     mat == 10016 ||
@@ -852,6 +907,8 @@ crossmodel = (
     mat == 10632
 );
 cuboid = (
+    mat == 1009 ||
+    mat == 1010 ||
     (mat > 10032 && mat < 10036) ||
     mat == 10045 ||
     mat == 10046 ||

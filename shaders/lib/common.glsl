@@ -31,28 +31,31 @@
 
     #define BLOCKLIGHT_STRENGTH 1.0 //[0.5 0.6 0.7 0.8 0.9 1.0 1.1 1.2 1.3 1.5 1.7 2.0]
     #define BLOCKLIGHT_STEEPNESS 2.0 //[1.0 1.3 1.5 1.7 2.0]
-    #define BLOCKLIGHT_SHAFT_STRENGTH 0.5 //[0.01 0.02 0.03 0.05 0.07 0.1 0.15 0.2 0.25 0.3 0.4 0.5 0.7 1.0 1.2 1.5 2 2.5 3]
+    #define BLOCKLIGHT_SHAFT_STRENGTH 0.1 //[0.01 0.02 0.03 0.05 0.07 0.1 0.15 0.2 0.25 0.3 0.4 0.5 0.7 1.0 1.2 1.5 2 2.5 3]
 
     #define OCCLUSION_FILTER 1 //[0 1 2]
+    #define OCCLUSION_BLEED_PREVENTION
+    #define CAVE_SUNLIGHT_FIX 2 // [0 1 2]
     #define SMOOTH_LIGHTING 1 //[0 1]
   //#define PP_BL_SHADOWS
   //#define PP_SUN_SHADOWS
+  //#define INST_LP
     #define SUN_SHADOWS
     #define BIG_LIGHTS
     #ifdef NETHER
         #undef SUN_SHADOWS
     #endif
     #define SUN_ANGLE 0.5 //[-0.5 0 0.5]
-    #define SUN_CHECK_SPREAD 3 //[2 3]
     #define BLOCKLIGHT_CHECK_INTERVAL 17 //[4 5 7 10 15 17 20 30]
     #define VBL_NETHER_MULT 2.0 //[1.0 1.2 1.5 1.7 2.0 2.5 3.0 4.0]
     #define VBL_END_MULT 2.0 //[1.0 1.2 1.5 1.7 2.0 2.5 3.0 4.0]
-
-    #define ADVANCED_LIGHT_TRACING
+    #define VBL_INTPOL
+    #define ADVANCED_LIGHT_TRACING 1 //[0 1]
     #define FF_PROP_MUL 0.9999
     #define FF_PROP_SUB 0.003 //[0.0001 0.0003 0.0005 0.001 0.002 0.003 0.005 0.007 0.01]
     #define BFF_ABSORBTION_AMOUNT 0.05
-
+    #define TRANSLUCENT_LIGHT_TINT 0.5 // [0.1 0.15 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.0]
+    #define TRANSLUCENT_LIGHT_CONDUCTION 1.0 // [0.9 1.0 1.1 1.2 1.3 1.5]
     #if SHADOWRES == 512
         #if (VXHEIGHT == 4)
             const float shadowDistance = 64.0;
@@ -112,7 +115,9 @@
     #else
         const float shadowDistance = 100.0;
     #endif
-
+    #if (defined PP_SUN_SHADOWS || defined VOXEL_REFLECTIONS)
+        #define DISTANCE_FIELD
+    #endif
 //regular settings//
 
     #define CMPR 3 //[0 1 2 3 4 5]
@@ -135,6 +140,7 @@
     #define LIGHTSHAFT_QUALITY 3 //[0 1 2 3 4]
 
     #define WATER_STYLE 1 //[1 2 3]
+  //#define WAVESIM
     #define BORDER_FOG
     #define PIXEL_SHADOW 0 //[0 8 16 32 64 128]
     #define HAND_SWAYING 0 //[0 1 2 3]
@@ -236,8 +242,8 @@
     #ifdef END
         #undef BLOOM_FOG
     #endif
-    #ifdef SUN_SHADOWS
-        #define CAVE_SUNLIGHT_FIX
+    #ifndef SUN_SHADOWS
+        #undef CAVE_SUNLIGHT_FIX
     #endif
     #if defined GBUFFERS_TEXTURED || defined GBUFFERS_BASIC
         #undef LIGHT_HIGHLIGHT

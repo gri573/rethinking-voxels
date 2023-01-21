@@ -4,6 +4,7 @@ in vec2[3] texCoordV;
 in vec2[3] lmCoordV;
 in vec4[3] vertexColV;
 in vec3[3] posV;
+in vec3[3] normalV;
 flat in int[3] vertexID;
 flat in int[3] spriteSizeV;
 flat in int[3] matV;
@@ -36,18 +37,10 @@ void main() {
     avgPos += fract(cameraPosition);
     vec3 avgPos0 = avgPos;
     bool tracemat = true;
-    bool doCuboidTexCoordCorrection = true;
-    float zpos = 0.5 - sqrt(area) - 0.02 * fract(avgPos.y + 0.01) - 0.01 * fract(avgPos.x + 0.01)- 0.015 * fract(avgPos.z + 0.01) - 0.2 * cnormal.y;
+    int mat0 = matV[0];
+    bool doCuboidTexCoordCorrection = (mat0 / 10000 == 1);
+    float zpos = 0.5 - clamp(sqrt(area), 0, 1) - 0.02 * fract(avgPos.y - 0.01 * cnormal.x) - 0.01 * fract(avgPos.x - 0.01 * cnormal.y) - 0.015 * fract(avgPos.z - 0.01 * cnormal.z) - 0.2 * cnormal.y;
     vec2 coord;
-    switch(matV[0]) {
-        case 50004:
-            coord = vec2(0.5 / shadowMapResolution);
-            zpos = -avgPos.z / (VXHEIGHT * VXHEIGHT);
-            break;
-        default:
-            coord = getVxCoords(avgPos);
-            if (coord.x < 1.0 / shadowMapResolution) return;
-    }
     #include "/lib/materials/shadowchecks_gsh.glsl"
     if (max(abs(avgPos.x), abs(avgPos.z)) < vxRange / 2 && abs(avgPos.y) < VXHEIGHT * VXHEIGHT / 2 && tracemat) {
         vec2 outTexCoord = 0.5 * (max(max(texCoordV[0], texCoordV[1]), texCoordV[2]) + min(min(texCoordV[0], texCoordV[1]), texCoordV[2]));
@@ -73,7 +66,7 @@ void main() {
             vertexCol = vertexColV[i];
             vertexCol.a = area;
             pos = avgPos0;
-            mat = matV[i];
+            mat = mat0;
             spriteSize = spriteSizeV[i];
             // using vertexID for the offset fixes translucent rendering on optifine, thanks to GeforceLegend for telling me that
             gl_Position = vec4(coord * 2 - vec2(1) + offsets[vertexID[i]%4] / shadowMapResolution, zpos, 1);

@@ -32,6 +32,10 @@ uniform sampler2D colortex10;
 uniform sampler2D colortex15; // texture atlas
 ivec2 atlasSize = textureSize(colortex15, 0);
 
+#if CAVE_SUNLIGHT_FIX >= 2
+uniform ivec2 eyeBrightness;
+#endif
+
 vec2 tex8size = vec2(textureSize(colortex8, 0));
 
 ivec3[7] offsets = ivec3[7](ivec3(0), ivec3(-1, 0, 0), ivec3(0, -1, 0), ivec3(0, 0, -1), ivec3(1, 0, 0), ivec3(0, 1, 0), ivec3(0, 0, 1));
@@ -49,27 +53,29 @@ void main() {
     if (max(pixelCoord.x, pixelCoord.y) < shadowMapResolution) {
         dataToWrite0 = ivec4(texelFetch(colortex8, pixelCoord, 0) * 65535 + 0.5);
         dataToWrite1 = ivec4(texelFetch(colortex10, pixelCoord, 0) * 65535 + 0.5);
+        // height map
         if (max(pixelCoord.x, pixelCoord.y) < vxRange) {
             int height = VXHEIGHT * VXHEIGHT / 2 - 1;
             for (; height > -VXHEIGHT * VXHEIGHT / 2; height--) {
                 vxData thisBlock = readVxMap(getVxPixelCoords(vec3(pixelCoord.x, height, pixelCoord.y) + vec3(-vxRange / 2.0 + 0.5, 0.5, -vxRange / 2.0 + 0.5)));
-                bool isGround = true;
-                switch (thisBlock.mat) {
-                    case 0:
-                        break;
-                    case 10160:
-                    case 10168:
-                    case 10176:
-                    case 10184:
-                    case 10192:
-                    case 10200:
-                    case 10208:
-                        isGround = false;
-                        break;
+                #if CAVE_SUNLIGHT_FIX >= 2
+                if (eyeBrightness.y < 80 && thisBlock.mat > 1000 && thisBlock.skylight == 0) {
+                    height = VXHEIGHT * VXHEIGHT / 2;
+                    break;
                 }
+                #endif
+                bool isGround = !(
+                    thisBlock.mat == 10160 ||
+                    thisBlock.mat == 10168 ||
+                    thisBlock.mat == 10176 ||
+                    thisBlock.mat == 10184 ||
+                    thisBlock.mat == 10192 ||
+                    thisBlock.mat == 10200 ||
+                    thisBlock.mat == 10208
+                );
                 if ((thisBlock.full && !thisBlock.alphatest && isGround)) break;
             }
-            dataToWrite1.w = (dataToWrite1.w >> 8 << 8) + height + (VXHEIGHT * VXHEIGHT / 2);
+            dataToWrite1.w = (dataToWrite1.w >> 8 << 8) + clamp(height + (VXHEIGHT * VXHEIGHT / 2), 0, 255);
         }
         vec3 pos0 = getVxPos(pixelCoord);
         vec3 pos = pos0;
@@ -102,7 +108,7 @@ void main() {
             dataToWrite1.g = int((0.5 + dot(sunPos, sunMoonDir) / (1.5  * vxRange)) * 65535 + 0.5);
             dataToWrite1.b = int((0.5 + dot(transPos.y > -9999 ? transPos : sunPos, sunMoonDir) / (1.5  * vxRange)) * 65535 + 0.5);
         #endif
-        #ifdef ADVANCED_LIGHT_TRACING
+        #if ADVANCED_LIGHT_TRACING > 0
         int newOcclusionData = 0;
         // do occlusion checks at different zoom levels
         for (int k = 0; k < OCCLUSION_CASCADE_COUNT; k++) {
