@@ -9,14 +9,20 @@ profile.ULTRA=§dUltra
 profile.comment=Shader profiles change performance settings with the most optimised visual fidelity to performance ratio. It's recommended to use one of these profiles for your performance settings unless you know what you are doing.
 
 #CMPR
-option.CMPR=Complementary
-value.CMPR.0=§bRethinking Voxels
-value.CMPR.1=§bRethinking Voxels
-value.CMPR.2=§bRethinking Voxels
-value.CMPR.3=§bRethinking Voxels
-value.CMPR.4=§bRethinking Voxels
-value.CMPR.5=§bRethinking Voxels
-option.CMPR.comment=Complementary Reimagined is a creation of love and care, meant to complement the unique Minecraft experience in the best way possible. I hope you enjoy your time with Reimagined as much as I enjoyed developing it. Please feel free to join the Complementary community here: www.complementary.dev/discord
+option.CMPR=Rethinking
+value.CMPR.0=§aVoxels
+value.CMPR.1=§2Voxels
+value.CMPR.2=§bVoxels
+value.CMPR.3=§3Voxels
+value.CMPR.4=§9Voxels
+value.CMPR.5=§dVoxels
+value.CMPR.6=§5Voxels
+value.CMPR.7=§4Voxels
+value.CMPR.8=§cVoxels
+value.CMPR.9=§6Voxels
+value.CMPR.10=§eVoxels
+
+option.CMPR.comment=Rethinking Voxels is an edit of Complementary Reimagined, a creation of love and care, meant to complement the unique Minecraft experience in the best way possible and be cool. I hope you enjoy your time with Rethinking Voxels as much as I enjoyed developing it. Please feel free to join the Complementary community here: www.complementary.dev/discord
 
 #Screens
 screen.PERFORMANCE_SETTINGS=Performance Settings
@@ -54,15 +60,10 @@ screen.OTHER_SETTINGS.comment=Settings that don't fit into any other category.
 
 screen.VX_STUFF=Voxelisation Settings
 screen.VX_STUFF.comment=Settings that relate to everything that uses the voxel volume. This includes its size, but also shadow settings and more.
+screen.VX_PERF_STUFF=Voxel-related Performance Settings
 
-screen.VXVOL_SETTINGS=Voxel Volume Settings
-screen.VXVOL_SETTINGS.comment=Settings that are about changing voxel volumes.
-
-screen.VXRES_SETTINGS=Voxel Resolution Settings
-screen.VXRES_SETTINGS.comment=Settings that are about changing voxel resolutions.
-
-screen.LIGHTCOLS=Voxel Color Settings
-screen.LIGHTCOLS.comment=Settings that are about changing voxel light colors.
+screen.LIGHTCOLS=Light Colors
+screen.LIGHTCOLS.comment=Settings that are about changing light colors.
 
 screen.BLOCKCOLS=Block Lights
 screen.BLOCKCOLS.comment=Settings that are related to block lights.
@@ -114,7 +115,7 @@ screen.LAPIS_COL=Lapis Ore
 screen.LAVA_COL=Lava
 screen.LICHEN_COL=Glow Lichen
 screen.LIGHTNING_COL=Lightning Bolt
-screen.MAGMA_COL=Magma Block
+screen.MAGMA_COL=Magma Block / Cube
 screen.PICKLE_COL=Sea Pickle
 screen.PINKFROG_COL=Pearlescent Froglight
 screen.PORTAL_COL=Nether Portal
@@ -129,12 +130,13 @@ screen.SOULTORCH_COL=Soul Torch
 screen.SPAWNER_COL=Spawner
 screen.SQUID_COL=Glow Squid
 screen.TABLE_COL=Enchanting Table
+screen.TNT_COL=TNT
 screen.TORCH_COL=Torch
 screen.YELLOWFROG_COL=Ochre Froglight
 
 #Settings
 option.SHADOWRES=Voxel Volume Size
-option.SHADOWRES.comment=Size of the cuboid in which advanced light calculation is performed. 
+option.SHADOWRES.comment=Size of the cuboid in which advanced light calculation is performed.
 value.SHADOWRES.4096=§5Extreme
 value.SHADOWRES.2048=§9High
 value.SHADOWRES.1024=§aMedium
@@ -148,7 +150,10 @@ value.VXHEIGHT.8=64 Blocks
 value.VXHEIGHT.12=144 Blocks
 value.VXHEIGHT.16=256 Blocks
 
-option.ADVANCED_LIGHT_TRACING=Advanced Light Propagation
+option.ADVANCED_LIGHT_TRACING=Light Propagation Mode
+option.ADVANCED_LIGHT_TRACING.comment=Toggles between two different methods of calculating block light values. Advanced yields sharp shadows from block light, but has a few more issues. Basic doesn't have sharp shadows from blocklight, but still has coloured lights and is a little faster.
+value.ADVANCED_LIGHT_TRACING.0=Basic
+value.ADVANCED_LIGHT_TRACING.1=Advanced
 
 option.PP_BL_SHADOWS=Pixel Perfect Blocklight Shadows
 option.PP_BL_SHADOWS.comment=Perform blocklight occlusion check for every pixel rather than making an occlusion map in the voxel volume. High performance impact.
@@ -166,6 +171,8 @@ value.OCCLUSION_CASCADE_COUNT.5=16/Block
 
 option.OCCLUSION_FILTER=Occlusion Filter
 option.OCCLUSION_FILTER.comment=Enables smoothing of shadows cast from blocklight. Setting this to "Off" produces pixel-locked shadows.
+option.OCCLUSION_BLEED_PREVENTION=Occlusion Bleeding 'Fix'
+option.OCCLUSION_BLEED_PREVENTION.comment=This option fixes a few bright edges in the lighting while adding some hard edges.
 value.OCCLUSION_FILTER.0=Off
 value.OCCLUSION_FILTER.1=Linear
 value.OCCLUSION_FILTER.2=Best (not implemented)
@@ -176,14 +183,32 @@ value.SMOOTH_LIGHTING.0=Low
 value.SMOOTH_LIGHTING.1=Best
 value.SMOOTH_LIGHTING.2=Slow
 
+option.TRANSLUCENT_LIGHT_TINT=Translucent Light Tint
+option.TRANSLUCENT_LIGHT_TINT.comment=Controls how much light is tinted when going through translucent materials. Lower means more saturated.
+
+option.TRANSLUCENT_LIGHT_CONDUCTION=Translucent Light Conduction
+option.TRANSLUCENT_LIGHT_CONDUCTION.comment=Controls brightness change of light passing through translucents without advanced light propagation. Values above 1 do §4not §fconserve energy.
+
 option.SUN_SHADOWS=Sunlight Shadows
 option.SUN_SHADOWS.comment=Controls whether shadows will be cast from sunlight.
+
+option.CAVE_SUNLIGHT_FIX=Cave Light Leak Fix
+option.CAVE_SUNLIGHT_FIX.comment=Prevents light shafts from incorrectly appearing in caves.
+value.CAVE_SUNLIGHT_FIX.0=Off
+value.CAVE_SUNLIGHT_FIX.1=Partial
+value.CAVE_SUNLIGHT_FIX.2=Full
 
 option.BLOCKLIGHT_CHECK_INTERVAL=Blocklight Update Interval
 option.BLOCKLIGHT_CHECK_INTERVAL.comment=Minimum time between two blocklight updates at any given position, in frames.
 
 option.BLOCKLIGHT_SHAFT_STRENGTH=Volumetric Blocklight Strength
-option.BLOCKLIGHT_SHAFT_STRENGTH.comment=Brightness of blocklight contribution to volumetric fog 
+option.BLOCKLIGHT_SHAFT_STRENGTH.comment=Brightness of blocklight contribution to volumetric fog.
+
+option.INST_LP=Instant Light Propagation
+option.INST_LP.comment=If this is enabled, Block light will spread instantly. §cUnsupported on MacOS, OptiFine and older hardware. §f
+
+option.VBL_INTPOL=Volumetric Light Smoothing
+option.VBL_INTPOL.comment=Enables Blocklight filtering on light samples for volumetric blocklight.
 
 option.VBL_NETHER_MULT=Vol. Blocklight Nether Multiplier
 option.VBL_NETHER_MULT.comment=Volumetric Blocklight Strength in the nether relative to its overworld value.
@@ -254,7 +279,7 @@ value.shadowDistance.80.0=§e5 Chunks
 value.shadowDistance.64.0=§e4 Chunks
 
 option.ENTITY_SHADOWS=Entity Voxelisation
-option.ENTITY_SHADOWS.comment=Enables the ability for entities and block entities to cast shadows and emit light.
+option.ENTITY_SHADOWS.comment=Enables the ability for entities and block entities to emit light.
 value.ENTITY_SHADOWS.true=§dON
 value.ENTITY_SHADOWS.false=§eOFF
 
@@ -464,7 +489,8 @@ option.LOW_BRIGHTNESS_PICKLE=Sea Pickle Brightness (1-2 Pickles)
 option.HIGH_BRIGHTNESS_PICKLE=Sea Pickle Brightness (3-4 Pickles)
 option.BRIGHTNESS_GLOWSTONE=Glowstone Brightness
 option.BRIGHTNESS_SEALANTERN=Sea Lantern Brightness
-option.BRIGHTNESS_MAGMA=Magma Block Brightness
+option.BLOCK_BRIGHTNESS_MAGMA=Magma Block Brightness
+option.CUBE_BRIGHTNESS_MAGMA=Magma Cube Brightness
 option.BRIGHTNESS_CRYING=Crying Obsidian Brightness
 option.BRIGHTNESS_TORCH=Torch Brightness
 option.LANTERN_BRIGHTNESS_TORCH=Lantern Brightness
@@ -500,6 +526,7 @@ option.BRIGHTNESS_ITEMFRAME=Glow Itemframe Brightness
 option.BRIGHTNESS_BLAZE=Blaze Brightness
 option.BRIGHTNESS_SQUID=Glow Squid Brightness
 option.BRIGHTNESS_ALLAY=Allay Brightness
+option.BRIGHTNESS_TNT=TNT Brightness
 option.BRIGHTNESS_CRIMSON=Crimson Stem / Hyphae Brightness
 option.BRIGHTNESS_WARPED=Warped Stem / Hyphae Brightness
 
@@ -527,7 +554,7 @@ option.HARDCODED_PUMPKIN_COL=Override Jack o'Lantern Color
 option.HARDCODED_PICKLE_COL=Override Sea Pickle Color
 option.HARDCODED_GLOWSTONE_COL=Override Glowstone Color
 option.HARDCODED_SEALANTERN_COL=Override Sea Lantern Color
-option.HARDCODED_MAGMA_COL=Override Magma Block Color
+option.HARDCODED_MAGMA_COL=Override Magma Color
 option.HARDCODED_CRYING_COL=Override Crying Obsidian Color
 option.HARDCODED_TORCH_COL=Override Torch Color
 option.LANTERN_HARDCODED_TORCH_COL=Override Lantern Color
@@ -563,6 +590,7 @@ option.HARDCODED_ITEMFRAME_COL=Override Glow Item Frame Color
 option.HARDCODED_BLAZE_COL=Override Blaze Color
 option.HARDCODED_SQUID_COL=Override Glow Squid Color
 option.HARDCODED_ALLAY_COL=Override Allay Color
+option.HARDCODED_TNT_COL=Override TNT Color
 
 
 option.LAVA_COL_R=Red
@@ -703,6 +731,11 @@ option.SQUID_COL_B=Blue
 option.ALLAY_COL_R=Red
 option.ALLAY_COL_G=Green
 option.ALLAY_COL_B=Blue
+option.TNT_COL_R=Red
+option.TNT_COL_G=Green
+option.TNT_COL_B=Blue
+
+
 option.RAIN_PUDDLES=Rain Puddles
 option.RAIN_PUDDLES.comment=Adds water puddles to the terrain during rain. §e[*]§r RP Support option must be set to anything but Basic. §c[-]§r Rain puddles can severely impact performance.
 value.RAIN_PUDDLES.0=OFF
