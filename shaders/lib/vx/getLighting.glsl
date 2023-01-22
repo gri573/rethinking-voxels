@@ -76,7 +76,14 @@ vec3[3] getOcclusion(vec3 vxPos, vec3 normal, vec4[3] lights, bool doScattering)
             vec3 endPos = vxPos;
             vec3 goalPos = vxPos + lights[k].xyz;
             vec3 offset = hash33(vxPos * 50 + 7 * frameCounter) * 2.0 - 1.0;
-            lights[k].xyz += 0.1 * offset;
+            #ifndef CORRECT_CUBOID_OFFSETS
+            lights[k].xyz += BLOCKLIGHT_SOURCE_SIZE * offset;
+            #else
+            vxData lightData = readVxMap(getVxPixelCoords(goalPos));
+            if (lightData.cuboid) {
+                lights[k].xyz += 0.5 * (lightData.upper - lightData.lower) * offset + 0.5 * (lightData.lower + lightData.upper - 1);
+            } else lights[k].xyz += BLOCKLIGHT_SOURCE_SIZE * offset;
+            #endif
             if (doScattering) {
                 vec3 scatterOffset = 0.2 * normalize(lights[k].xyz);
                 endPos += scatterOffset;

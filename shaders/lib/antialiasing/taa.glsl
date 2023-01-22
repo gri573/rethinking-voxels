@@ -21,10 +21,10 @@ void NeighbourhoodClamping(vec3 color, inout vec3 tempColor, float depth, inout 
 		minclr = min(minclr, clr); maxclr = max(maxclr, clr);
 	}
 
-	tempColor = clamp(tempColor, minclr, maxclr);
+	tempColor = mix(tempColor, clamp(tempColor, minclr, maxclr), 0.5);
 }
 
-void DoTAA(inout vec3 color, inout vec3 temp) {
+void DoTAA(inout vec3 color, inout vec4 temp) {
 	if (int(texelFetch(colortex1, texelCoord, 0).g * 255.1) == 4) { // No SSAO, No TAA
 		return;
 	}
@@ -32,18 +32,17 @@ void DoTAA(inout vec3 color, inout vec3 temp) {
 	float depth = texelFetch(depthtex1, texelCoord, 0).r;
 	vec3 coord = vec3(texCoord, depth);
 	vec3 cameraOffset = cameraPosition - previousCameraPosition;
-	vec2 prvCoord = Reprojection(coord, cameraOffset);
+	vec3 prvCoord = Reprojection3D(coord, cameraOffset);
 	
 	vec2 view = vec2(viewWidth, viewHeight);
-	vec3 tempColor = texture2D(colortex2, prvCoord).rgb;
-	if (tempColor == vec3(0.0)) { // Fixes the first frame
-		temp = color;
+	vec4 tempColor = texture2D(colortex2, prvCoord.xy);
+	if (tempColor.xyz == vec3(0.0)) { // Fixes the first frame
+		temp = vec4(color, depth);
 		return;
 	}
 
 	float edge = 0.0;
-	NeighbourhoodClamping(color, tempColor, depth, edge);
-	
+	NeighbourhoodClamping(color, tempColor.xyz, depth, edge);
 	vec2 velocity = (texCoord - prvCoord.xy) * view;
 
 	float blendFactor = float(prvCoord.x > 0.0 && prvCoord.x < 1.0 &&
@@ -51,13 +50,17 @@ void DoTAA(inout vec3 color, inout vec3 temp) {
 	//float blendMinimum = 0.6;
 	//float blendVariable = 0.5;
 	//float blendConstant = 0.4;
-	float blendMinimum = 0.3;
-	float blendVariable = 0.25;
+	float blendMinimum = 0.01;
+	float blendVariable = 0.3;
 	float blendConstant = 0.65;
-	float lengthVelocity = length(velocity) * 100.0;
-	blendFactor *= max(exp(-lengthVelocity) * blendVariable + blendConstant - length(cameraOffset) * edge, blendMinimum);
+	float lengthVelocity = length(velocity) * 0.01;
+	float lPrvDepth0 = GetLinearDepth(prvCoord.z);
+	float lPrvDepth1 = GetLinearDepth(tempColor.w);
+	float ddepth = 100 * abs(lPrvDepth0 - lPrvDepth1);// / (lPrvDepth0 + lPrvDepth1);
+	blendFactor *= max(exp(-lengthVelocity) * blendVariable + blendConstant - ddepth - length(cameraOffset) * edge, blendMinimum);
 	
-	color = mix(color, tempColor, blendFactor);
-	temp = color;
+	color = mix(color, tempColor.xyz, blendFactor);
+	temp = vec4(color, depth);
+	//color.x += lengthVelocity;
 	//if (edge > 0.05) color.rgb = vec3(1.0, 0.0, 1.0);
 }

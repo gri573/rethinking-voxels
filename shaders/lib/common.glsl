@@ -39,6 +39,8 @@
     #define SMOOTH_LIGHTING 1 //[0 1]
   //#define PP_BL_SHADOWS
   //#define PP_SUN_SHADOWS
+  //#define CORRECT_CUBOID_OFFSETS
+    #define BLOCKLIGHT_SOURCE_SIZE 0.1 //[0.0 0.02 0.05 0.1 0.2 0.3 0.5]
   //#define INST_LP
     #define SUN_SHADOWS
     #define BIG_LIGHTS

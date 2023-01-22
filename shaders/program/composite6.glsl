@@ -44,7 +44,7 @@ void main() {
     vec3 color = texelFetch(colortex3, texelCoord, 0).rgb;
 
     #ifdef TAA
-        vec3 temp = vec3(0.0);
+        vec4 temp = vec4(0.0);
         DoTAA(color, temp);
     #endif
 
@@ -53,7 +53,7 @@ void main() {
     
 	#ifdef TAA
         /*DRAWBUFFERS:32*/
-        gl_FragData[1] = vec4(temp, 1.0);
+        gl_FragData[1] = temp;
 	#endif
 }
 

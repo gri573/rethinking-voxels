@@ -161,6 +161,12 @@ option.PP_BL_SHADOWS.comment=Perform blocklight occlusion check for every pixel 
 option.PP_SUN_SHADOWS=Pixel Perfect Sun Shadows
 option.PP_SUN_SHADOWS.comment=Perform sun occlusion check for every pixel rather than rendering a shadow map. High performance impact.
 
+option.BLOCKLIGHT_SOURCE_SIZE=Blocklight Source Size
+option.BLOCKLIGHT_SOURCE_SIZE.comment=Controls softness of shadows cast by block light sources. Needs pixel perfect shadows.
+
+option.CORRECT_CUBOID_OFFSETS=Cuboid Shadow Softness
+option.CORRECT_CUBOID_OFFSETS=If enabled, shadows cast by cuboid shaped light sources will have correct directional softness.
+
 option.OCCLUSION_CASCADE_COUNT=Max Blocklight Shadow Res
 option.OCCLUSION_CASCADE_COUNT.comment=Maximum resolution of shadows cast from block light sources.
 value.OCCLUSION_CASCADE_COUNT.1=1/Block
@@ -205,7 +211,7 @@ option.BLOCKLIGHT_SHAFT_STRENGTH=Volumetric Blocklight Strength
 option.BLOCKLIGHT_SHAFT_STRENGTH.comment=Brightness of blocklight contribution to volumetric fog.
 
 option.INST_LP=Instant Light Propagation
-option.INST_LP.comment=If this is enabled, Block light will spread instantly. §cUnsupported on MacOS, OptiFine and older hardware. §f
+option.INST_LP.comment=If this is enabled, Block light will spread instantly. §cUnsupported on MacOS, OptiFine and older hardware.
 
 option.VBL_INTPOL=Volumetric Light Smoothing
 option.VBL_INTPOL.comment=Enables Blocklight filtering on light samples for volumetric blocklight.
