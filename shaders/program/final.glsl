@@ -48,6 +48,7 @@ uniform sampler2D colortex3;
 #endif
 
 //Includes//
+#include "/lib/util/text.glsl"
 
 //Program//
 void main() {
@@ -62,6 +63,23 @@ void main() {
 	#if IMAGE_SHARPENING > 0
 		SharpenImage(color, texCoordM);
 	#endif
+	
+	if (MC_SHADOW_QUALITY != 1.0) {
+		
+		const float textlength = 45 * 6.0 + 4.0;
+		
+		float minimumSize = min(viewHeight * 1.77,viewWidth);
+			
+		float mult = minimumSize/textlength;
+		
+		float offset = viewHeight/mult;
+		
+		beginText(ivec2(gl_FragCoord.xy/mult), ivec2((viewWidth/mult-textlength) * 0.5 + 2.0, viewHeight/mult * 0.5 + 8.0));
+		printString((_p,_l,_e,_a,_s,_e,_space,_s,_e,_t,_space,_y,_o,_u,_r,_space,_O,_p,_t,_i,_f,_i,_n,_e,_space,_S,_h,_a,_d,_o,_w,_space,_Q,_u,_a,_l,_i,_t,_y,_space,_t,_o,_space,_1,_x));
+		printLine();
+		printString((_space,_space,_space,_space,_space,_space,_space,_space,_space,_space,_space,_space,_o,_r,_space,_s,_h,_a,_d,_o,_w,_s,_space,_a,_r,_e,_space,_b,_r,_o,_k,_e,_n,_space,_space,_space,_space,_space,_space,_space,_space,_space,_space,_space,_space));
+		endText(color);
+	}
 
 	/* DRAWBUFFERS:0 */
 	gl_FragData[0] = vec4(color, 1.0);
