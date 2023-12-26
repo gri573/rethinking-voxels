@@ -1,0 +1,971 @@
+#shaders/lang/fr_fr.lang
+
+#Profiles
+profile.POTATO=§4Patate
+profile.LOW=§eFaible
+profile.MEDIUM=§aMoyen
+profile.HIGH=§bÉlevé (Par défaut)
+profile.VERYHIGH=§9Très élevé
+profile.ULTRA=§dUltra
+profile.comment=Les profils du shader modifient les paramètres de performances avec le meilleur compromis entre la fidélité visuelle et les performances. §e[*]§r Il est recommandé d'utiliser l'un de ces profils pour vos paramètres, sauf si vous savez ce que vous faites. §e[*]§r Tous les paramètres affectés peuvent être trouvés dans le menu "Paramètres de performances principaux".
+
+#CMPR
+option.CMPR=Rethinking
+value.CMPR.0=§aVoxels
+value.CMPR.1=§2Voxels
+value.CMPR.2=§bVoxels
+value.CMPR.3=§3Voxels
+value.CMPR.4=§9Voxels
+value.CMPR.5=§dVoxels
+value.CMPR.6=§5Voxels
+value.CMPR.7=§4Voxels
+value.CMPR.8=§cVoxels
+value.CMPR.9=§6Voxels
+value.CMPR.10=§eVoxels
+
+option.CMPR.comment=Rethinking Voxels est une modification de Complementary Reimagined, une création faite avec amour et soin, destinée à compléter de la meilleure façon possible l'expérience unique de Minecraft et à être cool. J'espère que vous apprécierez votre temps avec Rethinking Voxels autant que j'ai apprécié le développer. N'hésitez pas à rejoindre la communauté Complementary ici : www.complementary.dev/discord
+
+#Style
+option.SHADER_STYLE=Style Visuel
+option.SHADER_STYLE.comment=Détermine le style visuel par défaut du pack de shaders. §bReimagined§r : Complète Minecraft tout en préservant ses éléments visuels uniques. §dFantasy§r : Remanie les visuels de Minecraft avec un style semi-réaliste fantastique. §e[*]§r Les paramètres suivants sont affectés : Style de l'eau, Style des nuages, Style du soleil/lune, Angle du soleil/lune, Style de l'aurore boréale.
+value.SHADER_STYLE.1=§bReimagined
+value.SHADER_STYLE.4=§dFantasy
+
+#Écrans
+screen.PERFORMANCE_SETTINGS=Paramètres de Performance Principaux
+screen.PERFORMANCE_SETTINGS.comment=Paramètres directement liés aux performances et modifiés par les différents profils de shader.
+
+screen.ATMOSPHERE_SETTINGS=Atmosphère
+screen.ATMOSPHERE_SETTINGS.comment=Paramètres liés à l'atmosphère.
+
+screen.ATM_COLOR_SETTINGS=Multiplicateurs de Couleur d'Atmosphère
+screen.ATM_COLOR_SETTINGS.comment=Permet la personnalisation des couleurs d'atmosphère principalement visibles dans le ciel et le brouillard.
+
+screen.MORNING_ATM_MULTS=Heure du Lever/Coucher du Soleil
+screen.NOON_ATM_MULTS=Heure du Midi
+screen.NIGHT_ATM_MULTS=Heure de Nuit
+screen.RAIN_ATM_MULTS=Météo Pluvieuse/Neigeuse
+screen.NETHER_ATM_MULTS=Dimension du Nether
+screen.END_ATM_MULTS=Dimension de l'End
+
+screen.CLOUD_SETTINGS=Nuages
+screen.CLOUD_SETTINGS.comment=Paramètres liés aux nuages.
+
+screen.FOG_SETTINGS=Paramètres du Brouillard
+screen.FOG_SETTINGS.comment=Paramètres liés aux différents types de brouillard.
+
+screen.CAMERA_SETTINGS=Caméra
+screen.CAMERA_SETTINGS.comment=Paramètres liés à la vue/caméra.
+
+screen.TONEMAP_SETTINGS=Équilibre des Couleurs
+screen.TONEMAP_SETTINGS.comment=Paramètres déterminant l'équilibre des couleurs visuelles.
+
+screen.MATERIAL_SETTINGS=Matériaux
+screen.MATERIAL_SETTINGS.comment=Paramètres liés aux matériaux de Minecraft.
+
+screen.IPBR_SETTINGS=IntegratedPBR
+screen.IPBR_SETTINGS.comment=Paramètres liés aux fonctionnalités d'IntegratedPBR.
+
+screen.CUSTOM_PBR_SETTINGS=SEUSPBR / labPBR personnalisé
+screen.CUSTOM_PBR_SETTINGS.comment=Paramètres liés aux fonctionnalités de SEUSPBR / labPBR.
+
+screen.LIGHTING_SETTINGS=Éclairage
+screen.LIGHTING_SETTINGS.comment=Paramètres liés à l'éclairage.
+
+screen.LIGHT_COLOR_SETTINGS=Multiplicateurs de Couleur d'Éclairage
+screen.LIGHT_COLOR_SETTINGS.comment=Permet la personnalisation des couleurs d'éclairage visibles sur toutes les surfaces.
+
+screen.MORNING_LIGHT_MULTS=Heure du Lever/Coucher du Soleil
+screen.NOON_LIGHT_MULTS=Heure du Midi
+screen.NIGHT_LIGHT_MULTS=Heure de Nuit
+screen.RAIN_LIGHT_MULTS=Météo Pluvieuse/Neigeuse
+screen.NETHER_LIGHT_MULTS=Dimension du Nether
+screen.END_LIGHT_MULTS=Dimension de l'End
+
+screen.WATER_SETTINGS=Eau
+screen.WATER_SETTINGS.comment=Paramètres liés à l'eau.
+
+screen.WAVING_SETTINGS=Textures Animées
+screen.WAVING_SETTINGS.comment=Paramètres liés aux textures animées.
+
+screen.OTHER_SETTINGS=Autres
+screen.OTHER_SETTINGS.comment=Paramètres qui ne rentrent dans aucune autre catégorie.
+
+screen.VX_STUFF=Paramètres de Voxelisation
+screen.VX_STUFF.comment=Paramètres liés à tout ce qui utilise le volume de voxel. Cela inclut sa taille, mais aussi les paramètres d'ombres et plus encore.
+screen.VX_PERF_STUFF=Paramètres de Performance liés aux Voxels
+
+screen.ADV_LIGHTPROP_STUFF=Paramètres Avancés de Propagation de Lumière
+screen.ADV_LIGHTPROP_STUFF.comment=Paramètres liés au Mode Avancé de Propagation de Lumière
+
+screen.BASIC_LIGHTPROP_STUFF=Paramètres Basiques de Propagation de Lumière
+screen.BASIC_LIGHTPROP_STUFF.comment=Paramètres liés au Mode Basique de Propagation de Lumière
+
+screen.LIGHTCOLS=Couleurs de Lumière
+screen.LIGHTCOLS.comment=Paramètres liés au changement des couleurs de lumière.
+
+screen.BLOCKCOLS=Lumières de Bloc
+screen.BLOCKCOLS.comment=Paramètres liés aux lumières de bloc.
+
+screen.ENTITYCOLS=Lumières d'Entité
+screen.ENTITYCOLS.comment=Paramètres liés aux lumières d'entité.
+
+screen.ORECOLS=Emissifs de Minerai
+screen.ORECOLS.comment=Paramètres liés aux émissifs de minerai.
+
+screen.OTHER_COL=Autres (Luminosité uniquement)
+screen.OTHER_COL.comment=Paramètres qui ne rentrent dans aucune autre catégorie.
+
+screen.FIRECOLS=Feux & Feux de Camp
+screen.FIRECOLS.comment=Paramètres liés aux feux et feux de camp.
+
+screen.FROGCOLS=Lumières de Grenouille
+screen.FROGCOLS.comment=Paramètres liés aux lumières de grenouille.
+
+screen.TORCHCOLS=Torches
+screen.TORCHCOLS.comment=Paramètres liés aux torches.
+
+screen.ALLAY_COL=Allay
+screen.AMETHYST_COL=Amas d'améthyste
+screen.BEACON_COL=Balise
+screen.BERRY_COL=Baies lumineuses
+screen.BLAZE_COL=Blaze
+screen.BREWINGSTAND_COL=Alambic
+screen.CANDLE_COL=Bougies
+screen.CHORUS_COL=Fleur de chorus
+screen.CONDUIT_COL=Conduit
+screen.COPPER_COL=Minerai de cuivre
+screen.CRYING_COL=Obsidienne pleureuse
+screen.DIAMOND_COL=Minerai de diamant
+screen.DRAGON_COL=Oeuf de dragon
+screen.EMERALD_COL=Minerai d'émeraude
+screen.END_COL=Blocs liés à l'End
+screen.ENDCRYSTAL_COL=Cristal de l'End
+screen.ENDROD_COL=Barre de l'End
+screen.FIRE_COL=Feux & Feu de camp
+screen.FURNACE_COL=Fourneau
+screen.GLOWSTONE_COL=Pierre lumineuse
+screen.GOLD_COL=Minerai d'or
+screen.VertFROG_COL=Grelampe verdoyante
+screen.ICE_COL=Glace bleue
+screen.IRON_COL=Minerai de fer
+screen.ITEMFRAME_COL=Cadre luisant
+screen.LAPIS_COL=Minerai de lapis-lazuli
+screen.LAVA_COL=Lave
+screen.LICHEN_COL=Lichen lumineux
+screen.LIGHTNING_COL=Foudre
+screen.MAGMA_COL=Cube / Bloc de magma
+screen.PICKLE_COL=Cornichon de mer
+screen.PINKFROG_COL=Portail de Nether
+screen.PUMPKIN_COL=Citrouille-lanterne
+screen.RougeSTONE_COL=Minerai de Redstone
+screen.RougeSTONELAMP_COL=Lampe à redstone
+screen.SCULK_COL=Capteur sculk
+screen.SEALANTERN_COL=Lanterne aquatique
+screen.SHROOMLIGHT_COL=Champilampe
+screen.SOULFIRE_COL=Feu des âmes & Feu de camp
+screen.SOULTORCH_COL=Torche des âmes
+screen.SPAWNER_COL=Générateur de créatures
+screen.SQUID_COL=Poulpe luisant
+screen.TABLE_COL=Table d'enchantement
+screen.TNT_COL=TNT
+screen.TORCH_COL=Torche
+screen.YELLOWFROG_COL=Grelampe ocrée
+screen.SELECT_OUTLINE_SETTINGS=Paramètres du contour de sélection
+screen.SELECT_OUTLINE_SETTINGS.comment=Paramètres qui modifient le contour de sélection des blocs.
+
+screen.WORLD_OUTLINE_SETTINGS=Paramètres du contour du monde
+screen.WORLD_OUTLINE_SETTINGS.comment=Paramètres concernant l'effet de contour optionnel.
+
+#Settings
+
+option.ACCURATE_RT=Ray Tracing Précis
+option.ACCURATE_RT.comment=Utilise les données de triangle au lieu des données de voxel pour le ray tracing. §a[+] §rTient compte de toute la géométrie, y compris les entités et les modèles personnalisés. §c[-] §rPlusieurs fois plus lent que le ray tracing voxel.
+
+option.ADVANCED_LIGHT_TRACING=Mode de Propagation de Lumière
+option.ADVANCED_LIGHT_TRACING.comment=Alterne entre deux méthodes différentes pour calculer les valeurs de lumière des blocs. Par pixel donne des ombres nettes provenant de la lumière des blocs, mais comporte quelques problèmes supplémentaires. Par bloc n'a pas des ombres aussi nettes provenant de la lumière des blocs, mais est un peu plus rapide à des résolutions élevées.
+value.ADVANCED_LIGHT_TRACING.0=Par Bloc
+value.ADVANCED_LIGHT_TRACING.1=Par Pixel
+
+option.BLOCKLIGHT_SOURCE_SIZE=Taille de la Source de Lumière de Bloc
+option.BLOCKLIGHT_SOURCE_SIZE.comment=Contrôle la douceur des ombres projetées par les sources de lumière des blocs. Nécessite des ombres parfaitement définies en pixels.
+
+option.CORRECT_CUBOID_OFFSETS=Souplesse des Ombres pour les Cuboïdes
+option.CORRECT_CUBOID_OFFSETS.comment=Si activé, les ombres projetées par des sources de lumière en forme de cuboïde auront une souplesse directionnelle correcte.
+
+option.BLOCKLIGHT_SHAFT_STRENGTH=Force de Lumière de Bloc Volumétrique
+option.BLOCKLIGHT_SHAFT_STRENGTH.comment=Luminosité de la contribution de la lumière de bloc à la brume volumétrique.
+
+option.VBL_NETHER_MULT=Multiplicateur de Lumière de Bloc Volumétrique dans le Nether
+option.VBL_NETHER_MULT.comment=Force de Lumière de Bloc Volumétrique dans le Nether par rapport à sa valeur dans l'Overworld.
+
+option.VBL_END_MULT=Multiplicateur de Lumière de Bloc Volumétrique dans l'End
+option.VBL_END_MULT.comment=Force de Lumière de Bloc Volumétrique dans l'End par rapport à sa valeur dans l'Overworld.
+
+option.GI_STRENGTH=Force de GI (Non Implémenté)
+option.GI_STRENGTH.comment=Adapte la force de l'illumination globale. Cet effet permet à la lumière qui tombe sur une surface d'illuminer son environnement.
+
+option.GLOWING_MINERAL_BLOCKS=Blocs Minéraux Lumineux
+option.GLOWING_MINERAL_BLOCKS.comment=Active l'émission de lumière des blocs d'émeraude, de redstone et de lapis-lazuli.
+
+option.RP_MODE=Support RP
+option.RP_MODE.comment=Modifie de nombreux calculs internes pour déterminer comment différents blocs et matériaux seront rendus. §bIntegrated PBR+§r: PBR calculé et effets supplémentaires, fortement recommandé pour la plupart des cas d'utilisation. §aBasique§r: Aucun PBR ni effet supplémentaire. §eSEUSPBR/labPBR§r: Matériaux utilisant les packs de ressources PBR requis.
+value.RP_MODE.0=§aBasique
+value.RP_MODE.1=§bIntegrated PBR+
+value.RP_MODE.2=§eSEUSPBR (RP Requis)
+value.RP_MODE.3=§elabPBR (RP Requis)
+
+option.WATER_QUALITY=Qualité du Matériau de l'Eau
+option.WATER_QUALITY.comment=Ajuste la qualité visuelle de l'eau. §bÉlevée§r: Active la réfraction de l'eau. §aMoyenne§r: Par défaut. §eBasse§r: Pas d'écume sur les bords, pas d'effets alpha sophistiqués, pas d'intensité de couleur variable et pas d'ombres de surface au-dessus de Moyenne.
+value.WATER_QUALITY.1=§eBasse
+value.WATER_QUALITY.2=§aMoyenne
+value.WATER_QUALITY.3=§bÉlevée
+
+option.WATER_REFLECT_QUALITY=Qualité de Réflexion de l'Eau
+option.WATER_REFLECT_QUALITY.comment=Ajuste la qualité visuelle des réflexions apparaissant sur les éléments translucides. §aMoyenne§r: Réflexions ray-traced en screen-space sur l'eau et les éléments translucides. §4Patate§r: Remplace les réflexions sur l'eau et les éléments translucides par une méthode plus rapide, peut paraître incorrecte dans certaines situations. §cDÉSACTIVÉ§r: Pas de réflexions.
+value.WATER_REFLECT_QUALITY.0=§cDÉSACTIVÉ
+value.WATER_REFLECT_QUALITY.1=§4Patate
+value.WATER_REFLECT_QUALITY.2=§aMoyenne
+
+option.BLOCK_REFLECT_QUALITY=Qualité de Réflexion des Blocs §e[*]§r
+option.BLOCK_REFLECT_QUALITY.comment=Ajuste la qualité visuelle des réflexions apparaissant sur les matériaux solides. §bÉlevée§r: Réflexions plus lisses utilisant un filtre temporel. §aMoyenne§r: Réflexions basées sur les matériaux sur tous les blocs. §e[*]§r L'option de Support RP doit être définie sur autre chose que Basique pour que des réflexions de matériaux apparaissent.
+value.BLOCK_REFLECT_QUALITY.0=§cDÉSACTIVÉ
+value.BLOCK_REFLECT_QUALITY.2=§aMoyenne
+value.BLOCK_REFLECT_QUALITY.3=§bÉlevée
+
+option.REALTIME_SHADOWS=Ombres en Temps Réel
+option.REALTIME_SHADOWS.comment=Active les ombres traditionnelles qui se déplacent en fonction du terrain et de l'angle du soleil/lune. §e[*]§r Désactiver cette option empêchera le fonctionnement des rayons lumineux et arrêtera d'autres options d'ombres de faire quoi que ce soit.
+value.REALTIME_SHADOWS.true=§bACTIVÉ
+value.REALTIME_SHADOWS.false=§cDÉSACTIVÉ
+
+option.SHADOW_QUALITY=Qualité des Ombres
+option.SHADOW_QUALITY.comment=Ajuste la qualité des ombres. Chaque palier réduit davantage les artefacts de bruit des ombres, et les options inférieures à §bÉlevée§r activent des ombres optimisées sur les feuilles.
+value.SHADOW_QUALITY.1=§eBasse
+value.SHADOW_QUALITY.2=§aMoyenne
+value.SHADOW_QUALITY.3=§bÉlevée
+value.SHADOW_QUALITY.4=§9Très Élevée
+value.SHADOW_QUALITY.5=§dUltra
+
+option.LIGHTSHAFT_QUALITY=Qualité des Rayons Lumineux
+option.LIGHTSHAFT_QUALITY.comment=Ajuste la qualité des rayons lumineux. Chaque palier réduit davantage les artefacts de bruit des rayons lumineux.
+value.LIGHTSHAFT_QUALITY.0=§cDÉSACTIVÉ
+value.LIGHTSHAFT_QUALITY.1=§eBasse
+value.LIGHTSHAFT_QUALITY.2=§aMoyenne
+value.LIGHTSHAFT_QUALITY.3=§bÉlevée
+value.LIGHTSHAFT_QUALITY.4=§9Très Élevée
+
+option.shadowDistance=Distance des Ombres
+option.shadowDistance.comment=Ajuste la distance à partir du joueur à laquelle les ombres en temps réel sont rendues. §e[*]§r La valeur est limitée en interne à la distance de rendu. §c[-]§r Des valeurs plus basses peuvent causer des fuites de rayons lumineux excessives.
+value.shadowDistance.64.0=§e4 Chunks §c[-]
+value.shadowDistance.80.0=§e5 Chunks §c[-]
+value.shadowDistance.96.0=§e6 Chunks §c[-]
+value.shadowDistance.112.0=§e7 Chunks §c[-]
+value.shadowDistance.128.0=§a8 Chunks
+value.shadowDistance.160.0=§a10 Chunks
+value.shadowDistance.192.0=§b12 Chunks
+value.shadowDistance.224.0=§b14 Chunks
+value.shadowDistance.256.0=§b16 Chunks
+value.shadowDistance.320.0=§d20 Chunks
+value.shadowDistance.384.0=§d24 Chunks
+value.shadowDistance.512.0=§d32 Chunks
+value.shadowDistance.768.0=§d48 Chunks
+value.shadowDistance.1024.0=§d64 Chunks
+
+option.ENTITY_SHADOWS=Voxelisation des Entités
+option.ENTITY_SHADOWS.comment=Active la capacité pour les entités et les blocs entités d'émettre de la lumière.
+value.ENTITY_SHADOWS.true=§dACTIVÉ
+value.ENTITY_SHADOWS.false=§eDÉSACTIVÉ
+
+option.SSAO=SSAO
+option.SSAO.comment=Active l'occlusion ambiante en espace écran (SSAO) qui ajoute un ombrage ambiant supplémentaire sur les bords de la scène.
+value.SSAO.0=§cDÉSACTIVÉ
+value.SSAO.1=Subtil
+value.SSAO.2=Normal
+
+option.BORDER_FOG=Brouillard de Bordure
+option.BORDER_FOG.comment=Brouillard intense sur les bords du monde chargé pour masquer les limites des chunks. §e[*]§r Il est recommandé de désactiver le Brouillard de Bordure lorsque vous jouez avec moins de 8 chunks de distance de rendu.
+
+option.ATM_FOG_MULT=Brouillard Atmosphérique
+option.ATM_FOG_MULT.comment=Ajuste l'intensité du brouillard basé sur l'altitude.
+value.ATM_FOG_MULT.0.50=Très subtil
+value.ATM_FOG_MULT.0.65=Subtil
+value.ATM_FOG_MULT.0.80=Normal
+value.ATM_FOG_MULT.0.95=Intense
+
+option.CAVE_FOG=Brouillard de Caverne
+option.CAVE_FOG.comment=Active un brouillard supplémentaire dans les zones souterraines profondes.
+
+option.LIGHTSHAFT_BEHAVIOUR=Mode des Rayons Lumineux
+option.LIGHTSHAFT_BEHAVIOUR.comment=Détermine le comportement des rayons lumineux. §a[+]§r Les rayons lumineux sensibles à la scène passent automatiquement entre les modes régulier et extrême pour fournir les meilleurs résultats. §c[-]§r Le mode extrême n'est pas recommandé pour le jeu général et peut fortement impacter les performances.
+value.LIGHTSHAFT_BEHAVIOUR.1=Rayons Lumineux Sensibles à la Scène §a[+]
+value.LIGHTSHAFT_BEHAVIOUR.2=Régulier
+value.LIGHTSHAFT_BEHAVIOUR.3=Extrême §c[-]
+
+option.LIGHTSHAFT_DAY_I=Multiplier des Rayons Lumineux du Jour
+option.LIGHTSHAFT_NIGHT_I=Multiplier des Rayons Lumineux de Nuit
+option.LIGHTSHAFT_RAIN_I=Multiplier des Rayons Lumineux de Pluie
+
+option.CLOUD_STYLE_DEFINE=Style des Nuages
+option.CLOUD_STYLE_DEFINE.comment=Détermine le style des nuages.
+value.CLOUD_STYLE_DEFINE.-1=Style par Défaut
+value.CLOUD_STYLE_DEFINE.0=§cDÉSACTIVÉ
+value.CLOUD_STYLE_DEFINE.1=Revisité
+value.CLOUD_STYLE_DEFINE.2=Doublement Revisité
+value.CLOUD_STYLE_DEFINE.3=Fantaisie
+
+option.CLOUD_SHADOWS=Ombres des Nuages
+option.CLOUD_SHADOWS.comment=Active les ombres projetées par les nuages. §e[*]§r Les ombres des nuages seront générées aléatoirement si le Style des Nuages est défini sur "Fantaisie".
+
+option.CLOUD_HIGH_QUALITY=Nuages de Haute Qualité §e[*]§r
+option.CLOUD_HIGH_QUALITY.comment=Atténue le bruit et améliore l'intégrité des Nuages Revisités. §e[*]§r Ce paramètre ne fonctionne que lorsque le Style des Nuages est défini sur "Revisité" ou "Doublement Revisité". §c[-]§r Cette option peut impacter les performances, surtout avec des nuages à deux couches.
+value.CLOUD_HIGH_QUALITY.1=DÉSACTIVÉ
+value.CLOUD_HIGH_QUALITY.2=ACTIVÉ §c[-]
+
+option.CLOUD_CLOSED_AREA_CHECK=Prévenir les Nuages dans les Intérieurs §e[*]§r
+option.CLOUD_CLOSED_AREA_CHECK.comment=Effectue des vérifications supplémentaires pour retirer les nuages dans les espaces clos. §e[*]§r Ce paramètre ne fonctionne que lorsque le Style des Nuages est défini sur "Revisité" ou "Doublement Revisité". §e[*]§r Ce paramètre sera considéré comme désactivé si les "Ombres en Temps Réel" sont également désactivées.
+
+option.CLOUD_ALT1=Altitude de la Couche de Nuage 1 §e[*]§r
+option.CLOUD_ALT1.comment=Détermine la hauteur du monde où les nuages apparaîtront. §e[*]§r Ce paramètre ne fonctionne que lorsque le Style des Nuages est défini sur "Revisité" ou "Doublement Revisité".
+
+option.CLOUD_ALT2=Altitude de la Couche de Nuage 2 §e[*]§r
+option.CLOUD_ALT2.comment=Détermine la hauteur du monde où les nuages de la deuxième couche apparaîtront. §e[*]§r Ce paramètre ne fonctionne que lorsque le Style des Nuages est défini sur "Doublement Revisité".
+
+option.T_EXPOSURE=Exposition du Tonemapping
+option.T_EXPOSURE.comment=Ajuste la luminosité globale de l'image.
+
+option.TM_WHITE_CURVE=Courbe Blanche du Tonemapping
+option.TM_WHITE_CURVE.comment=Ajuste la manière dont les couleurs atteignent le blanc complet.
+
+option.T_LOWER_CURVE=Courbe Inférieure du Tonemapping
+option.T_LOWER_CURVE.comment=Ajuste le contraste des couleurs plus sombres.
+
+option.T_UPPER_CURVE=Courbe Supérieure du Tonemapping
+option.T_UPPER_CURVE.comment=Ajuste le contraste des couleurs plus claires.
+
+option.T_SATURATION=Saturation
+option.T_SATURATION.comment=Ajuste la coloration globale de l'image.
+
+option.T_VIBRANCE=Vibrance
+option.T_VIBRANCE.comment=Ajuste la coloration de l'image, mais les pixels déjà colorés sont moins affectés.
+
+option.COLORGRADING=Étalonnage des Couleurs
+option.COLORGRADING.comment=Active les réglages pour mélanger librement les canaux de couleur finaux.
+option.GR_RR=Étalonnage des Couleurs - Rouge vers Rouge
+option.GR_RG=Étalonnage des Couleurs - Rouge vers Vert
+option.GR_RB=Étalonnage des Couleurs - Rouge vers Bleu
+option.GR_RC=Courbe des Rouges
+option.GR_GR=Étalonnage des Couleurs - Vert vers Rouge
+option.GR_GG=Étalonnage des Couleurs - Vert vers Vert
+option.GR_GB=Étalonnage des Couleurs - Vert vers Bleu
+option.GR_GC=Courbe des Verts
+option.GR_BR=Étalonnage des Couleurs - Bleu vers Rouge
+option.GR_BG=Étalonnage des Couleurs - Bleu vers Vert
+option.GR_BB=Étalonnage des Couleurs - Bleu vers Bleu
+option.GR_BC=Courbe des Bleus
+
+option.WATER_STYLE_DEFINE=Style de l'Eau
+option.WATER_STYLE_DEFINE.comment=Détermine le style de l'eau. §c[-]§r Les ondes de l'eau peuvent impacter fortement les performances.
+value.WATER_STYLE_DEFINE.-1=Style par Défaut
+value.WATER_STYLE_DEFINE.1=Revisité
+value.WATER_STYLE_DEFINE.2=Revisité + Vagues
+value.WATER_STYLE_DEFINE.3=Fantaisie
+value.WATER_STYLE_DEFINE.4=Fantaisie + Vagues Interactives
+
+option.WATER_BUMPINESS=Force des Ondes de l'Eau §e[*]§r
+option.WATER_BUMPINESS.comment=Ajuste l'intensité des ondes de direction de surface (normales) visibles sur l'eau. §e[*]§r Ce paramètre n'est pas lié à l'option "Texture d'Ondulation de l'Eau". §e[*]§r Ce paramètre ne fonctionne que lorsque le Style de l'Eau est défini sur "Revisité + Vagues" ou "Fantaisie".
+
+option.WATER_REFRACTION_INTENSITY=Intensité de la Réfraction de l'Eau §e[*]§r
+option.WATER_REFRACTION_INTENSITY.comment=Ajuste l'intensité de la réfraction de l'eau et de la distorsion sous-marine. §e[*]§r Ce paramètre ne fonctionne pleinement que lorsque la Qualité de l'Eau est réglée sur "Haute" ou plus, sinon cela n'affectera que la subtile distorsion sous-marine.
+
+option.WATERCOLOR_R=Multiplier la Couleur Rouge de l'Eau
+option.WATERCOLOR_G=Multiplier la Couleur Verte de l'Eau
+option.WATERCOLOR_B=Multiplier la Couleur Bleue de l'Eau
+
+option.SUN_ANGLE=Angle du Soleil/Lune
+option.SUN_ANGLE.comment=Ajuste l'angle du soleil/lune par rapport au monde pendant midi. §a[+]§r Le modèle d'éclairage Revisité est spécialement conçu pour faire fonctionner l'angle de soleil "0" aussi bien que les autres.
+value.SUN_ANGLE.-1=Style par Défaut
+value.SUN_ANGLE.0=0 §a[+]
+value.SUN_ANGLE.-20=-20
+value.SUN_ANGLE.-30=-30
+value.SUN_ANGLE.-40=-40
+
+option.SUN_MOON_STYLE_DEFINE=Style du Soleil/Lune
+option.SUN_MOON_STYLE_DEFINE.comment=Détermine le style du soleil/lune. §e[*]§r Ce paramètre pourrait interagir incorrectement avec certaines ressources à cause des limitations de différenciation entre le soleil, la lune et la boîte à ciel.
+value.SUN_MOON_STYLE_DEFINE.-1=Style par Défaut
+value.SUN_MOON_STYLE_DEFINE.1=Revisité
+value.SUN_MOON_STYLE_DEFINE.2=Fantaisie
+
+option.SUN_MOON_HORIZON=Horizon du Soleil/Lune
+option.SUN_MOON_HORIZON.comment=Empêche le soleil/la lune de s'afficher sous la ligne d'horizon.
+
+option.NIGHT_STAR_AMOUNT=Quantité d'Étoiles de Nuit
+option.NIGHT_STAR_AMOUNT.comment=Détermine la quantité d'étoiles dans le ciel nocturne.
+value.NIGHT_STAR_AMOUNT.2=Moyen
+value.NIGHT_STAR_AMOUNT.3=Élevé
+
+option.AURORA_STYLE_DEFINE=Style de l'Aurore Boréale
+option.AURORA_STYLE_DEFINE.comment=Détermine le style des aurores boréales qui apparaissent dans le ciel nocturne.
+value.AURORA_STYLE_DEFINE.-1=Style par Défaut
+value.AURORA_STYLE_DEFINE.0=§cDÉSACTIVÉ
+value.AURORA_STYLE_DEFINE.1=Revisité
+value.AURORA_STYLE_DEFINE.2=Fantaisie
+
+option.AURORA_CONDITION=Aurore Boréale
+option.AURORA_CONDITION.comment=Détermine la ou les conditions pour lesquelles l'Aurore Boréale apparaît.
+value.AURORA_CONDITION.0=Aucune Condition
+value.AURORA_CONDITION.1=Pleine Lune
+value.AURORA_CONDITION.2=Biome Enneigé
+value.AURORA_CONDITION.3=Pleine Lune dans un Biome Enneigé
+value.AURORA_CONDITION.4=Pleine Lune ou Biome Enneigé
+
+option.PIXEL_SHADOW=Ombres Pixelisées
+option.PIXEL_SHADOW.comment=Modifie les coordonnées mondiales sur une grille pour rendre les ombres pixelisées. §e[*]§r Ce paramètre n'affecte pas les performances.
+value.PIXEL_SHADOW.0=DÉSACTIVÉ
+value.PIXEL_SHADOW.8=8x8 §e[*]
+value.PIXEL_SHADOW.16=16x16 §e[*]
+value.PIXEL_SHADOW.32=32x32 §e[*]
+value.PIXEL_SHADOW.64=64x64 §e[*]
+value.PIXEL_SHADOW.128=128x128 §e[*]
+
+option.BLOOM_STRENGTH=Force du Halo Lumineux
+option.BLOOM_STRENGTH.comment=Détermine l'intensité de la lueur sur les éléments lumineux et du halo en cas de pluie/humidité dans les cavernes. §c[-]§r Un halo trop important rendra l'image plus lumineuse que prévu, surtout dans des conditions humides.
+value.BLOOM_STRENGTH.0.027=15%
+value.BLOOM_STRENGTH.0.036=20%
+value.BLOOM_STRENGTH.0.045=25%
+value.BLOOM_STRENGTH.0.054=30%
+value.BLOOM_STRENGTH.0.063=35%
+value.BLOOM_STRENGTH.0.072=40%
+value.BLOOM_STRENGTH.0.081=45%
+value.BLOOM_STRENGTH.0.09=50%
+value.BLOOM_STRENGTH.0.10=55%
+value.BLOOM_STRENGTH.0.11=60%
+value.BLOOM_STRENGTH.0.12=65%
+value.BLOOM_STRENGTH.0.13=70%
+value.BLOOM_STRENGTH.0.14=75%
+value.BLOOM_STRENGTH.0.15=80% §c[-]
+value.BLOOM_STRENGTH.0.16=85% §c[-]
+value.BLOOM_STRENGTH.0.17=90% §c[-]
+value.BLOOM_STRENGTH.0.18=95% §c[-]
+value.BLOOM_STRENGTH.0.19=100% §c[-]
+
+option.FXAA=Anti-Aliasing
+option.FXAA.comment=Active l'Anti-Aliasing Rapide Approximatif (FXAA), qui produit essentiellement une image plus douce. §e[*]§r Désactiver cette option ne désactivera pas la Lite Temporal Anti Aliasing (TAA), car la lite TAA est nécessaire pour que de nombreux effets fonctionnent correctement.
+
+option.MOTION_BLURRING=Flou de Mouvement
+option.MOTION_BLURRING.comment=Applique un flou à l'image lors du déplacement de la caméra.
+
+option.MOTION_BLURRING_STRENGTH=Intensité du Flou de Mouvement
+option.MOTION_BLURRING_STRENGTH.comment=Ajuste l'intensité du flou de mouvement.
+
+option.VIGNETTE_R=Vignette
+option.VIGNETTE_R.comment=Applique un assombrissement autour des bords de l'écran.
+
+option.FANCY_GLASS=Verre Amélioré
+option.FANCY_GLASS.comment=Améliore le verre classique en y ajoutant une couche translucide. §c[-]§r Peut causer des problèmes sur Iris en raison d'un bug de Sodium. §e[*]§r L'option de support RP doit être définie sur PBR+ intégré.
+
+option.HAND_SWAYING=Mouvement de la Main
+option.HAND_SWAYING.comment=Ajoute un mouvement lent à la main du joueur pour simuler une animation de respiration.
+value.HAND_SWAYING.0=DÉSACTIVÉ
+value.HAND_SWAYING.1=Subtil
+value.HAND_SWAYING.2=Normal
+value.HAND_SWAYING.3=Intense
+
+option.LESS_LAVA_FOG=Meilleure Visibilité dans la Lave
+option.LESS_LAVA_FOG.comment=Réduit le brouillard de la lave pour améliorer la visibilité à l'intérieur de la lave.
+
+option.SNOWY_WORLD=Monde Enneigé
+option.SNOWY_WORLD.comment=Recouvre tout le monde de neige.
+
+option.SHOW_LIGHT_LEVEL=Afficher les Niveaux de Lumière
+option.SHOW_LIGHT_LEVEL.comment=Dans l'Overworld : Le jaune signifie que les monstres peuvent apparaître pendant la nuit, le rouge signifie qu'ils peuvent apparaître à tout moment. Dans le Nether ou l'End : Le jaune signifie que certains monstres peuvent apparaître, le rouge signifie que tous les monstres peuvent apparaître. §e[*]§r Désactivez l'éclairage lisse pour des résultats précis.
+value.SHOW_LIGHT_LEVEL.0=DÉSACTIVÉ
+value.SHOW_LIGHT_LEVEL.1=Tenez l'Oeil d'Araignée
+value.SHOW_LIGHT_LEVEL.2=Tenez la Source de Lumière
+value.SHOW_LIGHT_LEVEL.3=Toujours ACTIVÉ
+
+option.MINIMUM_LIGHT_MODE=Éclairage des Cavernes
+option.MINIMUM_LIGHT_MODE.comment=Ajoute un éclairage supplémentaire aux zones sans lumière du ciel. §a[+]§r L'option "Par défaut" détermine l'éclairage selon le curseur "Luminosité" dans les Paramètres Vidéo.
+value.MINIMUM_LIGHT_MODE.0=Très Sombre
+value.MINIMUM_LIGHT_MODE.1=Sombre
+value.MINIMUM_LIGHT_MODE.2=Par défaut §a[+]
+value.MINIMUM_LIGHT_MODE.3=Clair
+value.MINIMUM_LIGHT_MODE.4=Très Clair
+
+option.AMBIENT_MULT=Multiplicateur de la Lumière d'Ambiance
+option.AMBIENT_MULT.comment=Détermine la quantité de lumière d'ambiance visible dans les ombres. §c[-]§r Modifier radicalement ce paramètre peut perturber l'équilibre de l'éclairage.
+
+option.GENERATED_NORMALS=Normales Générées
+option.GENERATED_NORMALS.comment=Ajoute des détails bosselés générés automatiquement aux surfaces. §e[*]§r L'option de support RP doit être définie sur PBR+ intégré.
+
+option.COATED_TEXTURES=Textures Revêtues
+option.COATED_TEXTURES.comment=Ajoute un bruit généré automatiquement aux textures. §e[*]§r L'option de support RP doit être définie sur PBR+ intégré.
+
+option.ENTITY_GN_AND_CT=GN et CT sur les Entités
+option.ENTITY_GN_AND_CT.comment=Décide si les Normales Générées et les Textures Revêtues peuvent apparaître sur les entités. §e[*]§r Cela n'activera pas GN ou CT sur les entités à moins que ces options ne soient déjà activées.
+
+option.GENERATED_NORMAL_MULT=Force des Normales Générées
+option.GENERATED_NORMAL_MULT.comment=Ajuste la force des détails bosselés générés automatiquement sur les surfaces.
+
+option.COATED_TEXTURE_MULT=Force des Textures Revêtues
+option.COATED_TEXTURE_MULT.comment=Ajuste la force du bruit généré automatiquement sur les textures.
+
+option.GLOWING_ORES=Minerais Luminescents
+option.GLOWING_ORES.comment=Ajoute une émission aux minerais. §e[*]§r L'option de support RP doit être définie sur PBR+ intégré.
+value.GLOWING_ORES.0=DÉSACTIVÉ
+value.GLOWING_ORES.1=Overworld
+value.GLOWING_ORES.2=Overworld + Nether
+
+option.EMISSIVE_RougeSTONE_BLOCK=Bloc de Redstone Luminescent
+option.EMISSIVE_RougeSTONE_BLOCK.comment=Ajoute une émission au bloc de redstone. §e[*]§r L'option de support RP doit être définie sur PBR+ intégré.
+
+option.EMISSIVE_LAPIS_BLOCK=Bloc de Lapis Lazuli Luminescent
+option.EMISSIVE_LAPIS_BLOCK.comment=Ajoute une émission au bloc de lapis lazuli. §e[*]§r L'option de support RP doit être définie sur PBR+ intégré.
+
+option.GLOWING_AMETHYST=Améthyste Luminescente
+option.GLOWING_AMETHYST.comment=Ajoute une émission aux bourgeons/dépôts/blocs d'améthyste. §e[*]§r L'option de support RP doit être définie sur PBR+ intégré.
+value.GLOWING_AMETHYST.0=§cDÉSACTIVÉ
+value.GLOWING_AMETHYST.1=Cristal
+value.GLOWING_AMETHYST.2=Cristal & Bloc
+
+option.NORMAL_MAP_STRENGTH=Force de la Carte Normale
+option.NORMAL_MAP_STRENGTH.comment=Ajuste la force des détails bosselés sur les surfaces. §e[*]§r L'option de support RP doit être définie sur SEUSPBR/labPBR, et un pack de ressources compatible doit être utilisé.
+
+option.CUSTOM_EMISSION_INTENSITY=Intensité de l'Émission Personnalisée
+option.CUSTOM_EMISSION_INTENSITY.comment=Ajuste l'intensité des surfaces luminescentes. §e[*]§r L'option de support RP doit être définie sur SEUSPBR/labPBR, et un pack de ressources compatible doit être utilisé.
+
+option.POM=Mapping d'Occlusion Parallaxe
+option.POM.comment=Active l'effet 3D sur les surfaces. §c[-]§r Cet effet peut avoir un impact significatif sur les performances. §e[*]§r L'option de support RP doit être définie sur SEUSPBR/labPBR, et un pack de ressources compatible doit être utilisé.
+value.POM.false=DÉSACTIVÉ
+value.POM.true=ACTIVÉ §c[-]
+
+option.POM_DEPTH=Profondeur de POM
+option.POM_DEPTH.comment=Ajuste la profondeur du mapping d'occlusion parallaxe. §e[*]§r L'option de support RP doit être définie sur SEUSPBR/labPBR, et un pack de ressources compatible doit être utilisé.
+
+option.POM_QUALITY=Qualité de POM
+option.POM_QUALITY.comment=Ajuste la netteté/précision du mapping d'occlusion parallaxe. §c[-]§r Les valeurs supérieures à 200 peuvent avoir un impact significatif sur les performances. §e[*]§r Les valeurs inférieures à 100 forceront le "Mode d'éclairage de POM" à "Lisse". §e[*]§r L'option de support RP doit être définie sur SEUSPBR/labPBR, et un pack de ressources compatible doit être utilisé.
+value.POM_QUALITY.16=16 §e[*]
+value.POM_QUALITY.32=32 §e[*]
+value.POM_QUALITY.64=64 §e[*]
+value.POM_QUALITY.256=256 §c[-]
+value.POM_QUALITY.512=512 §c[-]
+
+option.POM_DISTANCE=Distance de POM
+option.POM_DISTANCE.comment=Ajuste la distance à laquelle le mapping d'occlusion parallaxe est calculé. §e[*]§r Il est recommandé de garder cette valeur en dessous de 50 pour obtenir un léger gain de performances. §e[*]§r L'option de support RP doit être définie sur SEUSPBR/labPBR, et un pack de ressources compatible doit être utilisé.
+value.POM_DISTANCE.64=64 §e[*]
+value.POM_DISTANCE.128=128 §e[*]
+value.POM_DISTANCE.256=256 §e[*]
+value.POM_DISTANCE.512=512 §e[*]
+value.POM_DISTANCE.1024=1024 §e[*]
+
+option.POM_LIGHTING_MODE=Mode d'Éclairage POM
+option.POM_LIGHTING_MODE.comment=Ajuste le style d'éclairage pour les surfaces affectées par POM. Lisse : Les murs POM ne recevront pas de lumière s'ils ne font pas face à la lumière. Net : Les murs POM recevront toujours de la lumière comme s'ils n'étaient pas des murs. §e[*]§r Cette option sera forcée sur "Lisse" si la Qualité de POM est réglée à moins de 100.
+value.POM_LIGHTING_MODE.1=Lisse
+value.POM_LIGHTING_MODE.2=Net
+
+option.POM_ALLOW_CUTOUT=POM sur les Surfaces Découpées
+option.POM_ALLOW_CUTOUT.comment=Permet à POM de fonctionner sur les sections de blocs découpés (comme les espaces entre les feuilles). §c[-]§r Cet effet peut avoir un impact significatif sur les performances.
+value.POM_ALLOW_CUTOUT.false=DÉSACTIVÉ
+value.POM_ALLOW_CUTOUT.true=ACTIVÉ §c[-]
+
+option.DIRECTIONAL_BLOCKLIGHT=Lumière de Bloc Directionnelle
+option.DIRECTIONAL_BLOCKLIGHT.comment=Ajoute de la profondeur à la lumière du bloc en fonction de la normale de la surface. §e[*]§r L'option de support RP doit être définie sur SEUSPBR/labPBR, et un pack de ressources compatible doit être utilisé. §c[-]§r Cet effet peut avoir un impact sur les performances.
+
+option.HELD_LIGHTING_MODE=Éclairage Dynamique Tenu en Main
+option.HELD_LIGHTING_MODE.comment=Permet aux sources de lumière tenues en main de projeter de la lumière sur la scène.
+value.HELD_LIGHTING_MODE.0=DÉSACTIVÉ
+value.HELD_LIGHTING_MODE.1=Subtil
+value.HELD_LIGHTING_MODE.2=Normal
+
+option.HELD_LIGHT_OCCLUSION_CHECK=Ombres de Lumière Tenu en Main
+option.HELD_LIGHT_OCCLUSION_CHECK.comment=Permet à la lumière émise par les objets tenus en main de recevoir des ombres. §c[-]§r Impact sur les performances élevé
+
+option.BLOCKLIGHT_COLOR_MODE=Couleur de Lumière de Bloc de Secours
+option.BLOCKLIGHT_COLOR_MODE.comment=Détermine la couleur de la lumière émise par les sources lumineuses si elles sont loin du joueur.
+value.BLOCKLIGHT_COLOR_MODE.9=Froide
+value.BLOCKLIGHT_COLOR_MODE.10=Naturelle
+value.BLOCKLIGHT_COLOR_MODE.11=Chaude
+
+option.NO_WAVING_INDOORS=Aucune Ondulation en Intérieur
+option.NO_WAVING_INDOORS.comment=Empêche les blocs de bouger dans les espaces clos en utilisant la lumière du ciel. §c[-]§r Activer ce paramètre peut causer des problèmes avec certains packs de ressources ou mods.
+
+option.WAVING_FOLIAGE=Ondulation des Feuillages
+option.WAVING_FOLIAGE.comment=Ajoute du mouvement aux feuillages pour simuler le vent.
+
+option.WAVING_LEAVES=Ondulation des Feuilles
+option.WAVING_LEAVES.comment=Ajoute du mouvement aux feuilles pour simuler le vent.
+
+option.WAVING_WATER_VERTEX=Texture d'Eau Ondulée
+option.WAVING_WATER_VERTEX.comment=Ajoute du mouvement à la position de l'eau pour simuler le vent. §e[*]§r Cette option n'est pas liée au paramètre "Force des Vagues de l'Eau".
+
+option.WORLD_OUTLINE=Contour du Monde
+option.WORLD_OUTLINE.comment=Ajoute des contours autour des blocs.*
+
+option.CAULDRON_BRIGHTNESS_LAVA=Luminosité de Chaudron de lave
+option.BRIGHTNESS_LAVA=Luminosité de la lave
+option.BRIGHTNESS_FIRE=Luminosité du feu 
+option.CAMPFIRE_BRIGHTNESS_FIRE=Luminosité du Feu de camp
+option.BRIGHTNESS_SOULFIRE=Luminosité du Feu des âmes
+option.CAMPFIRE_BRIGHTNESS_SOULFIRE=Luminosité du Feu de camp des âmes
+option.ORE_BRIGHTNESS_IRON=Luminosité du minerai de fer
+option.ORE_BRIGHTNESS_COPPER=Luminosité du minerai de cuivre
+option.ORE_BRIGHTNESS_GOLD=Luminosité du minerai d'or
+option.ORE_BRIGHTNESS_DIAMOND=Luminosité du minerai de diamant
+option.ORE_BRIGHTNESS_EMERALD=Luminosité du minerai d'émeraude
+option.BLOCK_BRIGHTNESS_EMERALD=Luminosité du bloc d'émeraude
+option.ORE_BRIGHTNESS_LAPIS=Luminosité du minerai de lapis lazuli
+option.BLOCK_BRIGHTNESS_LAPIS=Luminosité du bloc de lapis lazuli
+option.OREUNLIT_BRIGHTNESS_RougeSTONE=Luminosité du minerai (éteint)
+option.ORELIT_BRIGHTNESS_RougeSTONE=Luminosité du minerai (allumé)
+option.BLOCK_BRIGHTNESS_RougeSTONE=Luminosité des blocs
+option.WIRE0_BRIGHTNESS_RougeSTONE=Luminosité de la poussière (Puissance 1-5)
+option.WIRE1_BRIGHTNESS_RougeSTONE=Luminosité de la poussière (Puissance 6-10)
+option.WIRE2_BRIGHTNESS_RougeSTONE=Luminosité de la poussière (Puissance 11-14)
+option.WIRE3_BRIGHTNESS_RougeSTONE=Luminosité de la poussière (Puissance 15)
+option.TORCH_BRIGHTNESS_RougeSTONE=Luminosité de la torche
+option.BRIGHTNESS_AMETHYST=Luminosité des Amas d'améthyste
+option.BRIGHTNESS_ICE=Luminosité de la glace bleue
+option.BRIGHTNESS_PUMPKIN=Luminosité de la Citrouille Lanterne
+option.LOW_BRIGHTNESS_PICKLE=Luminosité du Cornichon de mer (1-2 Cornichons)
+option.HIGH_BRIGHTNESS_PICKLE=Luminosité du Cornichon de mer (3-4 Cornichons)
+option.BRIGHTNESS_GLOWSTONE=Luminosité de la Pierre lumineuse
+option.BRIGHTNESS_SEALANTERN=Luminosité de la Lanterne aquatique
+option.BLOCK_BRIGHTNESS_MAGMA=Luminosité du bloc de Magma
+option.CUBE_BRIGHTNESS_MAGMA=Luminosité du Cube de Magma
+option.BRIGHTNESS_CRYING=Luminosité de l'Obsidienne pleureuse
+option.BRIGHTNESS_TORCH=Luminosité de la torche
+option.LANTERN_BRIGHTNESS_TORCH=Luminosité de la lanterne
+option.BRIGHTNESS_ENDROD=Luminosité de la barre de l'End
+option.BRIGHTNESS_CHORUS=Luminosité de la Fleur de Chorus
+option.BRIGHTNESS_FURNACE=Luminosité du Fourneau
+option.BRIGHTNESS_SOULTORCH=Luminosité de la Torche des âmes
+option.LANTERN_BRIGHTNESS_SOULTORCH=Luminosité de la Lanterne des âmes
+option.BRIGHTNESS_LICHEN=Luminosité du Lichen lumineux
+option.BRIGHTNESS_TABLE=Luminosité de la table d'enchantement
+option.FRAME_BRIGHTNESS_END=Luminosité du Cadre de portail de l'End (Avec Oeil)
+option.PORTAL_BRIGHTNESS_END=Luminosité du Portail de L'End
+option.CHEST_BRIGHTNESS_END=Luminosité du Coffre de l'Ender
+option.BRIGHTNESS_DRAGON=Luminosité de l'Oeuf de dragon
+option.BRIGHTNESS_CANDLE=Luminosité de la Bougie
+option.CAKE_BRIGHTNESS_CANDLE=Luminosité du Gâteau avec une bougie
+option.ANCHOR_BRIGHTNESS_PORTAL=Luminosité de l'Ancre de réapparition
+option.BRIGHTNESS_PORTAL=Luminosité du Portail du Nether
+option.BRIGHTNESS_BERRY=Luminosité des Baies lumineuses
+option.BRIGHTNESS_RougeSTONELAMP=Luminosité des Lampe à redstone
+option.BRIGHTNESS_SHROOMLIGHT=Luminosité des Champilampe
+option.BRIGHTNESS_YELLOWFROG=Luminosité de la Grelampe ocrée
+option.BRIGHTNESS_VertFROG=Luminosité de la Grelampe verdoyante
+option.BRIGHTNESS_PINKFROG=Luminosité de la Grelampe nacrée
+option.SENSOR_BRIGHTNESS_SCULK=Luminosité du Capteur sculk
+option.BRIGHTNESS_SPAWNER=Luminosité du Générateur de créatures
+option.BRIGHTNESS_BREWINGSTAND=Luminosité de l'Alambic
+option.BRIGHTNESS_BEACON=Luminosité de la Balise
+option.BRIGHTNESS_CONDUIT=Luminosité du Conduit
+option.BRIGHTNESS_ENDCRYSTAL=Luminosité du Cristal de l'End
+option.BRIGHTNESS_LIGHTNING=Luminosité de la Foudre
+option.BRIGHTNESS_ITEMFRAME=Luminosité du Cadre luisant
+option.BRIGHTNESS_BLAZE=Luminosité du Blaze
+option.BRIGHTNESS_SQUID=Luminosité du Poulpe luisant
+option.BRIGHTNESS_ALLAY=Luminosité de l'Allay
+option.BRIGHTNESS_TNT=Luminosité de la TNT
+option.BRIGHTNESS_CRIMSON=Luminosité de la Tige carmin / Hyphes
+option.BRIGHTNESS_WARPED=Luminosité de la Tige biscornue / Hyphes
+
+option.CAULDRON_HARDCODED_LAVA_COL=Couleur du Chaudron de lave
+option.HARDCODED_LAVA_COL=Couleur de la Lave
+option.HARDCODED_FIRE_COL=Couleur du Feu
+option.CAMPFIRE_HARDCODED_FIRE_COL=Couleur du Feu de camp
+option.CAMPFIRE_HARDCODED_SOULFIRE_COL=Couleur du Feu de camp des âmes
+option.HARDCODED_SOULFIRE_COL=Couleur du Feu des âmes
+option.ORE_HARDCODED_IRON_COL=Couleur du Minerai de fer
+option.ORE_HARDCODED_COPPER_COL=Couleur du Minerai de cuivre
+option.ORE_HARDCODED_GOLD_COL=Couleur du Minerai d'or
+option.ORE_HARDCODED_DIAMOND_COL=Couleur du Minerai de diamant
+option.ORE_HARDCODED_EMERALD_COL=Couleur du Minerai d'émeraude
+option.BLOCK_HARDCODED_EMERALD_COL=Couleur du Bloc d'émeraude
+option.ORE_HARDCODED_LAPIS_COL=Couleur du Minerai de Lapis Lazuli
+option.BLOCK_HARDCODED_LAPIS_COL=Couleur du Bloc de Lapis Lazuli
+option.ORE_HARDCODED_RougeSTONE_COL=Couleur du Minerai de Redstone
+option.BLOCK_HARDCODED_RougeSTONE_COL=Couleur du Bloc de Redstone
+option.WIRE_HARDCODED_RougeSTONE_COL=Couleur de la Redstone
+option.TORCH_HARDCODED_RougeSTONE_COL=Couleur de la Torche de Redstone
+option.HARDCODED_AMETHYST_COL=Couleur de l'Améthyste
+option.HARDCODED_ICE_COL=Couleur de la Glace bleue
+option.HARDCODED_PUMPKIN_COL=Couleur de la Citrouille-lanterne
+option.HARDCODED_PICKLE_COL=Couleur du Cornichon de mer
+option.HARDCODED_GLOWSTONE_COL=Couleur de la Pierre lumineuse
+option.HARDCODED_SEALANTERN_COL=Couleur de la Lanterne aquatique
+option.HARDCODED_MAGMA_COL=Couleur du Magma
+option.HARDCODED_CRYING_COL=Couleur de l'Obsidienne pleureuse
+option.HARDCODED_TORCH_COL=Couleur de la Torche
+option.LANTERN_HARDCODED_TORCH_COL=Couleur de la Lanterne
+option.HARDCODED_ENDROD_COL=Couleur de la barre de l'End
+option.HARDCODED_CHORUS_COL=Couleur de la Fleur de Chorus
+option.HARDCODED_FURNACE_COL=Couleur du Fourneau
+option.HARDCODED_SOULTORCH_COL=Couleur de la Torche des âmes
+option.LANTERN_HARDCODED_SOULTORCH_COL=Couleur de la Lanterne des âmes
+option.HARDCODED_LICHEN_COL=Couleur du Lichen lumineux
+option.HARDCODED_TABLE_COL=Couleur de la Table d'enchantement
+option.HARDCODED_END_COL=Couleur du Cadre de portail de l'End
+option.PORTAL_HARDCODED_END_COL=Couleur du Portail de l'End
+option.CHEST_HARDCODED_END_COL=Couleur du Coffre de l'Ender
+option.HARDCODED_DRAGON_COL=Couleur de l'Oeuf du dragon
+option.HARDCODED_CANDLE_COL=Couleur de la Bougie
+option.CAKE_HARDCODED_CANDLE_COL=Couleur du Gâteau avec une bougie
+option.ANCHOR_HARDCODED_PORTAL_COL=Couleur de l'Ancre de réapparition
+option.HARDCODED_PORTAL_COL=Couleur du Portail du Nether
+option.HARDCODED_BERRY_COL=Couleur des Baies lumineuses
+option.HARDCODED_RougeSTONELAMP_COL=Couleur de la Lampe à redstone
+option.HARDCODED_SHROOMLIGHT_COL=Couleur de la Champilampe
+option.HARDCODED_YELLOWFROG_COL=Couleur de la Grelampe ocrée
+option.HARDCODED_VertFROG_COL=Couleur de la Grelampe verdoyante
+option.HARDCODED_PINKFROG_COL=Couleur de la Grelampe nacrée
+option.HARDCODED_SCULK_COL=Couleur du Capteur sculk
+option.HARDCODED_SPAWNER_COL=Couleur du Générateur de monstres
+option.HARDCODED_BREWINGSTAND_COL=Couleur de l'Alambic
+option.HARDCODED_BEACON_COL=Couleur de la Balise
+option.HARDCODED_CONDUIT_COL=Couleur du Conduit
+option.HARDCODED_ENDCRYSTAL_COL=Couleur du Cristal de l'End
+option.HARDCODED_LIGHTNING_COL=Couleur de la Foudre
+option.HARDCODED_ITEMFRAME_COL=Couleur du Cadre luisant
+option.HARDCODED_BLAZE_COL=Couleur de Blaze
+option.HARDCODED_SQUID_COL=Couleur du Poulpe luisant
+option.HARDCODED_ALLAY_COL=Couleur d'Allay
+option.HARDCODED_TNT_COL=Couleur de TNT
+
+
+option.LAVA_COL_R=Rouge
+option.LAVA_COL_G=Vert
+option.LAVA_COL_B=Bleu
+option.FIRE_COL_R=Rouge
+option.FIRE_COL_G=Vert
+option.FIRE_COL_B=Bleu
+option.SOULFIRE_COL_R=Rouge
+option.SOULFIRE_COL_G=Vert
+option.SOULFIRE_COL_B=Bleu
+option.IRON_COL_R=Rouge
+option.IRON_COL_G=Vert
+option.IRON_COL_B=Bleu
+option.COPPER_COL_R=Rouge
+option.COPPER_COL_G=Vert
+option.COPPER_COL_B=Bleu
+option.GOLD_COL_R=Rouge
+option.GOLD_COL_G=Vert
+option.GOLD_COL_B=Bleu
+option.DIAMOND_COL_R=Rouge
+option.DIAMOND_COL_G=Vert
+option.DIAMOND_COL_B=Bleu
+option.EMERALD_COL_R=Rouge
+option.EMERALD_COL_G=Vert
+option.EMERALD_COL_B=Bleu
+option.LAPIS_COL_R=Rouge
+option.LAPIS_COL_G=Vert
+option.LAPIS_COL_B=Bleu
+option.RougeSTONE_COL_R=Rouge
+option.RougeSTONE_COL_G=Vert
+option.RougeSTONE_COL_B=Bleu
+option.AMETHYST_COL_R=Rouge
+option.AMETHYST_COL_G=Vert
+option.AMETHYST_COL_B=Bleu
+option.ICE_COL_R=Rouge
+option.ICE_COL_G=Vert
+option.ICE_COL_B=Bleu
+option.PUMPKIN_COL_R=Rouge
+option.PUMPKIN_COL_G=Vert
+option.PUMPKIN_COL_B=Bleu
+option.PICKLE_COL_R=Rouge
+option.PICKLE_COL_G=Vert
+option.PICKLE_COL_B=Bleu
+option.GLOWSTONE_COL_R=Rouge
+option.GLOWSTONE_COL_G=Vert
+option.GLOWSTONE_COL_B=Bleu
+option.SEALANTERN_COL_R=Rouge
+option.SEALANTERN_COL_G=Vert
+option.SEALANTERN_COL_B=Bleu
+option.MAGMA_COL_R=Rouge
+option.MAGMA_COL_G=Vert
+option.MAGMA_COL_B=Bleu
+option.CRYING_COL_R=Rouge
+option.CRYING_COL_G=Vert
+option.CRYING_COL_B=Bleu
+option.TORCH_COL_R=Rouge
+option.TORCH_COL_G=Vert
+option.TORCH_COL_B=Bleu
+option.ENDROD_COL_R=Rouge
+option.ENDROD_COL_G=Vert
+option.ENDROD_COL_B=Bleu
+option.CHORUS_COL_R=Rouge
+option.CHORUS_COL_G=Vert
+option.CHORUS_COL_B=Bleu
+option.FURNACE_COL_R=Rouge
+option.FURNACE_COL_G=Vert
+option.FURNACE_COL_B=Bleu
+option.SOULTORCH_COL_R=Rouge
+option.SOULTORCH_COL_G=Vert
+option.SOULTORCH_COL_B=Bleu
+option.LICHEN_COL_R=Rouge
+option.LICHEN_COL_G=Vert
+option.LICHEN_COL_B=Bleu
+option.TABLE_COL_R=Rouge
+option.TABLE_COL_G=Vert
+option.TABLE_COL_B=Bleu
+option.END_COL_R=Rouge
+option.END_COL_G=Vert
+option.END_COL_B=Bleu
+option.DRAGON_COL_R=Rouge
+option.DRAGON_COL_G=Vert
+option.DRAGON_COL_B=Bleu
+option.CANDLE_COL_R=Rouge
+option.CANDLE_COL_G=Vert
+option.CANDLE_COL_B=Bleu
+option.PORTAL_COL_R=Rouge
+option.PORTAL_COL_G=Vert
+option.PORTAL_COL_B=Bleu
+option.BERRY_COL_R=Rouge
+option.BERRY_COL_G=Vert
+option.BERRY_COL_B=Bleu
+option.RougeSTONELAMP_COL_R=Rouge
+option.RougeSTONELAMP_COL_G=Vert
+option.RougeSTONELAMP_COL_B=Bleu
+option.SHROOMLIGHT_COL_R=Rouge
+option.SHROOMLIGHT_COL_G=Vert
+option.SHROOMLIGHT_COL_B=Bleu
+option.YELLOWFROG_COL_R=Rouge
+option.YELLOWFROG_COL_G=Vert
+option.YELLOWFROG_COL_B=Bleu
+option.VertFROG_COL_R=Rouge
+option.VertFROG_COL_G=Vert
+option.VertFROG_COL_B=Bleu
+option.PINKFROG_COL_R=Rouge
+option.PINKFROG_COL_G=Vert
+option.PINKFROG_COL_B=Bleu
+option.SCULK_COL_R=Rouge
+option.SCULK_COL_G=Vert
+option.SCULK_COL_B=Bleu
+option.SPAWNER_COL_R=Rouge
+option.SPAWNER_COL_G=Vert
+option.SPAWNER_COL_B=Bleu
+option.BREWINGSTAND_COL_R=Rouge
+option.BREWINGSTAND_COL_G=Vert
+option.BREWINGSTAND_COL_B=Bleu
+option.BEACON_COL_R=Rouge
+option.BEACON_COL_G=Vert
+option.BEACON_COL_B=Bleu
+option.CONDUIT_COL_R=Rouge
+option.CONDUIT_COL_G=Vert
+option.CONDUIT_COL_B=Bleu
+option.ENDCRYSTAL_COL_R=Rouge
+option.ENDCRYSTAL_COL_G=Vert
+option.ENDCRYSTAL_COL_B=Bleu
+option.LIGHTNING_COL_R=Rouge
+option.LIGHTNING_COL_G=Vert
+option.LIGHTNING_COL_B=Bleu
+option.ITEMFRAME_COL_R=Rouge
+option.ITEMFRAME_COL_G=Vert
+option.ITEMFRAME_COL_B=Bleu
+option.BLAZE_COL_R=Rouge
+option.BLAZE_COL_G=Vert
+option.BLAZE_COL_B=Bleu
+option.SQUID_COL_R=Rouge
+option.SQUID_COL_G=Vert
+option.SQUID_COL_B=Bleu
+option.ALLAY_COL_R=Rouge
+option.ALLAY_COL_G=Vert
+option.ALLAY_COL_B=Bleu
+option.TNT_COL_R=Rouge
+option.TNT_COL_G=Vert
+option.TNT_COL_B=Bleu
+
+option.WORLD_OUTLINE_THICKNESS=Épaisseur du contour du monde
+option.WORLD_OUTLINE_THICKNESS.comment=Détermine l'épaisseur de l'effet de contour du monde.
+
+option.RAIN_PUDDLES=Flaques de pluie
+option.RAIN_PUDDLES.comment=Ajoute des flaques d'eau au terrain pendant la pluie. §e[*]§r L'option de prise en charge RP doit être définie sur autre chose que Basique et la Qualité de réflection des blocs doit être définie sur Moyenne ou supérieure. §c[-]§r Les flaques de pluie peuvent avoir un impact important sur les performances.
+value.RAIN_PUDDLES.0=ÉTEINT
+value.RAIN_PUDDLES.1=§aON - Flaques
+value.RAIN_PUDDLES.2=§aON - Couverture complète
+value.RAIN_PUDDLES.3=§aON - §cToujours§a flaques
+value.RAIN_PUDDLES.4=§aON - §cToujours§a couverture complète
+
+option.UNDERWATER_DISTORTION=Distorsion sous-marine
+option.UNDERWATER_DISTORTION.comment=Ajoute une légère réfraction à l'écran lorsque la caméra est sous l'eau.
+
+option.CMPR=Rethinking
+value.CMPR.0=§aVoxels
+value.CMPR.1=§2Voxels
+value.CMPR.2=§bVoxels
+value.CMPR.3=§3Voxels
+value.CMPR.4=§9Voxels
+value.CMPR.5=§dVoxels
+value.CMPR.6=§5Voxels
+value.CMPR.7=§4Voxels
+value.CMPR.8=§cVoxels
+value.CMPR.9=§6Voxels
+value.CMPR.10=§eVoxels
+
+option.SELECT_OUTLINE=Contour de sélection
+option.SELECT_OUTLINE.comment=Détermine la couleur du contour de sélection du bloc.
+value.SELECT_OUTLINE.0=§cDÉSACTIVÉ
+value.SELECT_OUTLINE.1=Par défaut
+value.SELECT_OUTLINE.2=Arc-en-ciel
+value.SELECT_OUTLINE.3=Choisir la couleur
+
+option.SELECT_OUTLINE_I=SO Luminosité
+option.SELECT_OUTLINE_R=SO Rouge
+option.SELECT_OUTLINE_G=SO Vert
+option.SELECT_OUTLINE_B=SO Bleu
+
+option.LIGHT_COLOR_MULTS=Multiplicateurs de couleur d'éclairage
+option.LIGHT_COLOR_MULTS.comment=Permet la personnalisation des couleurs d'éclairage visibles sur toutes les surfaces.
+
+option.ATM_COLOR_MULTS=Multiplicateurs de couleur d'atmosphère
+option.ATM_COLOR_MULTS.comment=Permet la personnalisation des couleurs d'atmosphère principalement visibles dans le ciel et le brouillard.
+
+option.LIGHT_MORNING_R=Multiplier de Rouge de l'Éclairage Matinal
+option.LIGHT_MORNING_G=Multiplier de Vert de l'Éclairage Matinal
+option.LIGHT_MORNING_B=Multiplier de Bleu de l'Éclairage Matinal
+option.LIGHT_MORNING_I=Multiplier d'Intensité de l'Éclairage Matinal
+option.ATM_MORNING_R=Multiplier de Rouge de l'Atmosphère Matinale
+option.ATM_MORNING_G=Multiplier de Vert de l'Atmosphère Matinale
+option.ATM_MORNING_B=Multiplier de Bleu de l'Atmosphère Matinale
+option.ATM_MORNING_I=Multiplier d'Intensité de l'Atmosphère Matinale
+option.LIGHT_NOON_R=Multiplier de Rouge de l'Éclairage de Midi
+option.LIGHT_NOON_G=Multiplier de Vert de l'Éclairage de Midi
+option.LIGHT_NOON_B=Multiplier de Bleu de l'Éclairage de Midi
+option.LIGHT_NOON_I=Multiplier d'Intensité de l'Éclairage de Midi
+option.ATM_NOON_R=Multiplier de Rouge de l'Atmosphère de Midi
+option.ATM_NOON_G=Multiplier de Vert de l'Atmosphère de Midi
+option.ATM_NOON_B=Multiplier de Bleu de l'Atmosphère de Midi
+option.ATM_NOON_I=Multiplier d'Intensité de l'Atmosphère de Midi
+option.LIGHT_NIGHT_R=Multiplier de Rouge de l'Éclairage Nocturne
+option.LIGHT_NIGHT_G=Multiplier de Vert de l'Éclairage Nocturne
+option.LIGHT_NIGHT_B=Multiplier de Bleu de l'Éclairage Nocturne
+option.LIGHT_NIGHT_I=Multiplier d'Intensité de l'Éclairage Nocturne
+option.ATM_NIGHT_R=Multiplier de Rouge de l'Atmosphère Nocturne
+option.ATM_NIGHT_G=Multiplier de Vert de l'Atmosphère Nocturne
+option.ATM_NIGHT_B=Multiplier de Bleu de l'Atmosphère Nocturne
+option.ATM_NIGHT_I=Multiplier d'Intensité de l'Atmosphère Nocturne
+option.LIGHT_RAIN_R=Multiplier de Rouge de l'Éclairage sous la Pluie
+option.LIGHT_RAIN_G=Multiplier de Vert de l'Éclairage sous la Pluie
+option.LIGHT_RAIN_B=Multiplier de Bleu de l'Éclairage sous la Pluie
+option.LIGHT_RAIN_I=Multiplier d'Intensité de l'Éclairage sous la Pluie
+option.ATM_RAIN_R=Multiplier de Rouge de l'Atmosphère sous la Pluie
+option.ATM_RAIN_G=Multiplier de Vert de l'Atmosphère sous la Pluie
+option.ATM_RAIN_B=Multiplier de Bleu de l'Atmosphère sous la Pluie
+option.ATM_RAIN_I=Multiplier d'Intensité de l'Atmosphère sous la Pluie
+option.LIGHT_NETHER_R=Multiplier de Rouge de l'Éclairage du Nether
+option.LIGHT_NETHER_G=Multiplier de Vert de l'Éclairage du Nether
+option.LIGHT_NETHER_B=Multiplier de Bleu de l'Éclairage du Nether
+option.LIGHT_NETHER_I=Multiplier d'Intensité de l'Éclairage du Nether
+option.ATM_NETHER_R=Multiplier de Rouge de l'Atmosphère du Nether
+option.ATM_NETHER_G=Multiplier de Vert de l'Atmosphère du Nether
+option.ATM_NETHER_B=Multiplier de Bleu de l'Atmosphère du Nether
+option.ATM_NETHER_I=Multiplier d'Intensité de l'Atmosphère du Nether
+option.LIGHT_END_R=Multiplier de Rouge de l'Éclairage de l'End
+option.LIGHT_END_G=Multiplier de Vert de l'Éclairage de l'End
+option.LIGHT_END_B=Multiplier de Bleu de l'Éclairage de l'End
+option.LIGHT_END_I=Multiplier d'Intensité de l'Éclairage de l'End
+option.ATM_END_R=Multiplier de Rouge de l'Atmosphère de l'End
+option.ATM_END_G=Multiplier de Vert de l'Atmosphère de l'End
+option.ATM_END_B=Multiplier de Bleu de l'Atmosphère de l'End
+option.ATM_END_I=Multiplier d'Intensité de l'Atmosphère de l'End
+
