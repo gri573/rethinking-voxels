@@ -46,6 +46,9 @@ void main() {
     if (validData) {
         vec4 playerPos = gbufferModelViewInverse * (gbufferProjectionInverse * (vec4((readTexelCoord + 0.5) / view, 1 - normalDepthData.a, 1) * 2 - 1));
         playerPos /= playerPos.w;
+        #if PIXEL_SHADOW > 0 && !defined GBUFFERS_HAND
+			playerPos = floor((playerPos) * (PIXEL_SHADOW) + 0.001) / (PIXEL_SHADOW);
+		#endif
         vxPos = playerToVx(playerPos.xyz) + max(0.1, 0.005 * length(playerPos.xyz)) * normalDepthData.xyz;
         vec3 dir = randomSphereSample();
         if (dot(dir, normalDepthData.xyz) < 0) dir *= -1;
