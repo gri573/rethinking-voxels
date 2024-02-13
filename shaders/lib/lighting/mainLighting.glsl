@@ -444,7 +444,7 @@ void DoLighting(inout vec4 color, inout vec3 shadowMult, vec3 playerPos, vec3 vi
 
     // Combine Lighting
     vec3 vxPos = playerPos + fract(cameraPosition);
-    #if PIXEL_SHADOW > 0 && !defined GBUFFERS_HAND
+    #if PIXEL_SHADOW > 0
         vxPos = floor((playerPos + cameraPosition) * (PIXEL_SHADOW) + 0.001) / (PIXEL_SHADOW) - cameraPosition + 0.5 / (PIXEL_SHADOW) + fract(cameraPosition);
     #endif
     #ifdef PER_BLOCK_LIGHT
