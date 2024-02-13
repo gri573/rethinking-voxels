@@ -44,12 +44,14 @@ void main() {
     vec3 vxPos = vec3(1000);
     int index = int(gl_LocalInvocationID.x + gl_WorkGroupSize.x * gl_LocalInvocationID.y);
     if (validData) {
-        vec4 playerPos = gbufferModelViewInverse * (gbufferProjectionInverse * (vec4((readTexelCoord + 0.5) / view, 1 - normalDepthData.a, 1) * 2 - 1));
-        playerPos /= playerPos.w;
-        #if PIXEL_SHADOW > 0 && !defined GBUFFERS_HAND
-			playerPos = floor((playerPos) * (PIXEL_SHADOW) + 0.001) / (PIXEL_SHADOW);
+		vec4 playerPos = gbufferModelViewInverse * (gbufferProjectionInverse * (vec4((readTexelCoord + 0.5) / view, 1 - normalDepthData.a, 1) * 2 - 1));
+		playerPos /= playerPos.w;
+		vec3 playerPosM = vec3(playerPos.x,playerPos.y,playerPos.z);
+    	#if PIXEL_SHADOW > 0 && !defined GBUFFERS_HAND
+			vxPos = floor(playerToVx(playerPosM) * (PIXEL_SHADOW) + 0.001) / (PIXEL_SHADOW) + max(0.1, 0.005 * length(playerPosM)) * normalDepthData.xyz;
+		#else
+			vxPos = playerToVx(playerPosM) + max(0.1, 0.005 * length(playerPosM)) * normalDepthData.xyz;
 		#endif
-        vxPos = playerToVx(playerPos.xyz) + max(0.1, 0.005 * length(playerPos.xyz)) * normalDepthData.xyz;
         vec3 dir = randomSphereSample();
         if (dot(dir, normalDepthData.xyz) < 0) dir *= -1;
         ray_hit_t rayHit0 = raytrace(vxPos, LIGHT_TRACE_LENGTH * dir);
