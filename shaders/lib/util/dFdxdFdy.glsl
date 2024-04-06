@@ -4,4 +4,3 @@
 vec2 dcdx = dFdx(texCoord.xy);
 vec2 dcdy = dFdy(texCoord.xy);
 
-#endif

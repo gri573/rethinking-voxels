@@ -204,18 +204,8 @@ void main() {
     float smoothnessG = 0.0, highlightMult = 1.0, emission = 0.0, noiseFactor = 1.0, snowMinNdotU = 0.0, snowFactor = 1.0, noPuddles = 0.0;
     vec2 lmCoordM = lmCoord;
     vec3 shadowMult = vec3(1.0);
-    #ifdef IPBR
-        vec3 maRecolor = vec3(0.0);
-        #include "/lib/materials/materialHandling/terrainMaterials.glsl"
-
-        #ifdef GENERATED_NORMALS
-            if (!noGeneratedNormals) GenerateNormals(normalM, colorP);
-        #endif
-
-        #ifdef COATED_TEXTURES
-            CoatTextures(color.rgb, noiseFactor, playerPos);
-        #endif
-    #else
+	
+	#if defined IPBR_OVERRIDE || !defined IPBR
         #ifdef CUSTOM_PBR
             GetCustomMaterials(color, normalM, lmCoordM, NdotU, shadowMult, smoothnessG, smoothnessD, highlightMult, emission, materialMask, viewPos, lViewPos);
         #endif
@@ -250,6 +240,19 @@ void main() {
         #endif
 
         else if (lmCoord.x > 0.99999) lmCoordM.x = 0.95;
+    #endif
+	
+	#ifdef IPBR
+        vec3 maRecolor = vec3(0.0);
+        #include "/lib/materials/materialHandling/terrainMaterials.glsl"
+
+        #ifdef GENERATED_NORMALS
+            if (!noGeneratedNormals) GenerateNormals(normalM, colorP);
+        #endif
+
+        #ifdef COATED_TEXTURES
+            CoatTextures(color.rgb, noiseFactor, playerPos);
+        #endif
     #endif
 
     #ifdef SNOWY_WORLD

@@ -139,14 +139,12 @@ void main() {
     vec3 playerPos = ViewToPlayer(viewPos);
 
     bool noSmoothLighting = false, noDirectionalShading = false;
-
     float smoothnessD = 0.0, skyLightFactor = 0.0, materialMask = 0.0;
     float smoothnessG = 0.0, highlightMult = 1.0, emission = 0.0, noiseFactor = 1.0;
     vec2 lmCoordM = lmCoord;
     vec3 normalM = normal, shadowMult = vec3(1.0);
-    #ifdef IPBR
-        #include "/lib/materials/materialHandling/blockEntityMaterials.glsl"
-    #else
+	
+	#if defined IPBR_OVERRIDE || !defined IPBR
         #ifdef CUSTOM_PBR
             GetCustomMaterials(color, normalM, lmCoordM, NdotU, shadowMult, smoothnessG, smoothnessD, highlightMult, emission, materialMask, viewPos, lViewPos);
         #endif
@@ -161,6 +159,10 @@ void main() {
         } else {
             noSmoothLighting = true;
         }
+    #endif
+	
+	#ifdef IPBR
+        #include "/lib/materials/materialHandling/blockEntityMaterials.glsl"
     #endif
 
     #ifdef GENERATED_NORMALS

@@ -252,13 +252,8 @@ void main() {
     vec3 geoNormal = normalM;
     vec3 shadowMult = vec3(1.0);
     float fresnel = clamp(1.0 + dot(normalM, nViewPos), 0.0, 1.0);
-    #ifdef IPBR
-        #include "/lib/materials/materialHandling/translucentMaterials.glsl"
-
-        #ifdef GENERATED_NORMALS
-            if (!noGeneratedNormals) GenerateNormals(normalM, colorP.rgb * colorP.a * 1.5);
-        #endif
-    #else
+    
+	#if defined IPBR_OVERRIDE || !defined IPBR
         #ifdef CUSTOM_PBR
             float smoothnessD, materialMaskPh;
             GetCustomMaterials(color, normalM, lmCoordM, NdotU, shadowMult, smoothnessG, smoothnessD, highlightMult, emission, materialMaskPh, viewPos, lViewPos);
@@ -272,6 +267,14 @@ void main() {
                 #include "/lib/materials/specificMaterials/translucents/netherPortal.glsl"
             #endif
         }
+    #endif
+	
+	#ifdef IPBR
+        #include "/lib/materials/materialHandling/translucentMaterials.glsl"
+
+        #ifdef GENERATED_NORMALS
+            if (!noGeneratedNormals) GenerateNormals(normalM, colorP.rgb * colorP.a * 1.5);
+        #endif
     #endif
 
     // Blending

@@ -13,7 +13,9 @@
 //User Settings//
     #define SHADER_STYLE 1 //[1 4]
 
-    #define RP_MODE 1 //[1 0 3 2]
+    #define RP_MODE 0 //[0 3 2]
+
+	#define FORCE_PBR_PLUS 1 //[1 0]
 
     #define VOXEL_DETAIL_AMOUNT 5 //[1 2 3 4 5 6 7 8]
     #define VX_VOL_SIZE 1 //[0 1 2 3]
@@ -26,6 +28,12 @@
         const ivec3 voxelVolumeSize = ivec3(256, 128, 256);
     #elif VX_VOL_SIZE == 3
         const ivec3 voxelVolumeSize = ivec3(512, 128, 512);
+    #endif
+    #if FORCE_PBR_PLUS == 1
+        #define IPBR
+        #define IPBR_OVERRIDE
+        //#define GENERATED_NORMALS
+        //#define COATED_TEXTURES
     #endif
 
     #define PER_PIXEL_LIGHT

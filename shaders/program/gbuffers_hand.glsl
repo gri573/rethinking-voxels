@@ -142,7 +142,14 @@ void main() {
         float smoothnessG = 0.0, highlightMult = 1.0, emission = 0.0, noiseFactor = 0.6;
         vec2 lmCoordM = lmCoord;
         vec3 shadowMult = vec3(0.4);
-        #ifdef IPBR
+		
+		#if defined IPBR_OVERRIDE || !defined IPBR
+            #ifdef CUSTOM_PBR
+                GetCustomMaterials(color, normalM, lmCoordM, NdotU, shadowMult, smoothnessG, smoothnessD, highlightMult, emission, materialMask, viewPos, 0.0);
+            #endif
+        #endif
+		
+		#ifdef IPBR
             #ifdef IS_IRIS
                 vec3 maRecolor = vec3(0.0);
                 #include "/lib/materials/materialHandling/irisMaterials.glsl"
@@ -157,10 +164,6 @@ void main() {
 
             #ifdef COATED_TEXTURES
                 CoatTextures(color.rgb, noiseFactor, playerPos);
-            #endif
-        #else
-            #ifdef CUSTOM_PBR
-                GetCustomMaterials(color, normalM, lmCoordM, NdotU, shadowMult, smoothnessG, smoothnessD, highlightMult, emission, materialMask, viewPos, 0.0);
             #endif
         #endif
 
