@@ -291,8 +291,8 @@ void main() {
         float intenseFresnel = 0.0;
         float smoothnessD = texture6.r;
         vec3 reflectColor = vec3(1.0);
-		
-		#if defined IPBR_OVERRIDE || !defined IPBR
+        
+        #if defined IPBR_OVERRIDE || !defined IPBR
             if (materialMaskInt <= 240) {
                 #ifdef CUSTOM_PBR
                     #if RP_MODE == 2 // seuspbr
@@ -311,8 +311,8 @@ void main() {
                     ssao = 1.0;
             }
         #endif
-		
-		#ifdef IPBR
+        
+        #ifdef IPBR
             #include "/lib/materials/materialHandling/deferredMaterials.glsl"
         #endif
 
