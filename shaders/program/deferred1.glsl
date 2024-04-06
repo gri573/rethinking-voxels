@@ -291,31 +291,16 @@ void main() {
         float intenseFresnel = 0.0;
         float smoothnessD = texture6.r;
         vec3 reflectColor = vec3(1.0);
-
+		
 		#if defined IPBR_OVERRIDE || !defined IPBR
             if (materialMaskInt <= 240) {
                 #ifdef CUSTOM_PBR
                     #if RP_MODE == 2 // seuspbr
                         float metalness = materialMaskInt / 240.0;
+
                         intenseFresnel = metalness;
                     #elif RP_MODE == 3 // labPBR
                         float metalness = float(materialMaskInt >= 230);
-						intenseFresnel = materialMaskInt / 240.0;
-						color.rgb *= 1.0 - 0.25 * metalness;
-					#endif
-					reflectColor = mix(reflectColor, color.rgb / max(color.r + 0.00001, max(color.g, color.b)), metalness);
-				#endif
-			} else {
-				if (materialMaskInt == 254) // No SSAO, No TAA
-					ssao = 1.0;
-			}
-		#endif
-		
-		#ifdef IPBR
-			#include "/lib/materials/materialHandling/deferredMaterials.glsl"
-		#endif
-		
-		color.rgb *= ssao;
 
                         intenseFresnel = materialMaskInt / 240.0;
                     #endif
@@ -325,6 +310,10 @@ void main() {
                 if (materialMaskInt == 254) // No SSAO, No TAA
                     ssao = 1.0;
             }
+        #endif
+		
+		#ifdef IPBR
+            #include "/lib/materials/materialHandling/deferredMaterials.glsl"
         #endif
 
         color.rgb *= ssao;

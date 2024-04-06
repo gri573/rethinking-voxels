@@ -143,8 +143,8 @@ void main() {
     float smoothnessG = 0.0, highlightMult = 1.0, emission = 0.0, noiseFactor = 1.0;
     vec2 lmCoordM = lmCoord;
     vec3 normalM = normal, shadowMult = vec3(1.0);
-	
-	#if defined IPBR_OVERRIDE || !defined IPBR
+    
+    #if defined IPBR_OVERRIDE || !defined IPBR
         #ifdef CUSTOM_PBR
             GetCustomMaterials(color, normalM, lmCoordM, NdotU, shadowMult, smoothnessG, smoothnessD, highlightMult, emission, materialMask, viewPos, lViewPos);
         #endif
@@ -160,8 +160,8 @@ void main() {
             noSmoothLighting = true;
         }
     #endif
-	
-	#ifdef IPBR
+    
+    #ifdef IPBR
         #include "/lib/materials/materialHandling/blockEntityMaterials.glsl"
     #endif
 

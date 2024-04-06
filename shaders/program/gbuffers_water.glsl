@@ -253,7 +253,7 @@ void main() {
     vec3 shadowMult = vec3(1.0);
     float fresnel = clamp(1.0 + dot(normalM, nViewPos), 0.0, 1.0);
     
-	#if defined IPBR_OVERRIDE || !defined IPBR
+    #if defined IPBR_OVERRIDE || !defined IPBR
         #ifdef CUSTOM_PBR
             float smoothnessD, materialMaskPh;
             GetCustomMaterials(color, normalM, lmCoordM, NdotU, shadowMult, smoothnessG, smoothnessD, highlightMult, emission, materialMaskPh, viewPos, lViewPos);
@@ -268,8 +268,8 @@ void main() {
             #endif
         }
     #endif
-	
-	#ifdef IPBR
+    
+    #ifdef IPBR
         #include "/lib/materials/materialHandling/translucentMaterials.glsl"
 
         #ifdef GENERATED_NORMALS

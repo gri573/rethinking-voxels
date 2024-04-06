@@ -29,12 +29,6 @@
     #elif VX_VOL_SIZE == 3
         const ivec3 voxelVolumeSize = ivec3(512, 128, 512);
     #endif
-    #if FORCE_PBR_PLUS == 1
-        #define IPBR
-        #define IPBR_OVERRIDE
-        //#define GENERATED_NORMALS
-        //#define COATED_TEXTURES
-    #endif
 
     #define PER_PIXEL_LIGHT
     #ifndef PER_PIXEL_LIGHT
@@ -382,6 +376,14 @@
     #if RP_MODE >= 2
         #define CUSTOM_PBR
         #define POM
+    #endif
+	#if FORCE_PBR_PLUS == 1
+        #define IPBR
+        #define IPBR_OVERRIDE
+        //#define GENERATED_NORMALS
+        //#define COATED_TEXTURES
+        //#define FANCY_GLASS
+        //#define GREEN_SCREEN_LIME
     #endif
 
     #if SHADER_STYLE == 1
