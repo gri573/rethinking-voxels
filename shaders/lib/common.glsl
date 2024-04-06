@@ -15,7 +15,7 @@
 
     #define RP_MODE 0 //[0 3 2]
 
-	#define FORCE_PBR_PLUS 1 //[1 0]
+    #define FORCE_PBR_PLUS 1 //[1 0]
 
     #define VOXEL_DETAIL_AMOUNT 5 //[1 2 3 4 5 6 7 8]
     #define VX_VOL_SIZE 1 //[0 1 2 3]
@@ -377,7 +377,7 @@
         #define CUSTOM_PBR
         #define POM
     #endif
-	#if FORCE_PBR_PLUS == 1
+    #if FORCE_PBR_PLUS == 1
         #define IPBR
         #define IPBR_OVERRIDE
         //#define GENERATED_NORMALS
