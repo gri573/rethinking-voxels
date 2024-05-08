@@ -14,7 +14,7 @@
 
     void DoBorderFog(inout vec3 color, inout float skyFade, float lPlayerPosXZ, float VdotU, float VdotS, float dither) {
         #if defined OVERWORLD || defined END
-            float fog = lPlayerPosXZ / far;
+            float fog = lPlayerPosXZ / (far * BORDER_FOG_DIST_MULT);
             fog *= fog;
             fog *= fog;
             fog *= fog;
@@ -22,7 +22,7 @@
             fog = 1.0 - exp(-3.0 * fog);
         #endif
         #ifdef NETHER
-            float farM = min(far, NETHER_VIEW_LIMIT); // consistency9023HFUE85JG
+            float farM = min((far * BORDER_FOG_DIST_MULT), NETHER_VIEW_LIMIT); // consistency9023HFUE85JG
             float fog = lPlayerPosXZ / farM;
             fog = fog * 0.3 + 0.7 * pow(fog, 256.0 / max(farM, 256.0));
         #endif
@@ -89,7 +89,7 @@
     }
 
     void DoAtmosphericFog(inout vec3 color, vec3 playerPos, float lViewPos, float VdotS) {
-        float renDisFactor = min1(192.0 / far);
+        float renDisFactor = min1(192.0 / (far * BORDER_FOG_DIST_MULT));
 
         #if ATM_FOG_DISTANCE != 100
             #define ATM_FOG_DISTANCE_M 100.0 / ATM_FOG_DISTANCE;
