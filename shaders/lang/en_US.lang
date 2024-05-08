@@ -363,6 +363,11 @@ value.VANILLAAO_I.0=§cOFF
 option.BORDER_FOG=Border Fog
 option.BORDER_FOG.comment=Intense fog on the edges of the loaded world to hide chunk borders. §e[*]§r It's recommended to disable Border Fog when playing with less than 8 chunks of render distance.
 
+option.BORDER_FOG_DIST_MULT=Border Fog Distance Multiplier
+option.BORDER_FOG_DIST_MULT.comment=Adjusts the distance away from the player the fog starts. §e[*]§r Generally this value should not go too far above 1.
+value.BORDER_FOG_DIST_MULT.1.00=Normal
+value.BORDER_FOG_DIST_MULT.0.05=Min
+
 option.ATM_FOG_MULT=Atmospheric Fog
 option.ATM_FOG_MULT.comment=Adjusts the intensity of altitude-based fog.
 value.ATM_FOG_MULT.0.50=Very Subtle
