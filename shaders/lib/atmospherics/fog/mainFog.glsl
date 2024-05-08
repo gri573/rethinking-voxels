@@ -14,30 +14,18 @@
 
     void DoBorderFog(inout vec3 color, inout float skyFade, float lPlayerPosXZ, float VdotU, float VdotS, float dither) {
         #if defined OVERWORLD || defined END
-            if (BORDER_FOG_RD == -1) {
-                float fog = lPlayerPosXZ / far;
-                fog *= fog;
-                fog *= fog;
-                fog *= fog;
-                fog *= fog;
-                fog = 1.0 - exp(-3.0 * fog);
-            } 
-            else {
-                float fog = lPlayerPosXZ / (BORDER_FOG_RD * 16);
-                fog *= fog;
-                fog *= fog;
-                fog *= fog;
-                fog *= fog;
-                fog = 1.0 - exp(-3.0 * fog);
-            }
+            
+            float fog = lPlayerPosXZ / (BORDER_FOG_RD * 16);
+            if (fog < 0) fog = lPlayerPosXZ / far;
+            fog *= fog;
+            fog *= fog;
+            fog *= fog;
+            fog *= fog;
+            fog = 1.0 - exp(-3.0 * fog);
         #endif
         #ifdef NETHER
-            if (BORDER_FOG_RD == -1) {
-                float farM = min(far, NETHER_VIEW_LIMIT); // consistency9023HFUE85JG
-            } 
-            else {
-                float farM = min((BORDER_FOG_RD * 16), NETHER_VIEW_LIMIT); // consistency9023HFUE85JG
-            }
+            float farM = min((BORDER_FOG_RD * 16), NETHER_VIEW_LIMIT); // consistency9023HFUE85JG
+            If (BORDER_FOG_RD < 0) farM = min(far, NETHER_VIEW_LIMIT); // consistency9023HFUE85JG
             float fog = lPlayerPosXZ / farM;
             fog = fog * 0.3 + 0.7 * pow(fog, 256.0 / max(farM, 256.0));
         #endif
@@ -104,13 +92,9 @@
     }
 
     void DoAtmosphericFog(inout vec3 color, vec3 playerPos, float lViewPos, float VdotS) {
-        if (BORDER_FOG_RD == -1) {
-            float renDisFactor = min1(192.0 / far);
-        } 
-        else {
-            float renDisFactor = min1(192.0 / (BORDER_FOG_RD * 16));
-        }
-        
+        float renDisFactor = min1(192.0 / (BORDER_FOG_RD * 16));
+        if (BORDER_FOG_RD < 0) renDisFactor = min1(192.0 / far);
+
         #if ATM_FOG_DISTANCE != 100
             #define ATM_FOG_DISTANCE_M 100.0 / ATM_FOG_DISTANCE;
             renDisFactor *= ATM_FOG_DISTANCE_M;
