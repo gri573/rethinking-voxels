@@ -451,6 +451,16 @@ void DoLighting(inout vec4 color, inout vec3 shadowMult, vec3 playerPos, vec3 vi
         vec3 giLighting = readIrradianceCache(vxPos, mat3(gbufferModelViewInverse) * normalM) * (1.0 - voxelFactor);
         float lGiLighting = length(giLighting);
         if (lGiLighting > 0.01) giLighting *= log(lGiLighting + 1.0) / lGiLighting;
+
+        #ifdef OVERWORLD
+            #if defined GBUFFERS_ENTITIES || defined GBUFFERS_BLOCK || defined GBUFFERS_WATER
+                // These things don't trigger irradiance cache updates, so we instead contribute max of vanilla ambient and GI
+                giLighting = max(ambientColorM * ambientMult, giLighting);
+                ambientMult = 0;
+            #else
+                ambientMult *= voxelFactor;
+            #endif
+        #endif
     #else
         const float giLighting = 0.0;
     #endif

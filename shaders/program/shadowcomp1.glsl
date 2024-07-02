@@ -432,13 +432,17 @@ void main() {
                         if (dot(dir, normal) < 0.0) dir = -dir;
                         float ndotl = dot(dir, normal);
                         vec3 hitPos = rayTrace(vxPos, LIGHT_TRACE_LENGTH * dir, dither);
+                        #if defined OVERWORLD
+                            vec3 hitCol = ambientColor * 2.5 * clamp(dir.y + 0.5, 0, 1);
+                        #else
                         vec3 hitCol = vec3(0);
+                        #endif
                         if (length(hitPos - vxPos) < LIGHT_TRACE_LENGTH - 0.5) {
                             const float pi = 3.14;
                             vec3 hitBlocklight = 4 * (4.0/pi) * ndotl * imageLoad(irradianceCacheI, ivec3(hitPos + vec3(0.5, 1.5, 0.5) * voxelVolumeSize)).rgb;
                             #if defined REALTIME_SHADOWS && defined OVERWORLD
                                 vec3 sunShadowPos = GetShadowPos(hitPos - fractCamPos);
-                                vec3 hitSunlight = SampleShadow(sunShadowPos, 5.0, 1.0) * lightColor;
+                                vec3 hitSunlight = SampleShadow(sunShadowPos, 5.0, 1.0) * lightColor * 15;
                             #else
                                 const float hitSunlight = 0.0;
                             #endif
