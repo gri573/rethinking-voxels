@@ -453,7 +453,8 @@ void DoLighting(inout vec4 color, inout vec3 shadowMult, vec3 playerPos, vec3 vi
         if (lGiLighting > 0.01) giLighting *= log(lGiLighting + 1.0) / lGiLighting;
 
         #ifdef OVERWORLD
-                ambientMult *= voxelFactor;
+            ambientMult *= voxelFactor;
+            giLighting *= 1-voxelFactor;
         #endif
     #else
         const float giLighting = 0.0;
@@ -476,7 +477,7 @@ void DoLighting(inout vec4 color, inout vec3 shadowMult, vec3 playerPos, vec3 vi
 
     // Combine Lighting
     blockLighting = mix(voxelBlockLighting, blockLighting, voxelFactor);
-    vec3 sceneLighting = lightColorM * shadowMult + ambientColorM * ambientMult + giLighting * GI_STRENGTH;
+    vec3 sceneLighting = lightColorM * shadowMult + ambientColorM * ambientMult + giLighting;
 
     float dotSceneLighting = dot(sceneLighting, sceneLighting);
 

@@ -433,7 +433,7 @@ void main() {
                         float ndotl = dot(dir, normal);
                         vec3 hitPos = rayTrace(vxPos, LIGHT_TRACE_LENGTH * dir, dither);
                         #if defined OVERWORLD
-                            vec3 hitCol = ambientColor * 2.5 * clamp(dir.y + 0.5, 0, 1);
+                            vec3 hitCol = ambientColor * clamp(dir.y + 0.5, 0, 1);
                         #else
                             vec3 hitCol = vec3(0);
                         #endif
@@ -442,14 +442,14 @@ void main() {
                             vec3 hitBlocklight = 4 * (4.0/pi) * ndotl * imageLoad(irradianceCacheI, ivec3(hitPos + vec3(0.5, 1.5, 0.5) * voxelVolumeSize)).rgb;
                             #if defined REALTIME_SHADOWS && defined OVERWORLD
                                 vec3 sunShadowPos = GetShadowPos(hitPos - fractCamPos);
-                                vec3 hitSunlight = SampleShadow(sunShadowPos, 5.0, 1.0) * lightColor * 8;
+                                vec3 hitSunlight = SampleShadow(sunShadowPos, 5.0, 1.0) * lightColor;
                             #else
                                 const float hitSunlight = 0.0;
                             #endif
                             vec3 hitAlbedo = getColor(hitPos).rgb;
-                            hitCol = (hitBlocklight + hitSunlight) * hitAlbedo;
+                            hitCol = (hitBlocklight + hitSunlight) * hitAlbedo * GI_STRENGTH;
                         }
-                        if (all(greaterThanEqual(hitCol, vec3(0)))) GILight += vec4(hitCol, 1);
+                        if (all(greaterThanEqual(hitCol, vec3(0)))) GILight += vec4(hitCol, 0.3);
                     }
                     imageStore(irradianceCacheI, coords, GILight);
                 } else {
