@@ -410,7 +410,7 @@ void main() {
 
         if (insideFrustrum) {
             float thisDFval = getDistanceField(vxPos);
-            if (thisDFval < 0.7) {
+            if (thisDFval < 0.7 || nextUint() % 37 == 0) {
                 if (thisDFval > 0.1) {
                     vec4 GILight = imageLoad(irradianceCacheI, coords);
                     float weight = 1.0;
@@ -435,14 +435,14 @@ void main() {
                         #if defined OVERWORLD
                             vec3 hitCol = ambientColor * 2.5 * clamp(dir.y + 0.5, 0, 1);
                         #else
-                        vec3 hitCol = vec3(0);
+                            vec3 hitCol = vec3(0);
                         #endif
                         if (length(hitPos - vxPos) < LIGHT_TRACE_LENGTH - 0.5) {
                             const float pi = 3.14;
                             vec3 hitBlocklight = 4 * (4.0/pi) * ndotl * imageLoad(irradianceCacheI, ivec3(hitPos + vec3(0.5, 1.5, 0.5) * voxelVolumeSize)).rgb;
                             #if defined REALTIME_SHADOWS && defined OVERWORLD
                                 vec3 sunShadowPos = GetShadowPos(hitPos - fractCamPos);
-                                vec3 hitSunlight = SampleShadow(sunShadowPos, 5.0, 1.0) * lightColor * 15;
+                                vec3 hitSunlight = SampleShadow(sunShadowPos, 5.0, 1.0) * lightColor * 8;
                             #else
                                 const float hitSunlight = 0.0;
                             #endif
