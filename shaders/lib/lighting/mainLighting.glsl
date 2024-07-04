@@ -44,6 +44,13 @@ void DoLighting(inout vec4 color, inout vec3 shadowMult, vec3 playerPos, vec3 vi
     vec3 ambientColorM = ambientColor;
     vec3 nViewPos = normalize(viewPos);
 
+    vec3 vxPos = playerPos + fractCamPos;
+    vec3 worldNormalM = mat3(gbufferModelViewInverse) * normalM;
+    #if PIXEL_SHADOW > 0 && !defined GBUFFERS_HAND
+        vxPos = floor(vxPos * PIXEL_SHADOW + 0.001) / PIXEL_SHADOW + 0.5 / PIXEL_SHADOW;
+    #endif
+    float voxelFactor = pow(min(1, 2 * infnorm(vxPos/voxelVolumeSize)), 10);
+
     #if defined LIGHT_COLOR_MULTS && !defined GBUFFERS_WATER // lightColorMult is defined early in gbuffers_water
         lightColorMult = GetLightColorMult();
     #endif
@@ -348,6 +355,10 @@ void DoLighting(inout vec4 color, inout vec3 shadowMult, vec3 playerPos, vec3 vi
     #ifdef OVERWORLD
         ambientMult = mix(lightmapYM, pow2(lightmapYM) * lightmapYM, rainFactor);
 
+        #ifdef GI
+            ambientMult = mix(1, ambientMult, voxelFactor);
+        #endif
+
         #if SHADOW_QUALITY == -1
             float tweakFactor = 1.0 + 0.6 * (1.0 - pow2(pow2(pow2(noonFactor))));
             lightColorM /= tweakFactor;
@@ -426,13 +437,6 @@ void DoLighting(inout vec4 color, inout vec3 shadowMult, vec3 playerPos, vec3 vi
     #endif
 
     // Voxel-based Lighting
-    vec3 vxPos = playerPos + fractCamPos;
-    vec3 worldNormalM = mat3(gbufferModelViewInverse) * normalM;
-    #if PIXEL_SHADOW > 0 && !defined GBUFFERS_HAND
-        vxPos = floor(vxPos * PIXEL_SHADOW + 0.001) / PIXEL_SHADOW + 0.5 / PIXEL_SHADOW;
-    #endif
-    float voxelFactor = pow(min(1, 2 * infnorm(vxPos/voxelVolumeSize)), 10);
-
     vec3 voxelBlockLighting =
         #if defined PER_PIXEL_LIGHT && !defined GBUFFERS_WATER
             4.0 * texelFetch(colortex12, ivec2(gl_FragCoord.xy), 0).rgb;
@@ -448,16 +452,11 @@ void DoLighting(inout vec4 color, inout vec3 shadowMult, vec3 playerPos, vec3 vi
         }
     #endif
     #ifdef GI
-        vec3 giLighting = readIrradianceCache(vxPos, mat3(gbufferModelViewInverse) * normalM) * (1.0 - voxelFactor);
+        vec3 giLighting = 4.0 * readIrradianceCache(vxPos, mat3(gbufferModelViewInverse) * normalM);
         float lGiLighting = length(giLighting);
         if (lGiLighting > 0.01) giLighting *= log(lGiLighting + 1.0) / lGiLighting;
 
-        #ifdef OVERWORLD
-            ambientMult *= voxelFactor;
-            giLighting *= 1-voxelFactor;
-        #endif
-    #else
-        const float giLighting = 0.0;
+        ambientColorM = mix(giLighting, ambientColorM, voxelFactor);
     #endif
 
     int localMat = 
@@ -477,7 +476,7 @@ void DoLighting(inout vec4 color, inout vec3 shadowMult, vec3 playerPos, vec3 vi
 
     // Combine Lighting
     blockLighting = mix(voxelBlockLighting, blockLighting, voxelFactor);
-    vec3 sceneLighting = lightColorM * shadowMult + ambientColorM * ambientMult + giLighting;
+    vec3 sceneLighting = lightColorM * shadowMult + ambientColorM * ambientMult;
 
     float dotSceneLighting = dot(sceneLighting, sceneLighting);
 
@@ -568,4 +567,5 @@ void DoLighting(inout vec4 color, inout vec3 shadowMult, vec3 playerPos, vec3 vi
     color.rgb *= finalDiffuse;
     color.rgb += lightHighlight;
     color.rgb *= pow2(1.0 - darknessLightFactor);
+    // color.rgb = giLighting;
 }

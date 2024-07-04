@@ -197,11 +197,11 @@ vec4 GetReflection(vec3 normalM, vec3 viewPos, vec3 nViewPos, vec3 playerPos, fl
                 float RNdotS = dot(hitNormal, mat3(gbufferModelViewInverse) * sunVec);
                 vec3 blockLight = readSurfaceVoxelBlocklight(hitPos, hitNormal);
                 #ifdef GI
-                    vec3 giLight = readSurfaceGiLight(hitPos, hitNormal);
+                    vec3 giLight = readIrradianceCache(hitPos, hitNormal);
                 #else
                     const float  giLight = 0.0;
                 #endif
-                voxelCol.rgb *= skyLight * ambientColor + max(0.0, RNdotS + 0.1) * sunShadow * lightColor + blockLight + 0.25 * giLight;
+                voxelCol.rgb *= skyLight * ambientColor + max(0.0, RNdotS + 0.1) * sunShadow * lightColor + blockLight + giLight;
 
                 vec3 playerHitPos = hitPos - fractCamPos;
                 float skyFade = 0.0;
