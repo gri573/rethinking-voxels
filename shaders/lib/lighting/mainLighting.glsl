@@ -456,7 +456,12 @@ void DoLighting(inout vec4 color, inout vec3 shadowMult, vec3 playerPos, vec3 vi
         float lGiLighting = length(giLighting);
         if (lGiLighting > 0.01) giLighting *= log(lGiLighting + 1.0) / lGiLighting;
 
-        ambientColorM = mix(giLighting, ambientColorM, voxelFactor);
+        #ifdef OVERWORLD
+            float vanillaAmbience = mix(lightmapYM, pow2(lightmapYM) * lightmapYM, rainFactor);
+        #else
+            float vanillaAmbience = 1.0;
+        #endif
+        ambientColorM = mix(max(giLighting, ambientColorM * vanillaAmbience * GI_AMBIENT_MIN), ambientColorM, voxelFactor);
     #endif
 
     int localMat = 

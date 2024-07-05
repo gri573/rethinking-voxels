@@ -1165,6 +1165,9 @@ value.GI_STRENGTH.0=Off
 value.GI_STRENGTH.1=Correct
 value.GI_STRENGTH.2=Intense
 
+option.GI_AMBIENT_MIN=GI Ambient Brightness
+option.GI_AMBIENT_MIN.comment=When Global Illumination is enabled, incrases the brightness of shadows to be closer to vanilla Minecraft lighting.
+
 option.GI_SAMPLE_COUNT=Global Illumination Quality
 value.GI_SAMPLE_COUNT.1=Low
 value.GI_SAMPLE_COUNT.3=Medium
