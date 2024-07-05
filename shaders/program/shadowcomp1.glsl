@@ -373,6 +373,11 @@ layout(local_size_x = 8, local_size_y = 8, local_size_z = 8) in;
         #include "/lib/util/spaceConversion.glsl"
         #include "/lib/lighting/shadowSampling.glsl"
     #endif
+    #if defined OVERWORLD && defined CAVE_FOG
+        #define GL_CAVE_FACTOR
+        #include "/lib/atmospherics/fog/caveFactor.glsl"
+    #endif
+
     #include "/lib/colors/lightAndAmbientColors.glsl"
 
     vec3 fractCamPos = cameraPositionInt.y == -98257195 ? fract(cameraPosition) : cameraPositionFract;
@@ -432,7 +437,11 @@ void main() {
                         if (dot(dir, normal) < 0.0) dir = -dir;
                         float ndotl = dot(dir, normal);
                         vec3 hitPos = rayTrace(vxPos, LIGHT_TRACE_LENGTH * dir, dither);
-                        vec3 hitCol = ambientColor * clamp(dir.y + 0.5, 0, 1);
+                        #ifdef GL_CAVE_FACTOR
+                            vec3 hitCol = ambientColor * clamp(dir.y + 0.5, 0.2, 1) * (1-GetCaveFactor());
+                        #else
+                            vec3 hitCol = ambientColor * clamp(dir.y + 0.5, 0.2, 1);
+                        #endif
                         if (length(hitPos - vxPos) < LIGHT_TRACE_LENGTH - 0.5) {
                             const float pi = 3.14;
                             vec3 hitBlocklight = 4 * (4.0/pi) * ndotl * imageLoad(irradianceCacheI, ivec3(hitPos + vec3(0.5, 1.5, 0.5) * voxelVolumeSize)).rgb;
