@@ -452,7 +452,7 @@ void DoLighting(inout vec4 color, inout vec3 shadowMult, vec3 playerPos, vec3 vi
         }
     #endif
     #ifdef GI
-        vec3 giLighting = 4.0 * readIrradianceCache(vxPos, mat3(gbufferModelViewInverse) * normalM);
+        vec3 giLighting = 1.8 * readIrradianceCache(vxPos, mat3(gbufferModelViewInverse) * normalM) * GI_STRENGTH;
         float lGiLighting = length(giLighting);
         if (lGiLighting > 0.01) giLighting *= log(lGiLighting + 1.0) / lGiLighting;
 

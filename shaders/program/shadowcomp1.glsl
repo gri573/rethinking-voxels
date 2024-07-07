@@ -438,23 +438,30 @@ void main() {
                         float ndotl = dot(dir, normal);
                         vec3 hitPos = rayTrace(vxPos, LIGHT_TRACE_LENGTH * dir, dither);
                         #ifdef GL_CAVE_FACTOR
-                            vec3 hitCol = ambientColor * clamp(dir.y + 0.5, 0.2, 1) * (1-GetCaveFactor());
+                            vec3 hitCol = ambientColor * clamp(dir.y + 1.6, 0.6, 1) * (1-GetCaveFactor()) / GI_STRENGTH;
                         #else
-                            vec3 hitCol = ambientColor * clamp(dir.y + 0.5, 0.2, 1);
+                            vec3 hitCol = ambientColor * clamp(dir.y + 1.6, 0.6, 1) / GI_STRENGTH;
                         #endif
                         if (length(hitPos - vxPos) < LIGHT_TRACE_LENGTH - 0.5) {
-                            const float pi = 3.14;
-                            vec3 hitBlocklight = 4 * (4.0/pi) * ndotl * imageLoad(irradianceCacheI, ivec3(hitPos + vec3(0.5, 1.5, 0.5) * voxelVolumeSize)).rgb;
+                            vec3 hitBlocklight = imageLoad(irradianceCacheI, ivec3(hitPos + vec3(0.5, 1.5, 0.5) * voxelVolumeSize)).rgb;
+                            vec4 hitGIColor = imageLoad(irradianceCacheI, ivec3(hitPos + 0.5 * voxelVolumeSize - vec3(0.5)));
+                            vec3 hitGIlight = min(hitGIColor.rgb / max(hitGIColor.a, 0.0001), vec3(1));
                             #if defined REALTIME_SHADOWS && defined OVERWORLD
+                                vec3 hitNormal = vec3(0);
+                                for (int k = 0; k < 3; k++) {
+                                    hitNormal[k] = getDistanceField(hitPos + mat3(0.5)[k]) - getDistanceField(hitPos - mat3(0.5)[k]);
+                                }
+                                hitNormal = normalize(hitNormal);
                                 vec3 sunShadowPos = GetShadowPos(hitPos - fractCamPos);
-                                vec3 hitSunlight = SampleShadow(sunShadowPos, 5.0, 1.0) * lightColor;
+                                vec3 hitSunlight = SampleShadow(sunShadowPos, 5.0, 1.0) * lightColor * max(dot(hitNormal, sunVec), 0);
                             #else
                                 const float hitSunlight = 0.0;
                             #endif
                             vec3 hitAlbedo = getColor(hitPos).rgb;
-                            hitCol = (hitBlocklight + hitSunlight) * hitAlbedo * GI_STRENGTH;
+                            hitCol = ((hitBlocklight + hitSunlight) * 4 + hitGIlight) * hitAlbedo;
                         }
-                        if (all(greaterThanEqual(hitCol, vec3(0)))) GILight += vec4(hitCol, 1);
+                        vec3 hitContrib = hitCol * ndotl;
+                        if (all(greaterThanEqual(hitContrib, vec3(0)))) GILight += vec4(hitContrib, ndotl);
                     }
                     imageStore(irradianceCacheI, coords, GILight);
                 } else {
