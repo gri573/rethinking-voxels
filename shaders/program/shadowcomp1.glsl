@@ -423,7 +423,11 @@ void main() {
                     normal[k] = dplus - dminus;
                     maxDFVal = max(max(dplus, dminus), maxDFVal);
                 }
-                normal = normalize(normal);
+                if ((imageLoad(occupancyVolume, coords).r & 1) == 0) {
+                    normal = normalize(normal);
+                } else {
+                    normal = -normalize(normal);
+                }
                 if (maxDFVal > 0.1) {
                     vec4 GILight = imageLoad(irradianceCacheI, coords);
                     float weight = 1.0;
