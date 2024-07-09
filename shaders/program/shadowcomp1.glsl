@@ -446,7 +446,7 @@ void main() {
                         float ndotl = dot(dir, normal);
                         vec3 hitPos = rayTrace(vxPos, LIGHT_TRACE_LENGTH * dir, dither);
                         #ifdef GL_CAVE_FACTOR
-                            vec3 hitCol = ambientColor * clamp(dir.y + 1.6, 0.6, 1) * (1-GetCaveFactor()) / GI_STRENGTH;
+                            vec3 hitCol = ambientColor * clamp(dir.y + 1.6, 0.6, 1) * (1-GetCaveFactor(cameraPosition.y + vxPos.y)) / GI_STRENGTH;
                         #else
                             vec3 hitCol = ambientColor * clamp(dir.y + 1.6, 0.6, 1) / GI_STRENGTH;
                         #endif
