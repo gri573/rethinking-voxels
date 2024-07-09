@@ -464,15 +464,17 @@ void main() {
                             #else
                                 const float hitSunlight = 0.0;
                             #endif
-                            vec3 hitAlbedo = getColor(hitPos).rgb;
-                            hitCol = ((hitBlocklight + hitSunlight) * 4 + hitGIlight) * hitAlbedo;
+                            vec3 hitAlbedo = getColor(hitPos - 0.1 * hitNormal).rgb;
+                            hitCol = mix(
+                                ((hitBlocklight + hitSunlight) * 4 + hitGIlight) * hitAlbedo,
+                                hitCol,
+                                pow2(length(hitPos - vxPos) / LIGHT_TRACE_LENGTH)
+                            );
                         }
                         vec3 hitContrib = hitCol * ndotl;
                         if (all(greaterThanEqual(hitContrib, vec3(0)))) GILight += vec4(hitContrib, ndotl);
                     }
                     imageStore(irradianceCacheI, coords, GILight);
-                } else {
-                    imageStore(irradianceCacheI, coords, vec4(0, 0, 0, 1));
                 }
             }
         }
