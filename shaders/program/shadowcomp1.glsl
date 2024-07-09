@@ -416,18 +416,17 @@ void main() {
         if (insideFrustrum) {
             float thisDFval = getDistanceField(vxPos);
             if (thisDFval < 0.7 || nextUint() % 37 == 0) {
+                bool isOccluded = (imageLoad(occupancyVolume, coords).r & 1) != 0;
                 float maxDFVal = thisDFval;
                 for (int k = 0; k < 3; k++) {
                     float dplus = getDistanceField(vxPos + mat3(0.5)[k]);
                     float dminus = getDistanceField(vxPos - mat3(0.5)[k]);
+                    if (isOccluded) dplus = -dplus;
+                    if (isOccluded) dminus = -dminus;
                     normal[k] = dplus - dminus;
                     maxDFVal = max(max(dplus, dminus), maxDFVal);
                 }
-                if ((imageLoad(occupancyVolume, coords).r & 1) == 0) {
-                    normal = normalize(normal);
-                } else {
-                    normal = -normalize(normal);
-                }
+                normal = normalize(normal);
                 if (maxDFVal > 0.1) {
                     vec4 GILight = imageLoad(irradianceCacheI, coords);
                     float weight = 1.0;
