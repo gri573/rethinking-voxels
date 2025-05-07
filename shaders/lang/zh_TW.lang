@@ -1,0 +1,1530 @@
+#shaders/lang/zh_tw.lang
+
+#Profiles
+profile.POTATO=§a馬鈴薯
+profile.VERYLOW=§a非常低
+profile.LOW=§a低
+profile.MEDIUM=§a中
+profile.HIGH=§e高 (預設)
+profile.VERYHIGH=§c非常高
+profile.ULTRA=§4§l極致
+profile.COMPLEMENTARY=§4§l§n§oComplementary
+profile.comment=著色器設定檔會變更效能設定，以最佳化的視覺擬真度與效能比率。 §e[*]§r 除非您清楚自己的操作，否則建議您為設定選用其中一個設定檔。 §e[*]§r 所有受影響的設定都可以在「效能設定」或「Rethinking Voxels 設定」選單中找到。
+
+#Information
+screen.INFORMATION=資訊
+screen.INFORMATION.comment=此區塊包含僅用於提供資訊的按鈕。
+
+option.info0=§b將滑鼠游標懸停於按鈕上
+value.info0.0=
+option.info0.comment=此區塊包含僅用於提供資訊的按鈕。
+
+option.info1=如何提升效能
+value.info1.0=
+option.info1.comment=效能是 Minecraft 中一個複雜的議題，因其受到諸多因素影響，但您可以嘗試以下方法：降低您的渲染距離，理想情況下，幾乎所有裝置都應設定在 6 到 16 之間。降低「設定檔」著色器設定，這些設定檔都經過仔細測試，以達最佳視覺/效能平衡。更多資訊將於日後補充。
+
+option.info2=何謂最佳設定
+value.info2.0=
+option.info2.comment=最佳設定因人而異，但對大多數人而言，使用預設設定會是近乎最佳的選擇。預設設定是多年來社群評估與回饋的結晶，同時也特別注重視覺/效能的平衡。即便如此，您仍可隨意調整並享受其中的樂趣！
+
+option.info3=何謂設定檔或視覺風格
+value.info3.0=
+option.info3.comment=「設定檔」會變更「效能設定」選單中的設定，但不會影響任何基於個人偏好的設定。「視覺風格」則會變更許多個人偏好設定中的「預設風格」值，但對效能影響不大。
+
+option.info4=何謂 RP 支援
+value.info4.0=
+option.info4.comment=RP 支援選項決定著色器包如何處理 Minecraft 中的不同方塊。例如，§bIntegratedPBR+§r 會將金方塊視為具反射性的物件，而 §elabPBR§r 或 §eseuspbr§r 則需要您安裝資源包來告知著色器此特性。將 RP 支援設為 §a基本§r，除了少數例外（如水），將不會有任何方塊被視為「特殊」方塊。
+
+option.info5=如何修復模組問題
+value.info5.0=
+option.info5.comment=由於著色器包的運作方式，與模組間的不相容在所難免，但您可以查看此 Complementary 模組問題的資訊頁面，了解多種已知的修復方法。www.complementary.dev/mod-issues
+
+option.info6=
+value.info6.0=
+option.info6.comment=
+
+option.info7=
+value.info7.0=
+option.info7.comment=
+
+option.info8=如何加入社群
+value.info8.0=
+option.info8.comment=您可以加入 Complementary Discord 伺服器以參與我們友善的社群，並能聯繫開發者或經驗豐富的社群成員。www.complementary.dev/discord
+
+option.info9=如何支持 Complementary
+value.info9.0=
+option.info9.comment=支持 Complementary 開發的最佳方式是與您的朋友分享或在社交媒體上推廣，但您也可以在 Patreon 上直接贊助開發者。www.patreon.com/emingt
+
+option.info10=製作群
+value.info10.0=
+option.info10.comment=EminGT：Complementary 的主要開發者。Capt Tatsu：BSL Shaders 的開發者，他的慷慨解囊是 Complementary 得以問世的最初契機。特別感謝：IMS212、sp614x、Chocapic13、Robobo1221、SixthSurge、null511、fayer3、catlikecoding、Builderb0y、Jessie、SpacEagle17、isuewo、flytrap
+
+#Style
+option.SHADER_STYLE=視覺風格
+option.SHADER_STYLE.comment=決定著色器包的預設視覺風格。§b重塑想像 (Reimagined)§r：補充 Minecraft 的同時保留其獨特的視覺元素。§d奔放幻想 (Unbound)§r：以半寫實的奇幻風格重新打造 Minecraft 的視覺效果。§e[*]§r 受影響設定：水體風格、雲朵風格、日/月風格、日/月角度、極光風格、發光礦石。
+value.SHADER_STYLE.1=§b重塑想像
+value.SHADER_STYLE.4=§d奔放幻想
+
+#Screens
+screen.PERFORMANCE_SETTINGS=§e效能設定§r
+screen.PERFORMANCE_SETTINGS.comment=與效能直接相關的設定，會因不同的著色器設定檔而變更。
+
+screen.ATMOSPHERE_SETTINGS=大氣
+screen.ATMOSPHERE_SETTINGS.comment=與大氣相關的設定。
+
+screen.ATM_COLOR_SETTINGS=大氣色彩倍率
+screen.ATM_COLOR_SETTINGS.comment=啟用大氣顏色的自訂功能，這些顏色主要見於天空與霧。
+
+screen.MORNING_ATM_MULTS=日出/日落時段
+screen.NOON_ATM_MULTS=正午時段
+screen.NIGHT_ATM_MULTS=夜晚時段
+screen.RAIN_ATM_MULTS=雨天
+screen.NETHER_ATM_MULTS=地獄維度
+screen.END_ATM_MULTS=終界維度
+
+screen.CLOUD_SETTINGS=雲朵
+screen.CLOUD_SETTINGS.comment=與雲朵相關的設定。
+
+screen.CLOUD_COLOR_SETTINGS=雲朵顏色
+screen.CLOUD_COLOR_SETTINGS.comment=變更雲朵顏色的設定。
+
+screen.CLOUD_UNBOUND_SETTINGS=奔放幻想雲朵設定
+screen.CLOUD_REIMAGINED_SETTINGS=重塑想像雲朵設定
+
+screen.FOG_SETTINGS=霧
+screen.FOG_SETTINGS.comment=與各種類型霧相關的設定。
+
+screen.SUN_MOON_SETTINGS=太陽 / 月亮
+screen.SUN_MOON_SETTINGS.comment=與太陽和月亮相關的設定。
+
+screen.NETHER_SETTINGS=地獄維度
+
+screen.NETHER_SETTINGS.comment=與地獄維度相關的設定。
+
+screen.WEATHER_SETTINGS=雨 / 天氣
+screen.WEATHER_SETTINGS.comment=與天氣狀況相關的設定。
+
+screen.CAMERA_SETTINGS=鏡頭
+screen.CAMERA_SETTINGS.comment=與視角/鏡頭相關的設定。
+
+screen.TONEMAP_SETTINGS=色彩平衡
+screen.TONEMAP_SETTINGS.comment=決定視覺色彩平衡的設定。
+
+screen.COLORGRADING_SETTINGS=色彩分級
+screen.COLORGRADING_SETTINGS.comment=混合最終色彩頻道的設定。
+
+screen.WORLD_BLUR_SETTINGS=世界模糊
+screen.WORLD_BLUR_SETTINGS.comment=與精美世界模糊效果相關的設定。
+
+screen.MATERIAL_SETTINGS=材質
+screen.MATERIAL_SETTINGS.comment=與 Minecraft 材質相關的設定。
+
+screen.IPBR_SETTINGS=IntegratedPBR+ 材質
+screen.IPBR_SETTINGS.comment=與 IntegratedPBR+ 特性相關的設定。
+
+screen.GLOWING_ORE_SETTINGS=發光礦石
+screen.GLOWING_ORE_SETTINGS.comment=調整礦石方塊發光度的設定。
+
+screen.GLOWING_STUFF_SETTINGS=發光物件
+screen.GLOWING_STUFF_SETTINGS.comment=調整雜項方塊發光度的設定。
+
+screen.OTHER_IPBR_SETTINGS=其他 IntegratedPBR+ 特性
+screen.OTHER_IPBR_SETTINGS.comment=雜項 IntegratedPBR+ 設定。
+
+screen.CUSTOM_PBR_SETTINGS=labPBR/seuspbr 材質
+screen.CUSTOM_PBR_SETTINGS.comment=與 labPBR/seuspbr 特性相關的設定。
+
+screen.LIGHTING_SETTINGS=光照
+screen.LIGHTING_SETTINGS.comment=與光照相關的設定。
+
+screen.LIGHT_COLOR_SETTINGS=光照色彩倍率
+screen.LIGHT_COLOR_SETTINGS.comment=啟用所有表面上可見光照顏色的自訂功能。
+
+screen.MORNING_LIGHT_MULTS=日出/日落時段
+screen.NOON_LIGHT_MULTS=正午時段
+screen.NIGHT_LIGHT_MULTS=夜晚時段
+screen.RAIN_LIGHT_MULTS=雨天
+screen.NETHER_LIGHT_MULTS=地獄維度
+screen.END_LIGHT_MULTS=終界維度
+
+screen.BLOCKLIGHT_SETTINGS=方塊光源顏色
+screen.BLOCKLIGHT_SETTINGS.comment=調整光源方塊所發出顏色的設定。
+screen.BLOCKLIGHT_COLOR_SETTINGS=方塊光源顏色
+screen.BLOCKLIGHT_COLOR_SETTINGS.comment=調整光源方塊所發出顏色的設定。
+
+screen.MOON_PHASE_INF_SETTINGS=月相影響
+screen.MOON_PHASE_INF_SETTINGS.comment=決定不同月相如何影響夜間光照的設定。
+
+screen.ACL_FEATURES_SETTINGS=ACL 獨家特性 §e[*]§r
+screen.ACL_FEATURES_SETTINGS.comment=關於 Advanced Colored Lighting 獨家特性的設定。§e[*]§r 這些特性僅在「效能設定」中啟用 Advanced Colored Lighting 且您的系統支援時才會生效。
+
+screen.PIXELATED_LIGHTING_SETTINGS=像素化光照
+screen.PIXELATED_LIGHTING_SETTINGS.comment=使特定光照效果像素化的設定。
+
+screen.WATER_SETTINGS=水
+screen.WATER_SETTINGS.comment=關於水的設定。
+
+screen.WATER_COLOR_SETTINGS=水面顏色
+
+screen.UNDERWATER_COLOR_SETTINGS=水下顏色
+
+screen.WATER_WAVE_SETTINGS=波動水面法線 §e[*]§r
+screen.WATER_WAVE_SETTINGS.comment=自訂水面上可見的表面方向波浪（法線）的設定。§e[*]§r 這些設定僅在「水體風格」設為「重塑想像 + 波浪」或「奔放幻想」時生效。
+
+screen.WAVING_SETTINGS=波動材質
+screen.WAVING_SETTINGS.comment=關於波動材質的設定。
+
+screen.OTHER_SETTINGS=其他
+screen.OTHER_SETTINGS.comment=不適用於任何其他類別的設定。
+
+screen.SELECT_OUTLINE_SETTINGS=選取框線
+screen.SELECT_OUTLINE_SETTINGS.comment=變更方塊選取框線的設定。
+
+screen.WORLD_OUTLINE_SETTINGS=世界輪廓
+screen.WORLD_OUTLINE_SETTINGS.comment=關於可選輪廓效果的設定。
+
+screen.VX_SETTINGS=Rethinking Voxels 設定
+screen.VX_SETTINGS.comment=由 Rethinking Voxels 引入的設定。
+
+screen.VX_VOL_SETTINGS=體素化設定
+screen.VX_VOL_SETTINGS.comment=變更世界哪些部分用於進階光照計算的設定。
+
+screen.RT_SETTINGS=光線追蹤設定
+
+screen.VBL_SETTINGS=體積方塊光設定
+screen.VBL_SETTINGS.comment=與體積方塊光相關的設定。此效果使霧在方塊光源周圍亮起。
+
+screen.VX_WORLD=其他效果
+
+screen.BLOCKCOLS=方塊光源
+screen.BLOCKCOLS.comment=與方塊光源相關的設定。
+
+screen.ENTITYCOLS=實體光源
+screen.ENTITYCOLS.comment=與實體光源相關的設定。
+
+screen.ORECOLS=礦石自發光
+screen.ORECOLS.comment=與礦石自發光相關的設定。
+
+screen.OTHER_COL=其他 (僅亮度)
+screen.OTHER_COL.comment=不適用於任何其他類別的設定。
+
+screen.FIRECOLS=火和營火
+
+screen.FIRECOLS.comment=與火和營火相關的設定。
+
+screen.FROGCOLS=蛙明燈
+screen.FROGCOLS.comment=與蛙明燈相關的設定。
+
+screen.TORCHCOLS=火把
+screen.TORCHCOLS.comment=與火把相關的設定。
+
+screen.ALLAY_COL=悅靈
+screen.AMETHYST_COL=紫水晶簇
+screen.BEACON_COL=烽火台
+screen.BERRY_COL=螢光漿果
+screen.BLAZE_COL=烈焰使者
+screen.BREWINGSTAND_COL=釀造台
+screen.CANDLE_COL=蠟燭
+screen.CHORUS_COL=歌萊花
+screen.CONDUIT_COL=導管
+screen.COPPER_COL=銅礦
+screen.CRYING_COL=哭泣的黑曜石
+# Note: The source line "screen.TNT_COL=Ancient Debris" is likely an error and has been omitted
+# as "screen.DEBRIS_COL=Ancient Debris" and "screen.TNT_COL=TNT" are provided later.
+screen.DIAMOND_COL=鑽石礦
+screen.DRAGON_COL=龍蛋
+screen.EMERALD_COL=綠寶石礦
+screen.END_COL=終界相關方塊
+screen.ENDCRYSTAL_COL=終界水晶
+screen.ENDROD_COL=終界燭
+screen.FIRE_COL=火和營火
+screen.FURNACE_COL=熔爐
+screen.GLOWSTONE_COL=螢光石
+screen.GOLD_COL=金礦
+screen.GREENFROG_COL=草綠蛙明燈
+screen.ICE_COL=藍冰
+screen.IRON_COL=鐵礦
+screen.ITEMFRAME_COL=螢光物品展示框
+screen.LAPIS_COL=青金石礦
+screen.LAVA_COL=熔岩
+screen.LICHEN_COL=螢光蕈
+screen.LIGHTNING_COL=閃電
+screen.MAGMA_COL=岩漿塊 / 岩漿立方怪
+screen.PICKLE_COL=海鞘
+screen.PINKFROG_COL=珠光蛙明燈
+screen.PORTAL_COL=地獄傳送門
+screen.PUMPKIN_COL=南瓜燈
+screen.REDSTONE_COL=紅石礦
+screen.REDSTONELAMP_COL=紅石燈
+screen.SCULK_COL=幽匿感測器
+screen.SEALANTERN_COL=海燈籠
+screen.SHROOMLIGHT_COL=蕈光體
+screen.SOULFIRE_COL=靈魂火和靈魂營火
+screen.SOULTORCH_COL=靈魂火把
+screen.SPAWNER_COL=生怪磚
+screen.SQUID_COL=螢光魷魚
+screen.TABLE_COL=附魔台
+screen.TNT_COL=TNT
+screen.TORCH_COL=火把
+screen.YELLOWFROG_COL=赭黃蛙明燈
+screen.DEBRIS_COL=遠古遺骸
+screen.RESIN_COL=樹脂燈
+
+#Settings
+option.RP_MODE=RP 支援
+option.RP_MODE.comment=變更許多內部計算方式，以決定不同方塊和材質的渲染方式。§bIntegrated PBR+§r：經過計算的 PBR 和額外效果，強烈建議在大多數情況下使用。§a基本§r：無 PBR 或額外效果。§elabPBR/seuspbr§r：使用所需 PBR 資源包的材質。
+value.RP_MODE.0=§a基本
+value.RP_MODE.1=§bIntegrated PBR+
+value.RP_MODE.2=§eseuspbr (需資源包)
+value.RP_MODE.3=§elabPBR (需資源包)
+
+option.WATER_REFLECT_QUALITY=水面倒影品質
+option.WATER_REFLECT_QUALITY.comment=調整出現在半透明物件上的倒影視覺品質。§c中§r：水面和半透明物件上的螢幕空間光線追蹤倒影。§e馬鈴薯§r：以較快的方法取代水面和半透明物件的倒影，在某些情況下可能看起來不正確。§a關閉§r：無倒影。世界空間倒影可在「Rethinking Voxels 設定」中單獨切換。
+value.WATER_REFLECT_QUALITY.-1=§a關閉
+value.WATER_REFLECT_QUALITY.0=§a僅天空
+value.WATER_REFLECT_QUALITY.1=§e馬鈴薯
+value.WATER_REFLECT_QUALITY.2=§c中
+
+option.BLOCK_REFLECT_QUALITY=方塊反射品質 §e[*]§r
+option.BLOCK_REFLECT_QUALITY.comment=調整出現在固體材質上的反射視覺品質。§c高§r：日/月高光 + 使用時間濾波器的更平滑鏡面反射。§e中§r：日/月高光 + 鏡面反射。§a低§r：僅日/月高光。§e[*]§r RP 支援選項必須設定為「基本」以外的任何選項，鏡面反射才會出現。世界空間倒影可在「Rethinking Voxels 設定」中單獨切換。
+value.BLOCK_REFLECT_QUALITY.0=§a關閉
+value.BLOCK_REFLECT_QUALITY.1=§e低
+value.BLOCK_REFLECT_QUALITY.2=§c中
+value.BLOCK_REFLECT_QUALITY.3=§c高
+
+option.SHADOW_QUALITY=即時陰影
+option.SHADOW_QUALITY.comment=調整陰影品質。每個等級都會進一步減少陰影雜訊瑕疵，低於§e高§r的選項會啟用樹葉上的最佳化陰影，§e非常低§r會以多種方式顯著降低陰影品質，§a關閉§r則完全停用陰影和光線。
+value.SHADOW_QUALITY.-1=§a關閉
+value.SHADOW_QUALITY.0=§e非常低
+value.SHADOW_QUALITY.1=§e低
+value.SHADOW_QUALITY.2=§e中
+value.SHADOW_QUALITY.3=§e高
+value.SHADOW_QUALITY.4=§c非常高
+value.SHADOW_QUALITY.5=§4§l極致
+
+option.LIGHTSHAFT_QUALI_DEFINE=光線品質 §e[*]§r
+option.LIGHTSHAFT_QUALI_DEFINE.comment=調整光線品質。每個等級都會進一步減少光線雜訊瑕疵。§e[*]§r 「即時陰影」設定必須設為非「關閉」狀態，光線才會作用。
+value.LIGHTSHAFT_QUALI_DEFINE.0=§a關閉
+value.LIGHTSHAFT_QUALI_DEFINE.1=§e低
+value.LIGHTSHAFT_QUALI_DEFINE.2=§e中
+value.LIGHTSHAFT_QUALI_DEFINE.3=§c高
+value.LIGHTSHAFT_QUALI_DEFINE.4=§4§l非常高
+
+option.shadowDistance=陰影距離
+option.shadowDistance.comment=調整玩家周圍即時陰影的渲染距離。§e[*]§r 此值內部上限為渲染距離。§e[*]§r 建議將此值設定為渲染距離的約 80%，以獲得最佳效能和覆蓋範圍。§c[-]§r 較低的值可能導致過度的光線溢出。
+value.shadowDistance.64.0=§a4 區塊 §c[-]
+value.shadowDistance.80.0=§a5 區塊 §c[-]
+value.shadowDistance.96.0=§a6 區塊 §c[-]
+value.shadowDistance.112.0=§a7 區塊 §c[-]
+value.shadowDistance.128.0=§a8 區塊
+value.shadowDistance.160.0=§e10 區塊
+value.shadowDistance.192.0=§e12 區塊
+value.shadowDistance.224.0=§e14 區塊
+value.shadowDistance.256.0=§c16 區塊
+value.shadowDistance.320.0=§c20 區塊
+value.shadowDistance.384.0=§4§l24 區塊
+value.shadowDistance.512.0=§4§l32 區塊
+value.shadowDistance.768.0=§4§l§n§o48 區塊
+value.shadowDistance.1024.0=§4§k-§r§4§l§n§o64 區塊§r§4§k-
+
+option.ENTITY_SHADOWS_DEFINE=實體陰影
+option.ENTITY_SHADOWS_DEFINE.comment=啟用實體和方塊實體投射陰影的功能。§c[-]§r 實體陰影對效能的影響遠超預期，在某些情況下可能導致 FPS 下降超過 50%。
+value.ENTITY_SHADOWS_DEFINE.-1=§a關閉
+value.ENTITY_SHADOWS_DEFINE.1=§4§k-§r§4§l§n§o開啟§r§4§k- §r§c[-]
+
+option.DETAIL_QUALITY=細節品質
+option.DETAIL_QUALITY.comment=調整數個影響效能的小細節。調整以下項目的品質：水材質、TAA、光照調整、夜空星雲、地獄風暴、終界光束、天空效果反射、雨水坑精確度
+value.DETAIL_QUALITY.0=§a馬鈴薯
+value.DETAIL_QUALITY.2=§e中
+value.DETAIL_QUALITY.3=§c高
+
+option.CLOUD_QUALITY=雲朵品質
+option.CLOUD_QUALITY.comment=調整「重塑想像」/「奔放幻想」雲朵風格的光照、細節和取樣品質。§e[*]§r 此設定僅適用於「重塑想像」或「奔放幻想」雲朵風格。
+value.CLOUD_QUALITY.0=§a關閉
+value.CLOUD_QUALITY.1=§a低
+value.CLOUD_QUALITY.2=§e中
+value.CLOUD_QUALITY.3=§c高
+
+option.FXAA_DEFINE=反鋸齒 (FXAA)
+option.FXAA_DEFINE.comment=啟用快速近似反鋸齒 (FXAA)，這是一種能產生更平滑影像的效果。
+value.FXAA_DEFINE.-1=§a關閉
+value.FXAA_DEFINE.1=§e開啟
+
+option.SSAO_QUALI_DEFINE=邊緣陰影 (SSAO) 品質
+option.SSAO_QUALI_DEFINE.comment=調整螢幕空間環境光遮蔽 (SSAO) 的品質，此效果會為場景邊緣添加額外的環境陰影。每個等級都會進一步減少 SSAO 雜訊瑕疵。
+value.SSAO_QUALI_DEFINE.0=§a關閉
+value.SSAO_QUALI_DEFINE.2=§e中
+value.SSAO_QUALI_DEFINE.3=§c高
+
+option.ANISOTROPIC_FILTER=材質過濾
+option.ANISOTROPIC_FILTER.comment=使用各向異性過濾改善 Mipmap 材質的品質。§e[*]§r 請確保您的「Mipmap 等級」視訊設定設為最大 (4)，否則效果不佳。
+value.ANISOTROPIC_FILTER.0=§a關閉
+value.ANISOTROPIC_FILTER.4=§e4x
+value.ANISOTROPIC_FILTER.8=§e8x
+value.ANISOTROPIC_FILTER.16=§4§l16x
+
+option.SSAO_I=邊緣陰影強度 (SSAO)
+option.SSAO_I.comment=決定螢幕空間環境光遮蔽 (SSAO) 的強度，此效果會為場景邊緣添加額外的環境陰影。§e[*]§r 若在「效能設定」中停用 SSAO，此設定將無效。
+value.SSAO_I.0=§c關閉
+
+option.VANILLAAO_I=邊緣陰影強度 (原版)
+option.VANILLAAO_I.comment=決定 Minecraft 環境光遮蔽的強度，此效果會為場景邊緣添加額外的環境陰影。
+value.VANILLAAO_I.0=§c關閉
+
+option.BORDER_FOG=邊界霧
+option.BORDER_FOG.comment=在已載入世界的邊緣產生濃厚霧氣以隱藏區塊邊界。§e[*]§r 若遊玩時渲染距離小於 8 個區塊，建議停用邊界霧。
+
+option.ATM_FOG_MULT=大氣霧
+option.ATM_FOG_MULT.comment=調整基於高度的霧氣濃度。
+value.ATM_FOG_MULT.0.50=非常細微
+value.ATM_FOG_MULT.0.65=細微
+value.ATM_FOG_MULT.0.80=正常
+value.ATM_FOG_MULT.0.95=濃厚
+
+option.ATM_FOG_DISTANCE=大氣霧距離
+option.ATM_FOG_DISTANCE.comment=調整大氣霧開始出現時與攝影機的距離。§e[*]§r 請注意，霧氣距離也會根據「視訊設定」中的「渲染距離」設定自動調整。
+
+option.ATM_FOG_ALTITUDE=大氣霧高度
+option.ATM_FOG_ALTITUDE.comment=決定大氣霧最明顯出現的高度。
+
+option.CAVE_FOG=洞穴霧
+option.CAVE_FOG.comment=在深層地底區域啟用額外霧氣。
+
+option.LIGHTSHAFT_BEHAVIOUR=光線模式
+option.LIGHTSHAFT_BEHAVIOUR.comment=決定光線的行為模式。§a[+]§r 場景感知光線會自動在一般和極端模式間轉換，以提供最佳效果。§c[-]§r 不建議在一般遊戲中使用極端模式，它可能會嚴重影響效能。
+value.LIGHTSHAFT_BEHAVIOUR.0=§c關閉
+value.LIGHTSHAFT_BEHAVIOUR.1=場景感知 §a[+]
+value.LIGHTSHAFT_BEHAVIOUR.2=一般
+value.LIGHTSHAFT_BEHAVIOUR.3=極端 §c[-]
+
+option.LIGHTSHAFT_SMOKE=光線煙霧
+option.LIGHTSHAFT_SMOKE.comment=為光線添加體積煙霧效果。§c[-]§r 此效果可能影響效能。
+
+option.SPECIAL_PALE_GARDEN_LIGHTSHAFTS=特殊蒼白花園光線
+option.SPECIAL_PALE_GARDEN_LIGHTSHAFTS.comment=使光線在「蒼白花園」生物群系中看起來特別炫麗。
+
+option.LIGHTSHAFT_DAY_I=日間光線倍率
+option.LIGHTSHAFT_NIGHT_I=夜間光線倍率
+option.LIGHTSHAFT_RAIN_I=雨天光線倍率
+
+option.CLOUD_STYLE_DEFINE=雲朵風格
+option.CLOUD_STYLE_DEFINE.comment=決定雲朵的風格。§e[*]§r 「預設風格」表示此設定將由著色器選項主選單中的「視覺風格」設定自動決定。§e[*]§r 「原版」風格需要在視訊設定中啟用雲朵。
+value.CLOUD_STYLE_DEFINE.-1=預設風格
+value.CLOUD_STYLE_DEFINE.0=§c關閉
+value.CLOUD_STYLE_DEFINE.1=重塑想像
+value.CLOUD_STYLE_DEFINE.3=奔放幻想
+value.CLOUD_STYLE_DEFINE.50=原版 §e[*]
+option.CLOUD_SHADOWS=雲朵陰影
+option.CLOUD_SHADOWS.comment=啟用雲朵投射的陰影。§e[*]§r 此設定僅適用於「重塑想像」或「奔放幻想」雲朵風格。§e[*]§r 若雲朵風格設為「奔放幻想」，由於其雲朵的額外複雜性，雲朵陰影將會隨機生成。
+
+option.CLOUD_CLOSED_AREA_CHECK=防止雲朵進入室內
+option.CLOUD_CLOSED_AREA_CHECK.comment=執行額外檢查以移除封閉區域內的雲朵。§e[*]§r 此設定僅適用於「重塑想像」或「奔放幻想」雲朵風格。§e[*]§r 若「即時陰影」為關閉狀態，此設定將被停用。
+
+option.CLOUD_ALT1=雲朵高度
+option.CLOUD_ALT1.comment=決定雲朵出現的世界高度。§e[*]§r 此設定僅適用於「重塑想像」或「奔放幻想」雲朵風格。
+
+option.CLOUD_SPEED_MULT=雲朵速度
+option.CLOUD_SPEED_MULT.comment=決定雲朵移動的速度。「與世界時間同步」設定使用 Minecraft 世界時間來推進雲朵位置；這使得同一伺服器中的玩家看到的雲朵保持一致。§e[*]§r 此設定僅適用於「重塑想像」或「奔放幻想」雲朵風格。
+value.CLOUD_SPEED_MULT.100=與世界時間同步
+
+option.CLOUD_R=雲朵紅色倍率
+option.CLOUD_G=雲朵綠色倍率
+option.CLOUD_B=雲朵藍色倍率
+
+option.CLOUD_UNBOUND_AMOUNT=雲朵數量
+option.CLOUD_UNBOUND_AMOUNT.comment=調整「奔放幻想」雲朵的數量。
+
+option.CLOUD_UNBOUND_SIZE_MULT=雲朵小型度
+option.CLOUD_UNBOUND_SIZE_MULT.comment=調整「奔放幻想」雲朵的大小。值越高，雲朵越小。
+
+option.CLOUD_UNBOUND_RAIN_ADD=雨雲增量
+option.CLOUD_UNBOUND_RAIN_ADD.comment=調整下雨/下雪時雲朵數量的增加幅度。
+prefix.CLOUD_UNBOUND_RAIN_ADD=+
+
+option.DOUBLE_REIM_CLOUDS=雙層重塑想像雲朵
+option.DOUBLE_REIM_CLOUDS.comment=啟用第二層「重塑想像」雲朵。§e[*]§r 此設定僅適用於「重塑想像」雲朵風格。
+
+option.CLOUD_ALT2=第二雲層高度
+option.CLOUD_ALT2.comment=決定第二雲層出現的世界高度。§e[*]§r 此設定僅在啟用「雙層重塑想像雲朵」選項且雲朵風格為「重塑想像」時生效。
+
+option.NETHER_STORM=地獄風暴
+option.NETHER_STORM.comment=為地獄維度添加類似煙霧的體積效果。§c[-]§r 此效果可能影響效能。
+
+option.NETHER_STORM_I=地獄風暴不透明度
+option.NETHER_STORM_I.comment=調整地獄風暴的不透明度。
+
+option.NETHER_STORM_LOWER_ALT=地獄風暴較低高度
+option.NETHER_STORM_LOWER_ALT.comment=決定地獄風暴的較低起始點。地獄風暴不會出現在此高度以下，且在此高度正上方看起來最明亮。
+
+option.NETHER_STORM_HEIGHT=地獄風暴高度
+option.NETHER_STORM_HEIGHT.comment=決定地獄風暴形成的高度。降低此值將導致地獄風暴聚集在「地獄風暴較低高度」附近。
+
+option.NETHER_VIEW_LIMIT=地獄可視距離上限
+option.NETHER_VIEW_LIMIT.comment=決定在地獄中霧氣所允許的最大可見距離。§c[-]§r 啟用「地獄風暴」時，增加此設定可能會影響效能。
+value.NETHER_VIEW_LIMIT.96.0=6 區塊
+value.NETHER_VIEW_LIMIT.112.0=7 區塊
+value.NETHER_VIEW_LIMIT.128.0=8 區塊
+value.NETHER_VIEW_LIMIT.160.0=10 區塊
+value.NETHER_VIEW_LIMIT.192.0=12 區塊
+value.NETHER_VIEW_LIMIT.224.0=14 區塊
+value.NETHER_VIEW_LIMIT.256.0=16 區塊
+value.NETHER_VIEW_LIMIT.320.0=20 區塊
+value.NETHER_VIEW_LIMIT.384.0=24 區塊
+value.NETHER_VIEW_LIMIT.512.0=32 區塊 §c[-]
+value.NETHER_VIEW_LIMIT.768.0=48 區塊 §c[-]
+value.NETHER_VIEW_LIMIT.1024.0=64 區塊 §c[-]
+value.NETHER_VIEW_LIMIT.99999.0=無限制 §c[-]
+
+option.NETHER_COLOR_MODE=色彩模式
+option.NETHER_COLOR_MODE.comment=決定地獄中環境色彩的處理方式。固定：色彩不會因生物群系而改變。基於生物群系：色彩會根據生物群系改變。基於生物群系 (已修改)：基於生物群系，但色彩已重新平衡以更符合 Complementary 的預設視覺風格。
+value.NETHER_COLOR_MODE.3=基於生物群系 (已修改)
+value.NETHER_COLOR_MODE.2=基於生物群系
+value.NETHER_COLOR_MODE.0=固定
+
+option.T_EXPOSURE=整體亮度
+option.T_EXPOSURE.comment=也稱為「色調映射曝光度」。調整整個影像的整體亮度。
+
+option.TM_WHITE_CURVE=白色亮度
+option.TM_WHITE_CURVE.comment=也稱為「色調映射白色曲線」。調整色彩達到全白的容易程度。
+
+option.T_UPPER_CURVE=較亮色彩對比度
+option.T_UPPER_CURVE.comment=也稱為「色調映射上半部曲線」。調整較亮色彩的對比度。
+
+option.T_LOWER_CURVE=較暗色彩對比度
+option.T_LOWER_CURVE.comment=也稱為「色調映射下半部曲線」。調整較暗色彩的對比度。
+
+option.T_SATURATION=飽和度
+option.T_SATURATION.comment=調整影像的整體色彩鮮豔度。
+
+option.T_VIBRANCE=較淡色彩飽和度
+option.T_VIBRANCE.comment=也稱為「自然飽和度」。調整影像的色彩鮮豔度，但已飽和的像素受影響較小。
+
+option.COLORGRADING=§e色彩分級
+option.COLORGRADING.comment=啟用自由混合最終色彩頻道的設定。
+option.GR_RR=紅對紅
+option.GR_RG=紅對綠
+option.GR_RB=紅對藍
+option.GR_RC=紅色曲線
+option.GR_GR=綠對紅
+option.GR_GG=綠對綠
+option.GR_GB=綠對藍
+option.GR_GC=綠色曲線
+option.GR_BR=藍對紅
+option.GR_BG=藍對綠
+option.GR_BB=藍對藍
+option.GR_BC=藍色曲線
+
+option.WATER_STYLE_DEFINE=水體風格
+option.WATER_STYLE_DEFINE.comment=決定水體的風格。§e[*]§r 「預設風格」表示此設定將由著色器選項主選單中的「視覺風格」設定自動決定。
+value.WATER_STYLE_DEFINE.-1=預設風格
+value.WATER_STYLE_DEFINE.1=重塑想像
+value.WATER_STYLE_DEFINE.2=重塑想像 + 波浪
+value.WATER_STYLE_DEFINE.3=奔放幻想
+
+option.WATER_CAUSTIC_STYLE_DEFINE=水體焦散風格
+option.WATER_CAUSTIC_STYLE_DEFINE.comment=決定水體陰影的風格，也稱為水體焦散。
+value.WATER_CAUSTIC_STYLE_DEFINE.-1=同水體風格
+value.WATER_CAUSTIC_STYLE_DEFINE.1=重塑想像
+value.WATER_CAUSTIC_STYLE_DEFINE.3=奔放幻想
+
+option.WATER_REFRACTION_INTENSITY=水體折射強度 §e[*]§r
+option.WATER_REFRACTION_INTENSITY.comment=調整水體折射和水下扭曲的強度。§e[*]§r 此設定僅在「細節品質」設為「高」時才能完全作用，否則僅影響細微的水下扭曲。
+
+option.WATER_FOAM_I=水沫強度
+option.WATER_FOAM_I.comment=決定水邊緣泡沫的不透明度。§e[*]§r 此設定僅在「細節品質」設為「中」或更高時生效。
+
+option.WATER_ALPHA_MULT=水體不透明度因子
+option.WATER_ALPHA_MULT.comment=調整水體看起來有多不透明。§c[-]§r 極端值會破壞水體光照的平衡。§e[*]§r 此設定僅在「細節品質」設為「中」或更高時生效。
+
+option.WATER_FOG_MULT=水霧因子
+option.WATER_FOG_MULT.comment=調整水霧看起來有多近。值越高，霧越近。§c[-]§r 極端值會破壞水體光照的平衡。
+
+option.WATERCOLOR_R=水面紅色倍率
+option.WATERCOLOR_G=水面綠色倍率
+option.WATERCOLOR_B=水面藍色倍率
+
+option.WATERCOLOR_MODE=色彩模式
+option.WATERCOLOR_MODE.comment=決定水體顏色的處理方式。固定：水體顏色不會因生物群系而改變。基於生物群系：顏色會根據生物群系改變。基於生物群系 (限制)：基於生物群系，但防止表面顏色在某些生物群系中變得奇怪。§e[*]§r 此設定在 Minecraft 1.13 以下版本中無法正常運作。
+value.WATERCOLOR_MODE.3=基於生物群系 (限制)
+value.WATERCOLOR_MODE.2=基於生物群系
+value.WATERCOLOR_MODE.0=固定
+
+option.BRIGHT_CAVE_WATER=較亮的淺水/洞穴水
+option.BRIGHT_CAVE_WATER.comment=使淺水或封閉區域內的水體更明亮，以改善洞穴中的能見度，並為海洋淺水區添加一些色彩細節。§e[*]§r 由於技術原因，若「水體不透明度因子」設定高於 199，此效果將無效。
+
+option.UNDERWATERCOLOR_R=水下紅色倍率
+option.UNDERWATERCOLOR_G=水下綠色倍率
+option.UNDERWATERCOLOR_B=水下藍色倍率
+
+option.WATER_BUMPINESS=波浪強度
+option.WATER_BUMPINESS.comment=調整水面上可見的表面方向波浪（法線）的強度。
+
+option.WATER_BUMP_SMALL=波浪強度 - 小波浪
+option.WATER_BUMP_SMALL.comment=調整比其他波浪更小的波浪強度。
+
+option.WATER_BUMP_MED=波浪強度 - 中波浪
+option.WATER_BUMP_MED.comment=調整與其他波浪相比大小適中的波浪強度。
+
+option.WATER_BUMP_BIG=波浪強度 - 大波浪
+option.WATER_BUMP_BIG.comment=調整比其他波浪更大的波浪強度。
+
+option.WATER_SPEED_MULT=波浪速度
+option.WATER_SPEED_MULT.comment=調整水面上可見的表面方向波浪（法線）的移動速度。
+
+option.WATER_SIZE_MULT=波浪大小
+option.WATER_SIZE_MULT.comment=調整水面上表面方向波浪（法線）看起來的大小。
+
+option.SUN_ANGLE=日/月角度
+option.SUN_ANGLE.comment=調整正午時日/月相對於世界的角度。§a[+]§r 「重塑想像」的光照模型經過特殊設計，使「0」度太陽角度與其他角度一樣運作良好。
+value.SUN_ANGLE.-1=預設風格
+value.SUN_ANGLE.0=0 §r(§b重塑想像§r)
+value.SUN_ANGLE.-40=-40 §r(§d奔放幻想§r)
+
+option.SUN_MOON_STYLE_DEFINE=日/月風格
+option.SUN_MOON_STYLE_DEFINE.comment=決定日/月的風格。§e[*]§r 由於日/月/天空盒區分的限制，此設定可能與某些資源包互動不良。
+value.SUN_MOON_STYLE_DEFINE.-1=預設風格
+value.SUN_MOON_STYLE_DEFINE.1=重塑想像
+value.SUN_MOON_STYLE_DEFINE.2=奔放幻想
+value.SUN_MOON_STYLE_DEFINE.3=奔放幻想 - 較小
+
+option.SUN_MOON_HORIZON=日/月地平線
+option.SUN_MOON_HORIZON.comment=防止日/月出現在地平線以下。
+
+option.SUN_MOON_DURING_RAIN=雨天時的日/月
+option.SUN_MOON_DURING_RAIN.comment=決定在下雨時日/月是否可見。
+
+option.NIGHT_STAR_AMOUNT=夜星數量
+option.NIGHT_STAR_AMOUNT.comment=決定夜空中星星的數量。
+value.NIGHT_STAR_AMOUNT.2=中
+value.NIGHT_STAR_AMOUNT.3=高
+
+option.RAINBOWS=彩虹
+option.RAINBOWS.comment=啟用在早晨/傍晚太陽對面出現的彩虹。
+value.RAINBOWS.0=關閉
+value.RAINBOWS.1=雨後
+value.RAINBOWS.3=總是
+
+option.AURORA_STYLE_DEFINE=極光風格
+option.AURORA_STYLE_DEFINE.comment=決定夜空中出現的北極光風格。
+value.AURORA_STYLE_DEFINE.-1=預設風格
+value.AURORA_STYLE_DEFINE.0=§c關閉
+value.AURORA_STYLE_DEFINE.1=重塑想像
+value.AURORA_STYLE_DEFINE.2=奔放幻想
+
+option.AURORA_CONDITION=極光
+option.AURORA_CONDITION.comment=決定極光出現的條件。§e[*]§r 無論此設定為何，極光僅在夜間出現。
+value.AURORA_CONDITION.0=每晚
+value.AURORA_CONDITION.1=滿月
+value.AURORA_CONDITION.2=雪地生物群系
+value.AURORA_CONDITION.3=雪地生物群系的滿月
+value.AURORA_CONDITION.4=滿月或雪地生物群系
+
+option.NIGHT_NEBULA=夜空星雲
+option.NIGHT_NEBULA.comment=為夜空添加星系風格的星雲。星雲是程序生成的，每晚看起來都不同。§c[-]§r 此效果可能影響效能。§e[*]§r 「Nebulae」不是筆誤，它是 Nebula 的複數形式 =D
+
+option.NIGHT_NEBULA_I=夜空星雲亮度
+option.NIGHT_NEBULA_I.comment=調整夜空星雲的亮度。
+
+option.RAIN_STYLE=雨天風格
+option.RAIN_STYLE.comment=決定雨天的風格。
+value.RAIN_STYLE.1=輕柔和暖
+value.RAIN_STYLE.2=滂沱濕冷
+
+option.SPECIAL_BIOME_WEATHER=特殊寒冷/乾燥天氣
+option.SPECIAL_BIOME_WEATHER.comment=改變寒冷和乾燥生物群系中的大氣平衡，營造暴風雪或沙塵暴的感覺。
+
+option.WEATHER_TEX_OPACITY=天氣材質不透明度
+option.WEATHER_TEX_OPACITY.comment=調整降雨/降雪天氣材質的不透明度。
+
+option.SHADOW_SMOOTHING=陰影平滑
+option.SHADOW_SMOOTHING.comment=決定陰影的銳利度。§c[-]§r 降低此設定會增加陰影閃爍並影響效能。§e[*]§r 此設定僅在「即時陰影」設為「低」或更高時生效。
+value.SHADOW_SMOOTHING.4=非常平滑
+value.SHADOW_SMOOTHING.3=平滑
+value.SHADOW_SMOOTHING.2=銳利 §c[-]
+value.SHADOW_SMOOTHING.1=非常銳利 §c[-]
+
+option.PIXELATED_SHADOWS=像素化陰影
+option.PIXELATED_SHADOWS.comment=使太陽和月亮投射的陰影看起來像素化。
+
+option.PIXELATED_BLOCKLIGHT=像素化方塊光源
+option.PIXELATED_BLOCKLIGHT.comment=使光源方塊投射的光照看起來像素化。
+
+option.PIXELATED_AO=像素化邊緣陰影
+option.PIXELATED_AO.comment=使 Minecraft 的原版環境光遮蔽看起來像素化。
+
+option.PIXEL_SCALE=像素化比例
+option.PIXEL_SCALE.comment=對材質解析度進行的縮放。
+value.PIXEL_SCALE.-2=0.25倍
+value.PIXEL_SCALE.-1=0.5倍
+value.PIXEL_SCALE.1=1倍
+value.PIXEL_SCALE.2=2倍
+value.PIXEL_SCALE.3=4倍
+value.PIXEL_SCALE.4=8倍
+value.PIXEL_SCALE.5=16倍
+
+option.TEXTURE_RES=後備解析度
+option.TEXTURE_RES.comment=當像素化效果計算時（如方塊光源）沒有材質座標可供使用時，將採用的材質解析度。
+suffix.TEXTURE_RES=/方塊
+
+option.BLOOM=光暈
+option.BLOOM.comment=啟用明亮物體和濕氣產生的模糊光輝。
+
+option.BLOOM_STRENGTH=光暈強度
+option.BLOOM_STRENGTH.comment=決定明亮物體的光輝強度，以及雨天/洞穴濕氣產生的光暈。§c[-]§r 過多光暈會導致影像比預期更模糊和明亮，尤其在潮濕環境下。
+value.BLOOM_STRENGTH.0.027=15%
+value.BLOOM_STRENGTH.0.036=20%
+value.BLOOM_STRENGTH.0.045=25%
+value.BLOOM_STRENGTH.0.054=30%
+value.BLOOM_STRENGTH.0.063=35%
+value.BLOOM_STRENGTH.0.072=40%
+value.BLOOM_STRENGTH.0.081=45%
+value.BLOOM_STRENGTH.0.09=50%
+value.BLOOM_STRENGTH.0.10=55%
+value.BLOOM_STRENGTH.0.11=60%
+value.BLOOM_STRENGTH.0.12=65%
+value.BLOOM_STRENGTH.0.13=70%
+value.BLOOM_STRENGTH.0.14=75%
+value.BLOOM_STRENGTH.0.15=80% §c[-]
+value.BLOOM_STRENGTH.0.16=85% §c[-]
+value.BLOOM_STRENGTH.0.17=90% §c[-]
+value.BLOOM_STRENGTH.0.18=95% §c[-]
+value.BLOOM_STRENGTH.0.19=100% §c[-]
+value.BLOOM_STRENGTH.0.21=110% §c[-]
+value.BLOOM_STRENGTH.0.23=120% §c[-]
+value.BLOOM_STRENGTH.0.25=130% §c[-]
+value.BLOOM_STRENGTH.0.28=150% §c[-]
+value.BLOOM_STRENGTH.0.32=180% §c[-]
+value.BLOOM_STRENGTH.10.00=§c瘋狂
+
+option.IMAGE_SHARPENING=影像銳化
+option.IMAGE_SHARPENING.comment=使用濾鏡使影像更銳利。§c[-]§r 過度銳化可能導致鋸齒、閃爍、雜訊和細微亮度變化等視覺瑕疵。
+value.IMAGE_SHARPENING.0=關閉
+value.IMAGE_SHARPENING.1=1倍
+value.IMAGE_SHARPENING.2=2倍
+value.IMAGE_SHARPENING.3=3倍
+value.IMAGE_SHARPENING.4=4倍
+value.IMAGE_SHARPENING.5=5倍
+value.IMAGE_SHARPENING.6=6倍 §c[-]
+value.IMAGE_SHARPENING.7=7倍 §c[-]
+value.IMAGE_SHARPENING.8=8倍 §c[-]
+value.IMAGE_SHARPENING.9=9倍 §c[-]
+value.IMAGE_SHARPENING.10=10倍 §c[-]
+
+option.LENSFLARE_MODE=鏡頭光暈
+option.LENSFLARE_MODE.comment=當朝向太陽或月亮時，添加相機鏡頭反射效果。§c[-]§r 此效果可能嚴重影響效能。
+value.LENSFLARE_MODE.0=關閉
+value.LENSFLARE_MODE.1=僅太陽
+value.LENSFLARE_MODE.2=太陽與月亮
+
+option.LENSFLARE_I=鏡頭光暈強度
+option.LENSFLARE_I.comment=調整鏡頭光暈效果的強度。
+
+option.TAA_MODE=時間濾波器
+option.TAA_MODE.comment=決定時間性反鋸齒的行為模式。智慧細微 §a[+]§r：時間濾波器以少量方式應用於影像，不會產生瑕疵。強效 §e[*]§r：提供更好的反鋸齒效果，但會導致額外的拖影和閃爍；在高幀率和解析度下可能是更好的選擇。關閉 §c[-]§r：關閉此選項會導致效能和效果品質下降。
+value.TAA_MODE.1=智慧細微 §a[+]
+value.TAA_MODE.2=強效 §e[*]
+value.TAA_MODE.0=關閉 §c[-]
+
+option.DISTANT_LIGHT_BOKEH=遠處光點散景
+option.DISTANT_LIGHT_BOKEH.comment=透過在遠處應用單像素模糊，使遠處光源看起來分散。§a[+]§r 此效果可受益於 IntegratedPBR+ (可選)，透過調整遠處光源以獲得更好外觀。
+
+option.MOTION_BLURRING=動態模糊
+option.MOTION_BLURRING.comment=移動攝影機時對影像應用模糊效果。
+
+option.MOTION_BLURRING_STRENGTH=動態模糊強度
+option.MOTION_BLURRING_STRENGTH.comment=調整動態模糊的強度。
+
+option.WORLD_BLUR=§e世界模糊
+option.WORLD_BLUR.comment=啟用世界模糊。距離模糊：模糊效果類似霧，取決於與攝影機的距離。景深：模糊效果取決於攝影機的對焦點。§c[-]§r 此效果可能嚴重影響效能。
+value.WORLD_BLUR.0=關閉
+value.WORLD_BLUR.1=距離模糊
+value.WORLD_BLUR.2=景深
+
+option.WB_FOV_SCALED=視野縮放模糊
+option.WB_FOV_SCALED.comment=將世界模糊縮放至攝影機視野。啟用此選項後，放大時世界模糊會更強烈。
+
+option.WB_CHROMATIC=色差模糊
+option.WB_CHROMATIC.comment=對模糊區域應用色差效果，分離模糊區域中的不同顏色。
+
+option.WB_ANAMORPHIC=變形模糊
+option.WB_ANAMORPHIC.comment=將模糊效果沿一個方向拉伸。§c[-]§r 此選項可能會降低世界模糊的品質。
+
+option.WB_DOF_I=景深強度
+option.WB_DOF_FOCUS=景深對焦
+option.WB_DOF_FOCUS.comment=決定攝影機的對焦距離。自動：對焦點將根據螢幕中心點調整。亮度：對焦點將由「視訊設定」中的「亮度」滑桿決定。
+value.WB_DOF_FOCUS.-1=亮度 §e[*]
+value.WB_DOF_FOCUS.0=自動
+
+option.WB_DB_DAY_I=距離模糊 - 白天
+option.WB_DB_NIGHT_I=距離模糊 - 夜晚與室內
+option.WB_DB_RAIN_I=距離模糊 - 雨雪天
+option.WB_DB_WATER_I=距離模糊 - 水下
+option.WB_DB_NETHER_I=距離模糊 - 地獄
+option.WB_DB_END_I=距離模糊 - 終界
+
+option.VIGNETTE_R=暈影
+option.VIGNETTE_R.comment=在螢幕邊緣應用變暗效果。
+
+option.CHROMA_ABERRATION=色差
+option.CHROMA_ABERRATION.comment=將螢幕邊緣的不同顏色分離。§c[-]§r 色差可能導致影像感覺模糊；不建議在遊戲中設定高值。
+value.CHROMA_ABERRATION.4=4 §c[-]
+value.CHROMA_ABERRATION.5=5 §c[-]
+value.CHROMA_ABERRATION.6=6 §c[-]
+value.CHROMA_ABERRATION.7=7 §c[-]
+value.CHROMA_ABERRATION.8=8 §c[-]
+
+option.IPBR_EMISSIVE_MODE=IPBR+ 自發光模式
+option.IPBR_EMISSIVE_MODE.comment=決定 IntegratedPBR+ 中自發光的處理方式。選擇 labPBR 或 seuspbr 選項可讓相容的資源包完全覆蓋具有鏡面材質方塊上的 IPBR+ 自發光效果。§c[-]§r 除非您清楚自己在做什麼，否則不建議變更此設定。
+value.IPBR_EMISSIVE_MODE.1=僅 IPBR+
+value.IPBR_EMISSIVE_MODE.3=labPBR > IPBR+
+value.IPBR_EMISSIVE_MODE.2=seuspbr > IPBR+
+
+option.IPBR_PARTICLE_FEATURES=IPBR+ 粒子特性
+option.IPBR_PARTICLE_FEATURES.comment=為粒子啟用多項特性，包括發光熔岩粒子和色彩更佳的水粒子等。
+
+option.FANCY_GLASS=改良玻璃
+option.FANCY_GLASS.comment=透過添加半透明層來改良普通玻璃。§c[-]§r 在較舊的 Iris 版本上無效。§e[*]§r RP 支援選項必須設定為 Integrated PBR+。
+
+option.GREEN_SCREEN_LIME=綠幕萊姆方塊
+option.GREEN_SCREEN_LIME.comment=將「萊姆綠混凝土」、「萊姆綠羊毛」和「萊姆綠地毯」變成用於影片編輯的綠幕。提示 1：關閉「光暈」選項以改善分離效果。提示 2：在萊姆綠地毯下放置光源以進行照明。提示 3：您可以關閉反鋸齒 (FXAA) 並在「效能設定」中將「細節品質」設為「馬鈴薯」，以停用所有濾鏡並獲得像素級完美分離。
+
+option.HAND_SWAYING=手部擺動
+option.HAND_SWAYING.comment=為玩家手部添加緩慢移動以模擬呼吸動畫。
+value.HAND_SWAYING.0=關閉
+value.HAND_SWAYING.1=細微
+value.HAND_SWAYING.2=正常
+value.HAND_SWAYING.3=強烈
+
+option.LESS_LAVA_FOG=減少熔岩或雪中霧氣
+option.LESS_LAVA_FOG.comment=減少熔岩霧和細雪粉霧以改善內部能見度。
+
+option.REDUCE_CLOSE_PARTICLES=減少近距離粒子
+option.REDUCE_CLOSE_PARTICLES.comment=降低靠近攝影機的粒子的不透明度以改善能見度。
+
+option.SNOWY_WORLD=雪世界
+option.SNOWY_WORLD.comment=使整個世界被雪覆蓋。
+
+option.SHOW_LIGHT_LEVEL=顯示亮度等級
+option.SHOW_LIGHT_LEVEL.comment=在主世界：黃色表示怪物可在夜間生成，紅色表示怪物可隨時生成。在地獄或終界：黃色表示某些怪物可生成，紅色表示所有怪物皆可生成。§e[*]§r 停用平滑光照以獲得精確結果。
+value.SHOW_LIGHT_LEVEL.0=關閉
+value.SHOW_LIGHT_LEVEL.1=手持蜘蛛眼
+value.SHOW_LIGHT_LEVEL.2=手持光源
+value.SHOW_LIGHT_LEVEL.3=保持開啟
+
+option.COLOR_CODED_PROGRAMS=顏色編碼程式 §c[-]§r
+option.COLOR_CODED_PROGRAMS.comment=顯示用於渲染幾何圖形的著色器程式。§c[-]§r 此選項僅供開發目的使用，不應於遊戲中使用。§e[*]§r 顏色值可在著色器包檔案中找到：shaders/lib/misc/colorCodedPrograms.glsl
+
+option.GLOWING_COLORED_PARTICLES=強制發光粒子 §c[-]§r
+option.GLOWING_COLORED_PARTICLES.comment=使所有技術上「有色」的粒子變為自發光。§c[-]§r 不建議在一般遊戲中使用此選項，因為它會使許多由根本不應發光的材質構成的粒子發光。
+
+option.MINIMUM_LIGHT_MODE=洞穴照明
+option.MINIMUM_LIGHT_MODE.comment=為沒有天空光照的區域添加額外照明。§a[+]§r 「預設」選項根據「視訊設定」中的「亮度」滑桿決定照明。§c[-]§r 大幅變更此設定可能破壞光照平衡。
+value.MINIMUM_LIGHT_MODE.0=非常暗
+value.MINIMUM_LIGHT_MODE.1=暗
+value.MINIMUM_LIGHT_MODE.2=預設 §a[+]
+value.MINIMUM_LIGHT_MODE.3=亮
+value.MINIMUM_LIGHT_MODE.4=非常亮
+value.MINIMUM_LIGHT_MODE.5=極亮 §c[-]
+value.MINIMUM_LIGHT_MODE.6=超級亮 §c[-]
+
+option.AMBIENT_MULT=陰影光照倍率
+option.AMBIENT_MULT.comment=決定陰影中可見的環境光照量。§c[-]§r 大幅變更此設定可能破壞光照平衡。
+
+option.PLAYER_SHADOW=玩家陰影 §e[*]§r
+option.PLAYER_SHADOW.comment=決定玩家是否會投射陰影。§e[*]§r 此設定僅在 Iris 上有效。§e[*]§r 若「即時陰影」為關閉狀態，此設定將被停用。
+value.PLAYER_SHADOW.-1=關閉
+value.PLAYER_SHADOW.1=開啟
+
+option.GENERATED_NORMALS=生成法線貼圖
+option.GENERATED_NORMALS.comment=為表面添加自動生成的凹凸細節。§e[*]§r RP 支援選項必須設定為 Integrated PBR+。
+
+option.COATED_TEXTURES=塗層材質
+option.COATED_TEXTURES.comment=為材質添加自動生成的塵土細節。§e[*]§r RP 支援選項必須設定為 Integrated PBR+。
+
+option.ENTITY_GN_AND_CT=允許實體使用生成法線和塗層材質
+option.ENTITY_GN_AND_CT.comment=決定生成法線貼圖和塗層材質是否可應用於實體。§e[*]§r 若主要的生成法線或塗層材質選項已停用，此選項也不會為實體啟用它們。
+
+option.GENERATED_NORMAL_MULT=生成法線強度
+option.GENERATED_NORMAL_MULT.comment=調整表面上自動生成的凹凸細節強度。
+
+option.COATED_TEXTURE_MULT=塗層材質強度
+option.COATED_TEXTURE_MULT.comment=調整材質上自動生成的塵土細節強度。
+
+option.GLOWING_ORE_MASTER=§e啟用發光礦石
+option.GLOWING_ORE_MASTER.comment=啟用發光礦石的功能。§e[*]§r 選擇「預設」時，僅當「視覺風格」設為「奔放幻想」時才會啟用發光礦石。§e[*]§r 若未啟用此選項，以下設定將無效。
+value.GLOWING_ORE_MASTER.0=§c關閉
+value.GLOWING_ORE_MASTER.1=預設 [*]
+value.GLOWING_ORE_MASTER.2=§a開啟
+
+option.GLOWING_ORE_MULT=礦石發光強度
+option.GLOWING_ORE_MULT.comment=決定發光礦石的發光強度。
+
+option.GLOWING_ORE_IRON=發光鐵礦
+option.GLOWING_ORE_GOLD=發光金礦
+option.GLOWING_ORE_COPPER=發光銅礦
+option.GLOWING_ORE_REDSTONE=發光紅石礦 §e[*]§r
+option.GLOWING_ORE_REDSTONE.comment=§e[*]§r 無論此設定為何，所有紅石礦在「已啟動」狀態下仍會發光。
+option.GLOWING_ORE_LAPIS=發光青金石礦
+option.GLOWING_ORE_EMERALD=發光綠寶石礦
+option.GLOWING_ORE_DIAMOND=發光鑽石礦
+option.GLOWING_ORE_NETHERQUARTZ=發光地獄石英礦
+option.GLOWING_ORE_NETHERGOLD=發光地獄金礦
+option.GLOWING_ORE_GILDEDBLACKSTONE=發光鑲金黑石
+option.GLOWING_ORE_ANCIENTDEBRIS=發光遠古遺骸
+option.GLOWING_ORE_MODDED=發光模組礦石 §e[*]§r
+option.GLOWING_ORE_MODDED.comment=§e[*]§r 您可以將模組礦石 ID 新增至「Complementary-->shaders-->block.properties」檔案中，使其發光。您可以使用任何文字編輯器（如記事本）開啟 block.properties，然後在「block.10024=」旁新增模組礦石方塊 ID。
+
+option.GLOWING_AMETHYST=發光紫水晶
+value.GLOWING_AMETHYST.0=§c關閉
+value.GLOWING_AMETHYST.1=晶簇
+value.GLOWING_AMETHYST.2=晶簇與方塊
+
+option.GLOWING_LICHEN=發光螢光蕈
+value.GLOWING_LICHEN.0=§c關閉
+value.GLOWING_LICHEN.1=於封閉區域
+value.GLOWING_LICHEN.2=總是
+
+option.EMISSIVE_EMERALD_BLOCK=發光綠寶石方塊
+option.EMISSIVE_REDSTONE_BLOCK=發光紅石方塊
+option.EMISSIVE_LAPIS_BLOCK=發光青金石方塊
+
+option.GLOWING_ARMOR_TRIM=發光盔甲鍛鐵 §e[*]§r
+option.GLOWING_ARMOR_TRIM.comment=使盔甲鍛鐵自發光。§e[*]§r 此特性僅在 Iris 上有效，因為 Optifine 不支援盔甲鍛鐵偵測。
+
+option.NORMAL_MAP_STRENGTH=法線貼圖強度
+option.NORMAL_MAP_STRENGTH.comment=調整表面凹凸細節的強度。§e[*]§r RP 支援選項必須設定為 labPBR/seuspbr，且必須使用相容的資源包。
+
+option.CUSTOM_EMISSION_INTENSITY=自訂發光強度
+option.CUSTOM_EMISSION_INTENSITY.comment=調整發光表面的強度。§e[*]§r RP 支援選項必須設定為 labPBR/seuspbr，且必須使用相容的資源包。
+
+option.POM=視差遮蔽貼圖 (POM)
+option.POM.comment=為表面啟用 3D 效果。§c[-]§r 此效果可能嚴重影響效能。§e[*]§r RP 支援選項必須設定為 labPBR/seuspbr，且必須使用相容的資源包。
+value.POM.false=關閉
+value.POM.true=開啟 §c[-]
+
+option.POM_DEPTH=POM 深度
+option.POM_DEPTH.comment=調整視差遮蔽貼圖的深度。§e[*]§r RP 支援選項必須設定為 labPBR/seuspbr，且必須使用相容的資源包。
+
+option.POM_QUALITY=POM 品質
+option.POM_QUALITY.comment=調整視差遮蔽貼圖的銳利度/準確度。§c[-]§r 高於 200 的值可能嚴重影響效能。§e[*]§r 低於 100 的值將強制「POM 光照模式」為「平滑」。§e[*]§r RP 支援選項必須設定為 labPBR/seuspbr，且必須使用相容的資源包。
+value.POM_QUALITY.16=16 §e[*]
+value.POM_QUALITY.32=32 §e[*]
+value.POM_QUALITY.64=64 §e[*]
+value.POM_QUALITY.256=256 §c[-]
+value.POM_QUALITY.512=512 §c[-]
+
+option.POM_DISTANCE=POM 距離
+option.POM_DISTANCE.comment=調整視差遮蔽貼圖的計算距離。§e[*]§r 建議將此值保持在 50 以下以獲得少量效能提升。§e[*]§r RP 支援選項必須設定為 labPBR/seuspbr，且必須使用相容的資源包。
+value.POM_DISTANCE.64=64 §e[*]
+value.POM_DISTANCE.128=128 §e[*]
+value.POM_DISTANCE.256=256 §e[*]
+value.POM_DISTANCE.512=512 §e[*]
+value.POM_DISTANCE.1024=1024 §e[*]
+
+option.POM_LIGHTING_MODE=POM 光照模式
+option.POM_LIGHTING_MODE.comment=調整受 POM 影響表面的光照風格。銳利：若 POM 牆面未朝向光源則不會受光。平滑：POM 牆面仍會像非牆面一樣受光。§e[*]§r 若 POM 品質設定低於 100，此選項將強制為「平滑」。
+value.POM_LIGHTING_MODE.1=平滑
+value.POM_LIGHTING_MODE.2=銳利
+
+option.POM_ALLOW_CUTOUT=POM 應用於鏤空表面 §c[-]§r
+option.POM_ALLOW_CUTOUT.comment=使 POM 能夠作用於方塊的鏤空部分（如樹葉間隙）。§c[-]§r 此效果可能嚴重影響效能。
+
+option.DIRECTIONAL_BLOCKLIGHT=方向性方塊光源
+option.DIRECTIONAL_BLOCKLIGHT.comment=根據表面法線為方塊光源增加深度。§c[-]§r 在某些情況下可能導致視覺瑕疵。§c[-]§r 此效果可能影響效能。§e[*]§r RP 支援選項必須設定為 labPBR/seuspbr，且必須使用相容的資源包。
+value.DIRECTIONAL_BLOCKLIGHT.0=關閉
+value.DIRECTIONAL_BLOCKLIGHT.3=細微 §c[-]
+value.DIRECTIONAL_BLOCKLIGHT.7=正常 §c[-]
+value.DIRECTIONAL_BLOCKLIGHT.11=強烈 §c[-]
+
+option.HELD_LIGHTING_MODE=動態手持照明
+option.HELD_LIGHTING_MODE.comment=允許手持光源對場景投射光線。§e[*]§r僅在啟用玩家陰影時有效。
+value.HELD_LIGHTING_MODE.0=§c關閉
+value.HELD_LIGHTING_MODE.1=細微
+value.HELD_LIGHTING_MODE.2=正常
+
+option.BLOCKLIGHT_FLICKERING=方塊光源閃爍
+option.BLOCKLIGHT_FLICKERING.comment=為方塊投射的光線添加閃爍效果。
+value.BLOCKLIGHT_FLICKERING.0=關閉
+
+option.WAVING_SPEED=擺動速度
+option.WAVING_SPEED.comment=調整擺動效果發生的快慢。
+
+option.WAVING_I=擺動強度
+option.WAVING_I.comment=調整方塊擺動時的移動幅度。§c[-]§r 過高的擺動強度可能導致擺動方塊與其他方塊穿模。
+value.WAVING_I.1.25=1.25 §c[-]
+value.WAVING_I.1.50=1.50 §c[-]
+value.WAVING_I.1.75=1.75 §c[-]
+value.WAVING_I.2.00=2.00 §c[-]
+value.WAVING_I.50.0=§c瘋狂
+
+option.NO_WAVING_INDOORS=封閉區域無擺動
+option.NO_WAVING_INDOORS.comment=利用天空光照防止方塊在封閉區域內擺動。§c[-]§r 啟用此設定可能導致某些資源包或模組出現問題。
+
+option.WAVING_I_RAIN_MULT=雨天擺動倍率
+option.WAVING_I_RAIN_MULT.comment=乘以雨天時擺動的速度和強度。§c[-]§r 過高的擺動強度可能導致擺動方塊與其他方塊穿模。§c[-]§r 此設定值超過 100 時可能影響效能。
+value.WAVING_I.125=125 §c[-]
+value.WAVING_I.150=150 §c[-]
+value.WAVING_I.175=175 §c[-]
+value.WAVING_I.200=200 §c[-]
+
+option.WAVING_FOLIAGE=草叢擺動
+option.WAVING_FOLIAGE.comment=為草和其他類似植物添加移動以模擬風。
+
+option.WAVING_LEAVES=樹葉擺動
+option.WAVING_LEAVES.comment=為樹葉添加移動以模擬風。
+
+option.WAVING_LAVA=熔岩材質擺動
+option.WAVING_LAVA.comment=為熔岩添加持續移動效果。§e[*]§r 特別是熔岩擺動不受「封閉區域無擺動」設定的影響。
+
+option.WAVING_LILY_PAD=荷葉擺動
+option.WAVING_LILY_PAD.comment=為荷葉和蛙卵添加移動以模擬水波的衝擊。
+
+option.WAVING_WATER_VERTEX=水面起伏
+option.WAVING_WATER_VERTEX.comment=為水的位置添加移動以模擬風。§e[*]§r 此選項與「波浪強度」設定無關。
+
+option.WAVING_RAIN=雨/雪材質擺動
+option.WAVING_RAIN.comment=為降雨和降雪材質添加移動，使其看起來更動態。
+
+option.SPECIAL_PORTAL_EFFECTS=特殊傳送門效果
+option.SPECIAL_PORTAL_EFFECTS.comment=為地獄傳送門、終界傳送門和終界折疊門添加特殊動畫和發光效果。
+
+option.WORLD_OUTLINE=世界輪廓
+option.WORLD_OUTLINE.comment=在方塊周圍添加明亮輪廓。§c[-]§r 此效果可能影響效能。
+
+option.WORLD_OUTLINE_THICKNESS=世界輪廓粗細
+option.WORLD_OUTLINE_THICKNESS.comment=決定世界輪廓效果的粗細。§c[-]§r 增加此設定可能影響效能。
+
+option.WORLD_OUTLINE_I=世界輪廓亮度
+option.WORLD_OUTLINE_I.comment=決定世界輪廓效果的強度。
+
+option.WORLD_OUTLINE_ON_ENTITIES=實體世界輪廓
+option.WORLD_OUTLINE_ON_ENTITIES.comment=決定世界輪廓效果是否應用於實體。§c[-]§r 此設定可能無法與某些自訂 PBR 資源包完美配合。
+
+option.DARK_OUTLINE=深色輪廓
+option.DARK_OUTLINE.comment=在方塊周圍添加深色輪廓。§c[-]§r 此效果可能影響效能。
+
+option.DARK_OUTLINE_THICKNESS=深色輪廓粗細
+option.DARK_OUTLINE_THICKNESS.comment=決定深色輪廓效果的粗細。§c[-]§r 增加此設定可能影響效能。
+
+option.RAIN_PUDDLES=雨水坑
+option.RAIN_PUDDLES.comment=在雨天時為地形添加水坑。§c[-]§r 雨水坑可能嚴重影響效能。
+value.RAIN_PUDDLES.0=關閉
+value.RAIN_PUDDLES.1=§a開啟 - 水坑
+value.RAIN_PUDDLES.2=§a開啟 - 全覆蓋
+value.RAIN_PUDDLES.3=§a開啟 - §c總是§a 水坑
+value.RAIN_PUDDLES.4=§a開啟 - §c總是§a 全覆蓋
+
+option.UNDERWATER_DISTORTION=水下扭曲
+option.UNDERWATER_DISTORTION.comment=當攝影機在水中時，為螢幕添加細微的折射效果。
+
+option.SELECT_OUTLINE=選取框線
+option.SELECT_OUTLINE.comment=決定方塊選取框線的顏色。
+value.SELECT_OUTLINE.0=§c關閉
+value.SELECT_OUTLINE.1=預設
+value.SELECT_OUTLINE.2=彩虹
+value.SELECT_OUTLINE.3=選擇顏色
+value.SELECT_OUTLINE.4=多功能
+
+option.SELECT_OUTLINE_AUTO_HIDE=自動隱藏選取框線
+option.SELECT_OUTLINE_AUTO_HIDE.comment=如果玩家雙手均未持有任何物品，或僅在副手持有光源，則隱藏方塊選取框線。
+
+option.SELECT_OUTLINE_I=選取框線亮度
+option.SELECT_OUTLINE_R=選取框線紅色
+option.SELECT_OUTLINE_G=選取框線綠色
+option.SELECT_OUTLINE_B=選取框線藍色
+
+option.MOON_PHASE_INF_LIGHT=月相夜間光照
+option.MOON_PHASE_INF_LIGHT.comment=啟用不同月相以改變夜間光照亮度。
+
+option.MOON_PHASE_INF_ATMOSPHERE=月相夜間大氣
+option.MOON_PHASE_INF_ATMOSPHERE.comment=啟用不同月相以改變夜間大氣亮度。
+
+option.MOON_PHASE_INF_REFLECTION=月相月亮反射
+option.MOON_PHASE_INF_REFLECTION.comment=啟用不同月相以改變月亮反射的亮度。
+
+option.MOON_PHASE_FULL=滿月強度
+option.MOON_PHASE_FULL.comment=調整滿月階段（最亮階段）的月相影響強度。
+
+option.MOON_PHASE_PARTIAL=部分月相強度
+option.MOON_PHASE_PARTIAL.comment=調整滿月與暗月之間所有月相階段的月相影響強度。這是您在 Minecraft 中最常看到的階段。
+
+option.MOON_PHASE_DARK=暗月強度
+option.MOON_PHASE_DARK.comment=調整新月階段（最暗階段）的月相影響強度。
+
+option.CONNECTED_GLASS_EFFECT=連接玻璃
+option.CONNECTED_GLASS_EFFECT.comment=使所有類型的玻璃相互連接。§e[*]§r 此特性僅在「效能設定」中啟用「進階色彩光照」且您的系統支援時才能運作。§e[*]§r 若安裝了「Continuity」模組，此特性將自動停用。
+
+option.PORTAL_EDGE_EFFECT=發光傳送門邊緣
+option.PORTAL_EDGE_EFFECT.comment=為終界和地獄傳送門添加自發光邊框效果。§e[*]§r 此特性僅在「效能設定」中啟用「進階色彩光照」且您的系統支援時才能運作。
+
+option.PUDDLE_VOXELIZATION=修復玻璃下水坑
+option.PUDDLE_VOXELIZATION.comment=啟用「雨水坑」設定時，防止雨水坑在具有玻璃屋頂的封閉區域形成。§e[*]§r 此特性僅在「效能設定」中啟用「進階色彩光照」且您的系統支援時才能運作。
+
+option.COLORED_CANDLE_LIGHT=彩色蠟燭照明
+option.COLORED_CANDLE_LIGHT.comment=使蠟燭投射的光線與其底座顏色相同。§e[*]§r 去飽和的蠟燭顏色變體將繼續使用通常的火焰顏色。
+
+option.COLORED_LIGHT_SATURATION=色彩光照飽和度
+option.COLORED_LIGHT_SATURATION.comment=調整「進階色彩光照」產生的顏色飽和度。§e[*]§r 不建議變更此值，因為視覺效果設計上在預設飽和度下看起來最平衡。
+
+option.COLORED_LIGHT_FOG=色彩光霧
+option.COLORED_LIGHT_FOG.comment=為場景添加體積方塊光霧，在夜間或地底最為明顯。§e[*]§r 此特性僅在「效能設定」中啟用「進階色彩光照」且您的系統支援時才能運作。§c[-]§r 此效果可能嚴重影響效能。
+
+option.COLORED_LIGHT_FOG_I=光霧強度
+option.COLORED_LIGHT_FOG_I.comment=決定色彩光霧的亮度。
+
+option.LIGHT_COLOR_MULTS=§e光照色彩倍率
+option.LIGHT_COLOR_MULTS.comment=啟用所有表面上可見光照顏色的自訂功能。
+
+option.ATM_COLOR_MULTS=§e大氣色彩倍率
+option.ATM_COLOR_MULTS.comment=啟用主要見於天空和霧中的大氣顏色的自訂功能。
+
+option.LIGHT_MORNING_R=光照紅色倍率
+option.LIGHT_MORNING_G=光照綠色倍率
+option.LIGHT_MORNING_B=光照藍色倍率
+option.LIGHT_MORNING_I=光照強度倍率
+option.ATM_MORNING_R=大氣紅色倍率
+option.ATM_MORNING_G=大氣綠色倍率
+option.ATM_MORNING_B=大氣藍色倍率
+option.ATM_MORNING_I=大氣強度倍率
+option.LIGHT_NOON_R=光照紅色倍率
+option.LIGHT_NOON_G=光照綠色倍率
+option.LIGHT_NOON_B=光照藍色倍率
+option.LIGHT_NOON_I=光照強度倍率
+option.ATM_NOON_R=大氣紅色倍率
+option.ATM_NOON_G=大氣綠色倍率
+option.ATM_NOON_B=大氣藍色倍率
+option.ATM_NOON_I=大氣強度倍率
+option.LIGHT_NIGHT_R=光照紅色倍率
+option.LIGHT_NIGHT_G=光照綠色倍率
+option.LIGHT_NIGHT_B=光照藍色倍率
+option.LIGHT_NIGHT_I=光照強度倍率
+option.ATM_NIGHT_R=大氣紅色倍率
+option.ATM_NIGHT_G=大氣綠色倍率
+option.ATM_NIGHT_B=大氣藍色倍率
+option.ATM_NIGHT_I=大氣強度倍率
+option.LIGHT_RAIN_R=光照紅色倍率
+option.LIGHT_RAIN_G=光照綠色倍率
+option.LIGHT_RAIN_B=光照藍色倍率
+option.LIGHT_RAIN_I=光照強度倍率
+option.ATM_RAIN_R=大氣紅色倍率
+option.ATM_RAIN_G=大氣綠色倍率
+option.ATM_RAIN_B=大氣藍色倍率
+option.ATM_RAIN_I=大氣強度倍率
+option.LIGHT_NETHER_R=光照紅色倍率
+option.LIGHT_NETHER_G=光照綠色倍率
+option.LIGHT_NETHER_B=光照藍色倍率
+option.LIGHT_NETHER_I=光照強度倍率
+option.ATM_NETHER_R=大氣紅色倍率
+option.ATM_NETHER_G=大氣綠色倍率
+option.ATM_NETHER_B=大氣藍色倍率
+option.ATM_NETHER_I=大氣強度倍率
+option.LIGHT_END_R=光照紅色倍率
+option.LIGHT_END_G=光照綠色倍率
+option.LIGHT_END_B=光照藍色倍率
+option.LIGHT_END_I=光照強度倍率
+option.ATM_END_R=大氣紅色倍率
+option.ATM_END_G=大氣綠色倍率
+option.ATM_END_B=大氣藍色倍率
+option.ATM_END_I=大氣強度倍率
+
+option.XLIGHT_R=方塊光源紅色倍率
+option.XLIGHT_G=方塊光源綠色倍率
+option.XLIGHT_B=方塊光源藍色倍率
+
+option.XLIGHT_I=方塊光源強度
+
+option.VX_VOL_SIZE=體素體積大小
+value.VX_VOL_SIZE.0=96x64x96 方塊
+value.VX_VOL_SIZE.1=128x96x128 方塊
+value.VX_VOL_SIZE.2=256x128x256 方塊
+value.VX_VOL_SIZE.3=512x128x512 方塊
+option.VX_VOL_SIZE.comment=此設定變更世界中計算進階方塊光源部分的體積大小。§c[-]§r 極度影響效能。
+
+option.VOXEL_DETAIL_AMOUNT=體素解析度
+value.VOXEL_DETAIL_AMOUNT.1=1/方塊
+value.VOXEL_DETAIL_AMOUNT.2=2/方塊
+value.VOXEL_DETAIL_AMOUNT.3=4/方塊
+value.VOXEL_DETAIL_AMOUNT.4=8/方塊
+value.VOXEL_DETAIL_AMOUNT.5=16/方塊
+value.VOXEL_DETAIL_AMOUNT.6=32/方塊
+value.VOXEL_DETAIL_AMOUNT.7=64/方塊
+value.VOXEL_DETAIL_AMOUNT.8=128/方塊
+option.VOXEL_DETAIL_AMOUNT.comment=調整方塊模型生成的解析度。§e[*]§r 高效能影響。
+
+option.ENTITY_VOXELIZATION=實體體素化
+option.PLAYER_VOXELIZATION=玩家體素化
+option.FOLIAGE_VOXELIZATION=植被體素化
+
+option.BLOCKLIGHT_RESOLUTION=方塊光源解析度
+option.BLOCKLIGHT_RESOLUTION.comment=變更方塊光源渲染的內部解析度。§e[*]§r 較低的值對效能較佳。
+value.BLOCKLIGHT_RESOLUTION.1=1
+value.BLOCKLIGHT_RESOLUTION.2=0.5
+value.BLOCKLIGHT_RESOLUTION.3=0.33
+value.BLOCKLIGHT_RESOLUTION.4=0.25
+value.BLOCKLIGHT_RESOLUTION.6=0.17
+value.BLOCKLIGHT_RESOLUTION.8=0.13
+value.BLOCKLIGHT_RESOLUTION.10=0.1
+
+option.BLOCKLIGHT_HIGHLIGHT=鏡面方塊光源高光
+option.BLOCKLIGHT_HIGHLIGHT.comment=使來自方塊光源的光線以考慮其平滑度的方式從表面反射。
+
+option.VOXEL_RT_REFLECTIONS=世界空間反射
+option.VOXEL_RT_REFLECTIONS.comment=允許螢幕上不可見的物體被其他物體反射。§e[*]§r 高效能影響。
+
+option.LIGHT_TRACE_LENGTH=光線傳播距離
+option.LIGHT_TRACE_LENGTH.comment=控制光源仍能照亮其周圍環境的最大距離。
+
+option.MAX_TRACE_COUNT=最大光線取樣數
+option.MAX_TRACE_COUNT.comment=此設定控制可對物體投射光線的附近光源最大數量。
+
+option.LIGHT_COLOR_SATURATION=光源色彩飽和度
+option.LIGHT_COLOR_SATURATION.comment=此設定調整光源色彩相對於其材質色彩的飽和度提升程度。僅當光源色彩未在光源色彩設定中被覆寫時適用。
+
+option.LIGHTSOURCE_SIZE_MULT=光源大小
+option.LIGHTSOURCE_SIZE_MULT.comment=較低的值會將光源視為比實際更小，從而增加光源投射陰影的銳利度。§c[-]§r較低的值可能導致某些光源投射奇怪的陰影或完全停止運作。
+
+option.SLANTED_BLOCK_EDGES=傾斜方塊邊緣
+option.SLANTED_BLOCK_EDGES.comment=如果完整方塊的邊緣旁沒有其他方塊，則將其面法線向外傾斜。
+
+option.INTERACTIVE_WATER=互動式水波
+option.INTERACTIVE_WATER.comment=使水波透過在較小水體中產生較小波浪來適應周圍環境。僅適用於「奔放幻想」水波。
+
+option.WATER_BUMP_INTERACTIVE=互動式水面起伏度
+option.WATER_BUMP_INTERACTIVE.comment=控制互動式水波的波浪強度。
+
+option.DIRECTION_UPDATING_CONETRACE=光線追蹤期間更新錐體方向
+option.DIRECTION_UPDATING_CONETRACE.comment=允許光線投射到僅邊緣可見的表面上。 [§c-§r] 非常消耗效能。
+
+option.CONWAY=終界生命遊戲
+option.CONWAY.comment=在終界底部模擬康威生命遊戲。靠近玩家的細胞會復活。
+value.CONWAY.0=關閉
+value.CONWAY.1=灰階
+value.CONWAY.2=終界色彩
+
+option.FRACTAL_GALAXY=碎形夜空
+value.FRACTAL_GALAXY.0=關閉
+value.FRACTAL_GALAXY.1=完整曼德博集合
+value.FRACTAL_GALAXY.2=部分曼德博集合
+value.FRACTAL_GALAXY.3=朱利亞集合
+option.PER_PIXEL_LIGHT=逐像素光照計算
+option.PER_PIXEL_LIGHT.comment=若啟用此選項，來自方塊光源的光線將為螢幕上的每個像素單獨計算。否則，每個方塊僅計算一次。
+
+option.R2_FALLOFF=光線衰減
+option.R2_FALLOFF.comment=控制光源亮度隨距離變化的陡峭程度。1/r^2 符合物理法則。
+value.R2_FALLOFF.0=1/r
+value.R2_FALLOFF.1=1/r^2
+
+option.VOLUMETRIC_BLOCKLIGHT=體積方塊光
+option.VBL_STRENGTH=體積方塊光強度
+option.VBL_NETHER_MULT=體積方塊光地獄倍率
+option.VBL_END_MULT=體積方塊光終界倍率
+
+option.GI_STRENGTH=全域光照
+value.GI_STRENGTH.0=關閉
+value.GI_STRENGTH.1=細微
+value.GI_STRENGTH.2=正確
+
+option.GI_AMBIENT_MIN=GI 環境亮度
+option.GI_AMBIENT_MIN.comment=啟用全域光照時，增加陰影亮度使其更接近原版 Minecraft 光照。
+
+option.GI_SAMPLE_COUNT=全域光照品質
+value.GI_SAMPLE_COUNT.1=低
+value.GI_SAMPLE_COUNT.3=中
+value.GI_SAMPLE_COUNT.7=高
+value.GI_SAMPLE_COUNT.13=極致
+option.GI_SAMPLE_COUNT.comment=調整每個體素和每幀的 GI 取樣數量。低：1 個取樣。中：3 個取樣。高：7 個取樣。極致：13 個取樣。
+
+option.RT_STEPS=光線追蹤步數
+option.RT_STEPS.comment=調整光線追蹤演算法放棄前的最大步數。如果光線的大部分靠近物體，低值可能導致光線追蹤操作錯誤地回傳遮蔽。
+
+option.TRANSLUCENT_LIGHT_TINT=半透明方塊光源著色
+option.TRANSLUCENT_LIGHT_TINT.comment=啟用後，如染色玻璃和水等半透明物體可以為穿過它們的方塊光照著色。§c[-]§r 高效能影響。
+
+option.SDF_UPDATE_INTERVAL=SDF 更新間隔
+option.SDF_UPDATE_INTERVAL.comment=控制用於光線追蹤的加速結構同一部分更新之間允許經過的幀數。較低的值會消耗更多效能，但會產生更靈敏的陰影。1/2 表示更新每幀在加速結構中傳播兩次。
+value.SDF_UPDATE_INTERVAL.0=1/2
+option.CAULDRON_BRIGHTNESS_LAVA=熔岩鍋釜亮度
+option.BRIGHTNESS_LAVA=熔岩亮度
+option.BRIGHTNESS_FIRE=火亮度
+option.CAMPFIRE_BRIGHTNESS_FIRE=營火亮度
+option.BRIGHTNESS_SOULFIRE=靈魂火亮度
+option.CAMPFIRE_BRIGHTNESS_SOULFIRE=靈魂營火亮度
+option.ORE_BRIGHTNESS_IRON=鐵礦亮度
+option.ORE_BRIGHTNESS_COPPER=銅礦亮度
+option.ORE_BRIGHTNESS_GOLD=金礦亮度
+option.ORE_BRIGHTNESS_DIAMOND=鑽石礦亮度
+option.ORE_BRIGHTNESS_EMERALD=綠寶石礦亮度
+option.BLOCK_BRIGHTNESS_EMERALD=綠寶石方塊亮度
+option.ORE_BRIGHTNESS_LAPIS=青金石礦亮度
+option.BLOCK_BRIGHTNESS_LAPIS=青金石方塊亮度
+option.OREUNLIT_BRIGHTNESS_REDSTONE=礦石亮度 (未發光)
+option.ORELIT_BRIGHTNESS_REDSTONE=礦石亮度 (發光)
+option.BLOCK_BRIGHTNESS_REDSTONE=紅石方塊亮度
+option.WIRE0_BRIGHTNESS_REDSTONE=紅石粉亮度 (能量 1-5)
+option.WIRE1_BRIGHTNESS_REDSTONE=紅石粉亮度 (能量 6-10)
+option.WIRE2_BRIGHTNESS_REDSTONE=紅石粉亮度 (能量 11-14)
+option.WIRE3_BRIGHTNESS_REDSTONE=紅石粉亮度 (能量 15)
+option.TORCH_BRIGHTNESS_REDSTONE=紅石火把亮度
+option.BRIGHTNESS_AMETHYST=紫水晶簇亮度
+option.BRIGHTNESS_ICE=藍冰亮度
+option.BRIGHTNESS_PUMPKIN=南瓜燈亮度
+option.LOW_BRIGHTNESS_PICKLE=海鞘亮度 (1-2 個)
+option.HIGH_BRIGHTNESS_PICKLE=海鞘亮度 (3-4 個)
+option.BRIGHTNESS_GLOWSTONE=螢光石亮度
+option.BRIGHTNESS_SEALANTERN=海燈籠亮度
+option.BLOCK_BRIGHTNESS_MAGMA=岩漿塊亮度
+option.CUBE_BRIGHTNESS_MAGMA=岩漿立方怪亮度
+option.BRIGHTNESS_CRYING=哭泣的黑曜石亮度
+option.BRIGHTNESS_TORCH=火把亮度
+option.LANTERN_BRIGHTNESS_TORCH=燈籠亮度
+option.BRIGHTNESS_ENDROD=終界燭亮度
+option.BRIGHTNESS_CHORUS=歌萊花亮度
+option.BRIGHTNESS_FURNACE=熔爐亮度
+option.BRIGHTNESS_SOULTORCH=靈魂火把亮度
+option.LANTERN_BRIGHTNESS_SOULTORCH=靈魂燈籠亮度
+option.BRIGHTNESS_LICHEN=螢光蕈亮度
+option.BRIGHTNESS_TABLE=附魔台亮度
+option.FRAME_BRIGHTNESS_END=終界傳送門框架亮度 (含終界之眼)
+option.PORTAL_BRIGHTNESS_END=終界傳送門亮度
+option.CHEST_BRIGHTNESS_END=終界箱亮度
+option.BRIGHTNESS_DRAGON=龍蛋亮度
+option.BRIGHTNESS_CANDLE=蠟燭亮度
+option.CAKE_BRIGHTNESS_CANDLE=生日蛋糕亮度
+option.ANCHOR_BRIGHTNESS_PORTAL=重生錨亮度
+option.BRIGHTNESS_PORTAL=地獄傳送門亮度
+option.BRIGHTNESS_BERRY=螢光漿果亮度
+option.BRIGHTNESS_REDSTONELAMP=紅石燈亮度
+option.BRIGHTNESS_SHROOMLIGHT=蕈光體亮度
+option.BRIGHTNESS_YELLOWFROG=赭黃蛙明燈亮度
+option.BRIGHTNESS_GREENFROG=草綠蛙明燈亮度
+option.BRIGHTNESS_PINKFROG=珠光蛙明燈亮度
+option.SENSOR_BRIGHTNESS_SCULK=幽匿感測器亮度
+option.BRIGHTNESS_SPAWNER=生怪磚亮度
+option.BRIGHTNESS_BREWINGSTAND=釀造台亮度
+option.BRIGHTNESS_BEACON=烽火台亮度
+option.BRIGHTNESS_CONDUIT=導管亮度
+option.BRIGHTNESS_ENDCRYSTAL=終界水晶亮度
+option.BRIGHTNESS_LIGHTNING=閃電亮度
+option.BRIGHTNESS_ITEMFRAME=螢光物品展示框亮度
+option.BRIGHTNESS_BLAZE=烈焰使者亮度
+option.BRIGHTNESS_SQUID=螢光魷魚亮度
+option.BRIGHTNESS_ALLAY=悅靈亮度
+option.BRIGHTNESS_TNT=TNT亮度
+option.BRIGHTNESS_CRIMSON=緋紅蕈柄/菌絲亮度
+option.BRIGHTNESS_WARPED=扭曲蕈柄/菌絲亮度
+option.BRIGHTNESS_DEBRIS=遠古遺骸亮度
+option.HEART_BRIGHTNESS_RESIN=吱嘎心臟亮度
+option.BLOSSOM_BRIGHTNESS_RESIN=眼花亮度
+
+option.CAULDRON_HARDCODED_LAVA_COL=覆寫熔岩鍋釜顏色
+option.HARDCODED_LAVA_COL=覆寫熔岩顏色
+option.HARDCODED_FIRE_COL=覆寫火顏色
+option.CAMPFIRE_HARDCODED_FIRE_COL=覆寫營火顏色
+option.CAMPFIRE_HARDCODED_SOULFIRE_COL=覆寫靈魂營火顏色
+option.HARDCODED_SOULFIRE_COL=覆寫靈魂火顏色
+option.ORE_HARDCODED_IRON_COL=覆寫鐵礦顏色
+option.ORE_HARDCODED_COPPER_COL=覆寫銅礦顏色
+option.ORE_HARDCODED_GOLD_COL=覆寫金礦顏色
+option.ORE_HARDCODED_DIAMOND_COL=覆寫鑽石礦顏色
+option.ORE_HARDCODED_EMERALD_COL=覆寫綠寶石礦顏色
+option.BLOCK_HARDCODED_EMERALD_COL=覆寫綠寶石方塊顏色
+option.ORE_HARDCODED_LAPIS_COL=覆寫青金石礦顏色
+option.BLOCK_HARDCODED_LAPIS_COL=覆寫青金石方塊顏色
+option.ORE_HARDCODED_REDSTONE_COL=覆寫紅石礦顏色
+option.BLOCK_HARDCODED_REDSTONE_COL=覆寫紅石方塊顏色
+option.WIRE_HARDCODED_REDSTONE_COL=覆寫紅石粉顏色
+option.TORCH_HARDCODED_REDSTONE_COL=覆寫紅石火把顏色
+option.HARDCODED_AMETHYST_COL=覆寫紫水晶顏色
+option.HARDCODED_ICE_COL=覆寫藍冰顏色
+option.HARDCODED_PUMPKIN_COL=覆寫南瓜燈顏色
+option.HARDCODED_PICKLE_COL=覆寫海鞘顏色
+option.HARDCODED_GLOWSTONE_COL=覆寫螢光石顏色
+option.HARDCODED_SEALANTERN_COL=覆寫海燈籠顏色
+option.HARDCODED_MAGMA_COL=覆寫岩漿塊顏色
+option.HARDCODED_CRYING_COL=覆寫哭泣的黑曜石顏色
+option.HARDCODED_TORCH_COL=覆寫火把顏色
+option.LANTERN_HARDCODED_TORCH_COL=覆寫燈籠顏色
+option.HARDCODED_ENDROD_COL=覆寫終界燭顏色
+option.HARDCODED_CHORUS_COL=覆寫歌萊花顏色
+option.HARDCODED_FURNACE_COL=覆寫熔爐顏色
+option.HARDCODED_SOULTORCH_COL=覆寫靈魂火把顏色
+option.LANTERN_HARDCODED_SOULTORCH_COL=覆寫靈魂燈籠顏色
+option.HARDCODED_LICHEN_COL=覆寫螢光蕈顏色
+option.HARDCODED_TABLE_COL=覆寫附魔台顏色
+option.HARDCODED_END_COL=覆寫終界傳送門框架顏色
+option.PORTAL_HARDCODED_END_COL=覆寫終界傳送門顏色
+option.CHEST_HARDCODED_END_COL=覆寫終界箱顏色
+option.HARDCODED_DRAGON_COL=覆寫龍蛋顏色
+option.HARDCODED_CANDLE_COL=覆寫蠟燭顏色
+option.CAKE_HARDCODED_CANDLE_COL=覆寫生日蛋糕顏色
+option.ANCHOR_HARDCODED_PORTAL_COL=覆寫重生錨顏色
+option.HARDCODED_PORTAL_COL=覆寫地獄傳送門顏色
+option.HARDCODED_BERRY_COL=覆寫螢光漿果顏色
+option.HARDCODED_REDSTONELAMP_COL=覆寫紅石燈顏色
+option.HARDCODED_SHROOMLIGHT_COL=覆寫蕈光體顏色
+option.HARDCODED_YELLOWFROG_COL=覆寫赭黃蛙明燈顏色
+option.HARDCODED_GREENFROG_COL=覆寫草綠蛙明燈顏色
+option.HARDCODED_PINKFROG_COL=覆寫珠光蛙明燈顏色
+option.HARDCODED_SCULK_COL=覆寫幽匿感測器顏色
+option.HARDCODED_SPAWNER_COL=覆寫生怪磚顏色
+option.HARDCODED_BREWINGSTAND_COL=覆寫釀造台顏色
+option.HARDCODED_BEACON_COL=覆寫烽火台顏色
+option.HARDCODED_CONDUIT_COL=覆寫導管顏色
+option.HARDCODED_ENDCRYSTAL_COL=覆寫終界水晶顏色
+option.HARDCODED_LIGHTNING_COL=覆寫閃電顏色
+option.HARDCODED_ITEMFRAME_COL=覆寫螢光物品展示框顏色
+option.HARDCODED_BLAZE_COL=覆寫烈焰使者顏色
+option.HARDCODED_SQUID_COL=覆寫螢光魷魚顏色
+option.HARDCODED_ALLAY_COL=覆寫悅靈顏色
+option.HARDCODED_TNT_COL=覆寫TNT顏色
+option.HARDCODED_DEBRIS_COL=覆寫遠古遺骸顏色
+option.HEART_HARDCODED_RESIN_COL=覆寫吱嘎心臟顏色
+option.BLOSSOM_HARDCODED_RESIN_COL=覆寫眼花顏色
+
+option.LAVA_COL_R=紅色
+option.LAVA_COL_G=綠色
+option.LAVA_COL_B=藍色
+option.FIRE_COL_R=紅色
+option.FIRE_COL_G=綠色
+option.FIRE_COL_B=藍色
+option.SOULFIRE_COL_R=紅色
+option.SOULFIRE_COL_G=綠色
+option.SOULFIRE_COL_B=藍色
+option.IRON_COL_R=紅色
+option.IRON_COL_G=綠色
+option.IRON_COL_B=藍色
+option.COPPER_COL_R=紅色
+option.COPPER_COL_G=綠色
+option.COPPER_COL_B=藍色
+option.GOLD_COL_R=紅色
+option.GOLD_COL_G=綠色
+option.GOLD_COL_B=藍色
+option.DIAMOND_COL_R=紅色
+option.DIAMOND_COL_G=綠色
+option.DIAMOND_COL_B=藍色
+option.EMERALD_COL_R=紅色
+option.EMERALD_COL_G=綠色
+option.EMERALD_COL_B=藍色
+option.LAPIS_COL_R=紅色
+option.LAPIS_COL_G=綠色
+option.LAPIS_COL_B=藍色
+option.REDSTONE_COL_R=紅色
+option.REDSTONE_COL_G=綠色
+option.REDSTONE_COL_B=藍色
+option.AMETHYST_COL_R=紅色
+option.AMETHYST_COL_G=綠色
+option.AMETHYST_COL_B=藍色
+option.ICE_COL_R=紅色
+option.ICE_COL_G=綠色
+option.ICE_COL_B=藍色
+option.PUMPKIN_COL_R=紅色
+option.PUMPKIN_COL_G=綠色
+option.PUMPKIN_COL_B=藍色
+option.PICKLE_COL_R=紅色
+option.PICKLE_COL_G=綠色
+option.PICKLE_COL_B=藍色
+option.GLOWSTONE_COL_R=紅色
+option.GLOWSTONE_COL_G=綠色
+option.GLOWSTONE_COL_B=藍色
+option.SEALANTERN_COL_R=紅色
+option.SEALANTERN_COL_G=綠色
+option.SEALANTERN_COL_B=藍色
+option.MAGMA_COL_R=紅色
+option.MAGMA_COL_G=綠色
+option.MAGMA_COL_B=藍色
+option.CRYING_COL_R=紅色
+option.CRYING_COL_G=綠色
+option.CRYING_COL_B=藍色
+option.TORCH_COL_R=紅色
+option.TORCH_COL_G=綠色
+option.TORCH_COL_B=藍色
+option.ENDROD_COL_R=紅色
+option.ENDROD_COL_G=綠色
+option.ENDROD_COL_B=藍色
+option.CHORUS_COL_R=紅色
+option.CHORUS_COL_G=綠色
+option.CHORUS_COL_B=藍色
+option.FURNACE_COL_R=紅色
+option.FURNACE_COL_G=綠色
+option.FURNACE_COL_B=藍色
+option.SOULTORCH_COL_R=紅色
+option.SOULTORCH_COL_G=綠色
+option.SOULTORCH_COL_B=藍色
+option.LICHEN_COL_R=紅色
+option.LICHEN_COL_G=綠色
+option.LICHEN_COL_B=藍色
+option.TABLE_COL_R=紅色
+option.TABLE_COL_G=綠色
+option.TABLE_COL_B=藍色
+option.END_COL_R=紅色
+option.END_COL_G=綠色
+option.END_COL_B=藍色
+option.DRAGON_COL_R=紅色
+option.DRAGON_COL_G=綠色
+option.DRAGON_COL_B=藍色
+option.CANDLE_COL_R=紅色
+option.CANDLE_COL_G=綠色
+option.CANDLE_COL_B=藍色
+option.PORTAL_COL_R=紅色
+option.PORTAL_COL_G=綠色
+option.PORTAL_COL_B=藍色
+option.BERRY_COL_R=紅色
+option.BERRY_COL_G=綠色
+option.BERRY_COL_B=藍色
+option.REDSTONELAMP_COL_R=紅色
+option.REDSTONELAMP_COL_G=綠色
+option.REDSTONELAMP_COL_B=藍色
+option.SHROOMLIGHT_COL_R=紅色
+option.SHROOMLIGHT_COL_G=綠色
+option.SHROOMLIGHT_COL_B=藍色
+option.YELLOWFROG_COL_R=紅色
+option.YELLOWFROG_COL_G=綠色
+option.YELLOWFROG_COL_B=藍色
+option.GREENFROG_COL_R=紅色
+option.GREENFROG_COL_G=綠色
+option.GREENFROG_COL_B=藍色
+option.PINKFROG_COL_R=紅色
+option.PINKFROG_COL_G=綠色
+option.PINKFROG_COL_B=藍色
+option.SCULK_COL_R=紅色
+option.SCULK_COL_G=綠色
+option.SCULK_COL_B=藍色
+option.SPAWNER_COL_R=紅色
+option.SPAWNER_COL_G=綠色
+option.SPAWNER_COL_B=藍色
+option.BREWINGSTAND_COL_R=紅色
+option.BREWINGSTAND_COL_G=綠色
+option.BREWINGSTAND_COL_B=藍色
+option.BEACON_COL_R=紅色
+option.BEACON_COL_G=綠色
+option.BEACON_COL_B=藍色
+option.CONDUIT_COL_R=紅色
+option.CONDUIT_COL_G=綠色
+option.CONDUIT_COL_B=藍色
+option.ENDCRYSTAL_COL_R=紅色
+option.ENDCRYSTAL_COL_G=綠色
+option.ENDCRYSTAL_COL_B=藍色
+option.LIGHTNING_COL_R=紅色
+option.LIGHTNING_COL_G=綠色
+option.LIGHTNING_COL_B=藍色
+option.ITEMFRAME_COL_R=紅色
+option.ITEMFRAME_COL_G=綠色
+option.ITEMFRAME_COL_B=藍色
+option.BLAZE_COL_R=紅色
+option.BLAZE_COL_G=綠色
+option.BLAZE_COL_B=藍色
+option.SQUID_COL_R=紅色
+option.SQUID_COL_G=綠色
+option.SQUID_COL_B=藍色
+option.ALLAY_COL_R=紅色
+option.ALLAY_COL_G=綠色
+option.ALLAY_COL_B=藍色
+option.TNT_COL_R=紅色
+option.TNT_COL_G=綠色
+option.TNT_COL_B=藍色
+option.DEBRIS_COL_R=紅色
+option.DEBRIS_COL_G=綠色
+option.DEBRIS_COL_B=藍色
+option.RESIN_COL_R=紅色
+option.RESIN_COL_G=綠色
+option.RESIN_COL_B=藍色
